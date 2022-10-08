@@ -1,0 +1,46 @@
+{
+  "project_info": {
+    "project_number": "591794008755",
+    "project_id": "geat-dev",
+    "storage_bucket": "geat-dev.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:591794008755:android:68b4ec1a8678af62ecb6c6",
+        "android_client_info": {
+          "package_name": "com.album.geat.geat.dev"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "591794008755-q3leme5ubocqqgpkqbsp4s3fj5cniqka.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB1_BO0S9AcvFMBZFcLO2pAVwIi3VCY33o"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "591794008755-q3leme5ubocqqgpkqbsp4s3fj5cniqka.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "591794008755-0bt82krsmssiluegnq2eml99f4hin1ss.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.album.geat.geat.dev"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
