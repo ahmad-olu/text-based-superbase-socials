@@ -118,16 +118,16 @@ class WalkInView extends StatelessWidget {
                               const SizedBoxHeightWidget(
                                 type: SizedBoxType.small,
                               ),
-                              FlatButtonAuth(
-                                theme: theme,
-                                text: 'Forgot password',
-                                size: const Size(250, 40),
-                                onPressed: () => context.router
-                                    .push(const ForgotPasswordRoute()),
-                              ),
-                              const SizedBoxHeightWidget(
-                                type: SizedBoxType.small,
-                              ),
+                              // FlatButtonAuth(
+                              //   theme: theme,
+                              //   text: 'Forgot password',
+                              //   size: const Size(250, 40),
+                              //   onPressed: () => context.router
+                              //       .push(const ForgotPasswordRoute()),
+                              // ),
+                              // const SizedBoxHeightWidget(
+                              //   type: SizedBoxType.small,
+                              //),
                               FlatButtonAuth(
                                 theme: theme,
                                 text: 'Need an account? Register',

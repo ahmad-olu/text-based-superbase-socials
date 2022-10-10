@@ -2,7 +2,7 @@
     package="com.album.geat.geat">
    <application
         android:label="${appName}"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@mipmap/launcher_icon"
         android:usesCleartextTraffic="true">
         <activity
             android:name=".MainActivity"
