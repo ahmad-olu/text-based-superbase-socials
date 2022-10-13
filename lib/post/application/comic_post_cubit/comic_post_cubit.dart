@@ -5,10 +5,9 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:geat/auth/application/auth_bloc/auth_bloc.dart';
 import 'package:geat/core/domain/geat_failure.dart';
-import 'package:geat/core/domain/model/category_model.dart';
 import 'package:geat/core/enum/enum.dart';
 import 'package:geat/core/infrastructure/storage_repository.dart';
-import 'package:geat/post/domain/comic_post_model.dart';
+import 'package:geat/post/domain/post_model.dart';
 import 'package:geat/post/infrastructure/post_repository.dart';
 
 part 'comic_post_state.dart';
@@ -56,29 +55,19 @@ class ComicPostCubit extends Cubit<ComicPostState> {
         throw NoImageSelectedException();
       }
 
-      final post = ComicPost(
+      final post = Post(
         author: author,
         imageUrls: postImageUrls,
         title: state.title,
         subTitle: state.subTitle,
+        content: null,
         likes: 0,
         canReImagine: false,
         postType: PostType.comicPost,
         category: state.category,
         dateCreated: FieldValue.serverTimestamp(),
       );
-      await _postRepository.createComicPost(comicPost: post);
-      if (state.category.isNotEmpty) {
-        state.category.forEach((element) async {
-          final category = PostCategory(
-            category: element,
-            comicPost: post,
-            postType: PostType.comicPost,
-            author: author,
-          );
-          await _postRepository.createPostCategory(category: category);
-        });
-      }
+      await _postRepository.createPost(post: post);
       emit(state.copyWith(status: ComicPostStatus.submitted));
     } on Exception catch (e) {
       emit(

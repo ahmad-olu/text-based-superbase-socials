@@ -14,6 +14,7 @@ import 'package:geat/feed/presentaion/text_feed_details_page.dart';
 import 'package:geat/home/presentaion/home_page.dart';
 import 'package:geat/notification/presentaion/notification_page.dart';
 import 'package:geat/post/presentaion/comic_post_page.dart';
+import 'package:geat/post/presentaion/post_page.dart';
 import 'package:geat/post/presentaion/text_post_page.dart';
 import 'package:geat/profile/presentation/edit_profile_page.dart';
 import 'package:geat/profile/presentation/profile_page.dart';
@@ -47,8 +48,6 @@ import 'package:geat/splash/presentaion/splash_page.dart';
             AutoRoute(path: ':comic-feed', page: ComicFeedsDetailsPage),
             AutoRoute(path: ':booksId', page: BooksDetailsPage),
             AutoRoute(path: ':comicId', page: ComicDetailsPage),
-            AutoRoute(page: TextPostPage, path: ':editors'),
-            AutoRoute(page: ComicPostPage, path: ':comic-posts'),
             AutoRoute(path: 'view-profile', page: ProfilePage),
             AutoRoute(page: CommentTextPage, path: 'comment-text'),
             AutoRoute(page: CommentComicPage, path: 'comment-comic'),
@@ -68,6 +67,16 @@ import 'package:geat/splash/presentaion/splash_page.dart';
             AutoRoute(path: ':booksId', page: BooksDetailsPage),
             AutoRoute(path: ':comicId', page: ComicDetailsPage),
             AutoRoute(page: ReImaginedPage, path: ':reImagined'),
+          ],
+        ),
+        AutoRoute(
+          page: EmptyRouterPage,
+          path: 'post',
+          name: 'postRouter',
+          children: [
+            AutoRoute(path: '', page: PostPage),
+            AutoRoute(page: TextPostPage, path: ':editors'),
+            AutoRoute(page: ComicPostPage, path: ':comic-posts'),
           ],
         ),
         AutoRoute(

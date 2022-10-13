@@ -29,41 +29,25 @@ exports.onFollowUser = functions.firestore
       userRef.update({ following: 1 });
     }
 
-    // Add followed user's textPosts to user's textPost feed.
-    const followedUserTextPostsRef = admin
+    // Add followed user's posts to user's textPost feed.
+    const followedUserPostsRef = admin
       .firestore()
-      .collection('textPosts')
+      .collection('posts')
       .where('author', '==', followedUserRef);
-    const userTextFeedRef = admin
+    const userFeedRef = admin
       .firestore()
       .collection('feeds')
       .doc(followerId)
-      .collection('userTextFeed');
-    const followedUserTextPostsSnapshot = await followedUserTextPostsRef.get();
-    followedUserTextPostsSnapshot.forEach((doc) => {
+      .collection('userFeed');
+    const followedUserPostsSnapshot = await followedUserPostsRef.get();
+    followedUserPostsSnapshot.forEach((doc) => {
       if (doc.exists) {
-        userTextFeedRef.doc(doc.id).set(doc.data());
-      }
-    });
-    // Add followed user's comicPosts to user's comicPost feed.
-    const followedUserComicPostsRef = admin
-      .firestore()
-      .collection('comicPosts')
-      .where('author', '==', followedUserRef);
-    const userComicFeedRef = admin
-      .firestore()
-      .collection('feeds')
-      .doc(followerId)
-      .collection('userComicFeed');
-    const followedUserComicPostsSnapshot = await followedUserComicPostsRef.get();
-    followedUserComicPostsSnapshot.forEach((doc) => {
-      if (doc.exists) {
-        userComicFeedRef.doc(doc.id).set(doc.data());
+        userFeedRef.doc(doc.id).set(doc.data());
       }
     });
   });
 
-exports.onUnfollowUser = functions.firestore
+exports.onUnFollowUser = functions.firestore
   .document('/followers/{userId}/userFollowers/{followerId}')
   .onDelete(async (_, context) => {
     const userId = context.params.userId;
@@ -89,38 +73,25 @@ exports.onUnfollowUser = functions.firestore
       userRef.update({ following: 0 });
     }
 
-    // Remove unfollowed user's textPosts from user's textPost feed.
-    const userTextFeedRef = admin
+    // Remove unfollowed user's posts from user's textPost feed.
+    const userFeedRef = admin
       .firestore()
       .collection('feeds')
       .doc(followerId)
-      .collection('userTextFeed')
+      .collection('userFeed')
       .where('author', '==', followedUserRef);
-    const userTextPostsSnapshot = await userTextFeedRef.get();
-    userTextPostsSnapshot.forEach((doc) => {
-      if (doc.exists) {
-        doc.ref.delete();
-      }
-    });
-    // Remove unfollowed user's comicPosts from user's comicPost feed.
-    const userComicFeedRef = admin
-      .firestore()
-      .collection('feeds')
-      .doc(followerId)
-      .collection('userComicFeed')
-      .where('author', '==', followedUserRef);
-    const userComicPostsSnapshot = await userComicFeedRef.get();
-    userComicPostsSnapshot.forEach((doc) => {
+    const userPostsSnapshot = await userFeedRef.get();
+    userPostsSnapshot.forEach((doc) => {
       if (doc.exists) {
         doc.ref.delete();
       }
     });
   });
 
-exports.onCreateTextPost = functions.firestore
-  .document('/textPosts/{textPostId}')
+exports.onCreatePost = functions.firestore
+  .document('/posts/{postId}')
   .onCreate(async (snapshot, context) => {
-    const textPostId = context.params.postId;
+    const postId = context.params.postId;
 
     // Get author id.
     const authorRef = snapshot.get('author');
@@ -138,41 +109,14 @@ exports.onCreateTextPost = functions.firestore
         .firestore()
         .collection('feeds')
         .doc(doc.id)
-        .collection('userTextFeed')
-        .doc(textPostId)
+        .collection('userFeed')
+        .doc(postId)
         .set(snapshot.data());
     });
   });
 
-exports.onCreateComicPost = functions.firestore
-  .document('/comicPosts/{comicPostId}')
-  .onCreate(async (snapshot, context) => {
-    const comicPostId = context.params.postId;
-
-    // Get author id.
-    const authorRef = snapshot.get('author');
-    const authorId = authorRef.path.split('/')[1];
-
-    // Add new post to feeds of all followers.
-    const userFollowersRef = admin
-      .firestore()
-      .collection('followers')
-      .doc(authorId)
-      .collection('userFollowers');
-    const userFollowersSnapshot = await userFollowersRef.get();
-    userFollowersSnapshot.forEach((doc) => {
-      admin
-        .firestore()
-        .collection('feeds')
-        .doc(doc.id)
-        .collection('userComicFeed')
-        .doc(comicPostId)
-        .set(snapshot.data());
-    });
-  });
-
-exports.onUpdateTextPost = functions.firestore
-  .document('/textPosts/{postId}')
+exports.onUpdatePost = functions.firestore
+  .document('/posts/{postId}')
   .onUpdate(async (snapshot, context) => {
     const postId = context.params.postId;
 
@@ -193,37 +137,7 @@ exports.onUpdateTextPost = functions.firestore
         .firestore()
         .collection('feeds')
         .doc(doc.id)
-        .collection('userTextFeed');
-      const postDoc = await postRef.doc(postId).get();
-      if (postDoc.exists) {
-        postDoc.ref.update(updatedPostData);
-      }
-    });
-  });
-
-exports.onUpdateComicPost = functions.firestore
-  .document('/comicPosts/{postId}')
-  .onUpdate(async (snapshot, context) => {
-    const postId = context.params.postId;
-
-    // Get author id.
-    const authorRef = snapshot.after.get('author');
-    const authorId = authorRef.path.split('/')[1];
-
-    // Update post data in each follower's feed.
-    const updatedPostData = snapshot.after.data();
-    const userFollowersRef = admin
-      .firestore()
-      .collection('followers')
-      .doc(authorId)
-      .collection('userFollowers');
-    const userFollowersSnapshot = await userFollowersRef.get();
-    userFollowersSnapshot.forEach(async (doc) => {
-      const postRef = admin
-        .firestore()
-        .collection('feeds')
-        .doc(doc.id)
-        .collection('userComicFeed');
+        .collection('userFeed');
       const postDoc = await postRef.doc(postId).get();
       if (postDoc.exists) {
         postDoc.ref.update(updatedPostData);

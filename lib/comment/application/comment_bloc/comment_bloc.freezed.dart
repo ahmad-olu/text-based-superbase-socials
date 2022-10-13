@@ -18,57 +18,45 @@ final _privateConstructorUsedError = UnsupportedError(
 mixin _$CommentEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(TextPost post) fetchTextComments,
-    required TResult Function(ComicPost post) fetchComicComments,
+    required TResult Function(Post post) fetchComments,
     required TResult Function(List<Comment> comment) updateComments,
-    required TResult Function(String content) postTextComments,
-    required TResult Function(String content) postComicComments,
+    required TResult Function(String content) postComments,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(TextPost post)? fetchTextComments,
-    TResult Function(ComicPost post)? fetchComicComments,
+    TResult Function(Post post)? fetchComments,
     TResult Function(List<Comment> comment)? updateComments,
-    TResult Function(String content)? postTextComments,
-    TResult Function(String content)? postComicComments,
+    TResult Function(String content)? postComments,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(TextPost post)? fetchTextComments,
-    TResult Function(ComicPost post)? fetchComicComments,
+    TResult Function(Post post)? fetchComments,
     TResult Function(List<Comment> comment)? updateComments,
-    TResult Function(String content)? postTextComments,
-    TResult Function(String content)? postComicComments,
+    TResult Function(String content)? postComments,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_FetchTextComments value) fetchTextComments,
-    required TResult Function(_FetchPictureComments value) fetchComicComments,
+    required TResult Function(_FetchTextComments value) fetchComments,
     required TResult Function(_UpdateComments value) updateComments,
-    required TResult Function(_PostTextComments value) postTextComments,
-    required TResult Function(_PostComicComments value) postComicComments,
+    required TResult Function(_PostTextComments value) postComments,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_FetchTextComments value)? fetchTextComments,
-    TResult Function(_FetchPictureComments value)? fetchComicComments,
+    TResult Function(_FetchTextComments value)? fetchComments,
     TResult Function(_UpdateComments value)? updateComments,
-    TResult Function(_PostTextComments value)? postTextComments,
-    TResult Function(_PostComicComments value)? postComicComments,
+    TResult Function(_PostTextComments value)? postComments,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_FetchTextComments value)? fetchTextComments,
-    TResult Function(_FetchPictureComments value)? fetchComicComments,
+    TResult Function(_FetchTextComments value)? fetchComments,
     TResult Function(_UpdateComments value)? updateComments,
-    TResult Function(_PostTextComments value)? postTextComments,
-    TResult Function(_PostComicComments value)? postComicComments,
+    TResult Function(_PostTextComments value)? postComments,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -95,9 +83,9 @@ abstract class _$$_FetchTextCommentsCopyWith<$Res> {
   factory _$$_FetchTextCommentsCopyWith(_$_FetchTextComments value,
           $Res Function(_$_FetchTextComments) then) =
       __$$_FetchTextCommentsCopyWithImpl<$Res>;
-  $Res call({TextPost post});
+  $Res call({Post post});
 
-  $TextPostCopyWith<$Res> get post;
+  $PostCopyWith<$Res> get post;
 }
 
 /// @nodoc
@@ -119,13 +107,13 @@ class __$$_FetchTextCommentsCopyWithImpl<$Res>
       post: post == freezed
           ? _value.post
           : post // ignore: cast_nullable_to_non_nullable
-              as TextPost,
+              as Post,
     ));
   }
 
   @override
-  $TextPostCopyWith<$Res> get post {
-    return $TextPostCopyWith<$Res>(_value.post, (value) {
+  $PostCopyWith<$Res> get post {
+    return $PostCopyWith<$Res>(_value.post, (value) {
       return _then(_value.copyWith(post: value));
     });
   }
@@ -137,11 +125,11 @@ class _$_FetchTextComments implements _FetchTextComments {
   const _$_FetchTextComments({required this.post});
 
   @override
-  final TextPost post;
+  final Post post;
 
   @override
   String toString() {
-    return 'CommentEvent.fetchTextComments(post: $post)';
+    return 'CommentEvent.fetchComments(post: $post)';
   }
 
   @override
@@ -165,39 +153,33 @@ class _$_FetchTextComments implements _FetchTextComments {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(TextPost post) fetchTextComments,
-    required TResult Function(ComicPost post) fetchComicComments,
+    required TResult Function(Post post) fetchComments,
     required TResult Function(List<Comment> comment) updateComments,
-    required TResult Function(String content) postTextComments,
-    required TResult Function(String content) postComicComments,
+    required TResult Function(String content) postComments,
   }) {
-    return fetchTextComments(post);
+    return fetchComments(post);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(TextPost post)? fetchTextComments,
-    TResult Function(ComicPost post)? fetchComicComments,
+    TResult Function(Post post)? fetchComments,
     TResult Function(List<Comment> comment)? updateComments,
-    TResult Function(String content)? postTextComments,
-    TResult Function(String content)? postComicComments,
+    TResult Function(String content)? postComments,
   }) {
-    return fetchTextComments?.call(post);
+    return fetchComments?.call(post);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(TextPost post)? fetchTextComments,
-    TResult Function(ComicPost post)? fetchComicComments,
+    TResult Function(Post post)? fetchComments,
     TResult Function(List<Comment> comment)? updateComments,
-    TResult Function(String content)? postTextComments,
-    TResult Function(String content)? postComicComments,
+    TResult Function(String content)? postComments,
     required TResult orElse(),
   }) {
-    if (fetchTextComments != null) {
-      return fetchTextComments(post);
+    if (fetchComments != null) {
+      return fetchComments(post);
     }
     return orElse();
   }
@@ -205,214 +187,45 @@ class _$_FetchTextComments implements _FetchTextComments {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_FetchTextComments value) fetchTextComments,
-    required TResult Function(_FetchPictureComments value) fetchComicComments,
+    required TResult Function(_FetchTextComments value) fetchComments,
     required TResult Function(_UpdateComments value) updateComments,
-    required TResult Function(_PostTextComments value) postTextComments,
-    required TResult Function(_PostComicComments value) postComicComments,
+    required TResult Function(_PostTextComments value) postComments,
   }) {
-    return fetchTextComments(this);
+    return fetchComments(this);
   }
 
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_FetchTextComments value)? fetchTextComments,
-    TResult Function(_FetchPictureComments value)? fetchComicComments,
+    TResult Function(_FetchTextComments value)? fetchComments,
     TResult Function(_UpdateComments value)? updateComments,
-    TResult Function(_PostTextComments value)? postTextComments,
-    TResult Function(_PostComicComments value)? postComicComments,
+    TResult Function(_PostTextComments value)? postComments,
   }) {
-    return fetchTextComments?.call(this);
+    return fetchComments?.call(this);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_FetchTextComments value)? fetchTextComments,
-    TResult Function(_FetchPictureComments value)? fetchComicComments,
+    TResult Function(_FetchTextComments value)? fetchComments,
     TResult Function(_UpdateComments value)? updateComments,
-    TResult Function(_PostTextComments value)? postTextComments,
-    TResult Function(_PostComicComments value)? postComicComments,
+    TResult Function(_PostTextComments value)? postComments,
     required TResult orElse(),
   }) {
-    if (fetchTextComments != null) {
-      return fetchTextComments(this);
+    if (fetchComments != null) {
+      return fetchComments(this);
     }
     return orElse();
   }
 }
 
 abstract class _FetchTextComments implements CommentEvent {
-  const factory _FetchTextComments({required final TextPost post}) =
+  const factory _FetchTextComments({required final Post post}) =
       _$_FetchTextComments;
 
-  TextPost get post;
+  Post get post;
   @JsonKey(ignore: true)
   _$$_FetchTextCommentsCopyWith<_$_FetchTextComments> get copyWith =>
-      throw _privateConstructorUsedError;
-}
-
-/// @nodoc
-abstract class _$$_FetchPictureCommentsCopyWith<$Res> {
-  factory _$$_FetchPictureCommentsCopyWith(_$_FetchPictureComments value,
-          $Res Function(_$_FetchPictureComments) then) =
-      __$$_FetchPictureCommentsCopyWithImpl<$Res>;
-  $Res call({ComicPost post});
-
-  $ComicPostCopyWith<$Res> get post;
-}
-
-/// @nodoc
-class __$$_FetchPictureCommentsCopyWithImpl<$Res>
-    extends _$CommentEventCopyWithImpl<$Res>
-    implements _$$_FetchPictureCommentsCopyWith<$Res> {
-  __$$_FetchPictureCommentsCopyWithImpl(_$_FetchPictureComments _value,
-      $Res Function(_$_FetchPictureComments) _then)
-      : super(_value, (v) => _then(v as _$_FetchPictureComments));
-
-  @override
-  _$_FetchPictureComments get _value => super._value as _$_FetchPictureComments;
-
-  @override
-  $Res call({
-    Object? post = freezed,
-  }) {
-    return _then(_$_FetchPictureComments(
-      post: post == freezed
-          ? _value.post
-          : post // ignore: cast_nullable_to_non_nullable
-              as ComicPost,
-    ));
-  }
-
-  @override
-  $ComicPostCopyWith<$Res> get post {
-    return $ComicPostCopyWith<$Res>(_value.post, (value) {
-      return _then(_value.copyWith(post: value));
-    });
-  }
-}
-
-/// @nodoc
-
-class _$_FetchPictureComments implements _FetchPictureComments {
-  const _$_FetchPictureComments({required this.post});
-
-  @override
-  final ComicPost post;
-
-  @override
-  String toString() {
-    return 'CommentEvent.fetchComicComments(post: $post)';
-  }
-
-  @override
-  bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$_FetchPictureComments &&
-            const DeepCollectionEquality().equals(other.post, post));
-  }
-
-  @override
-  int get hashCode =>
-      Object.hash(runtimeType, const DeepCollectionEquality().hash(post));
-
-  @JsonKey(ignore: true)
-  @override
-  _$$_FetchPictureCommentsCopyWith<_$_FetchPictureComments> get copyWith =>
-      __$$_FetchPictureCommentsCopyWithImpl<_$_FetchPictureComments>(
-          this, _$identity);
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function(TextPost post) fetchTextComments,
-    required TResult Function(ComicPost post) fetchComicComments,
-    required TResult Function(List<Comment> comment) updateComments,
-    required TResult Function(String content) postTextComments,
-    required TResult Function(String content) postComicComments,
-  }) {
-    return fetchComicComments(post);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(TextPost post)? fetchTextComments,
-    TResult Function(ComicPost post)? fetchComicComments,
-    TResult Function(List<Comment> comment)? updateComments,
-    TResult Function(String content)? postTextComments,
-    TResult Function(String content)? postComicComments,
-  }) {
-    return fetchComicComments?.call(post);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function(TextPost post)? fetchTextComments,
-    TResult Function(ComicPost post)? fetchComicComments,
-    TResult Function(List<Comment> comment)? updateComments,
-    TResult Function(String content)? postTextComments,
-    TResult Function(String content)? postComicComments,
-    required TResult orElse(),
-  }) {
-    if (fetchComicComments != null) {
-      return fetchComicComments(post);
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_FetchTextComments value) fetchTextComments,
-    required TResult Function(_FetchPictureComments value) fetchComicComments,
-    required TResult Function(_UpdateComments value) updateComments,
-    required TResult Function(_PostTextComments value) postTextComments,
-    required TResult Function(_PostComicComments value) postComicComments,
-  }) {
-    return fetchComicComments(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_FetchTextComments value)? fetchTextComments,
-    TResult Function(_FetchPictureComments value)? fetchComicComments,
-    TResult Function(_UpdateComments value)? updateComments,
-    TResult Function(_PostTextComments value)? postTextComments,
-    TResult Function(_PostComicComments value)? postComicComments,
-  }) {
-    return fetchComicComments?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(_FetchTextComments value)? fetchTextComments,
-    TResult Function(_FetchPictureComments value)? fetchComicComments,
-    TResult Function(_UpdateComments value)? updateComments,
-    TResult Function(_PostTextComments value)? postTextComments,
-    TResult Function(_PostComicComments value)? postComicComments,
-    required TResult orElse(),
-  }) {
-    if (fetchComicComments != null) {
-      return fetchComicComments(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class _FetchPictureComments implements CommentEvent {
-  const factory _FetchPictureComments({required final ComicPost post}) =
-      _$_FetchPictureComments;
-
-  ComicPost get post;
-  @JsonKey(ignore: true)
-  _$$_FetchPictureCommentsCopyWith<_$_FetchPictureComments> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -486,11 +299,9 @@ class _$_UpdateComments implements _UpdateComments {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(TextPost post) fetchTextComments,
-    required TResult Function(ComicPost post) fetchComicComments,
+    required TResult Function(Post post) fetchComments,
     required TResult Function(List<Comment> comment) updateComments,
-    required TResult Function(String content) postTextComments,
-    required TResult Function(String content) postComicComments,
+    required TResult Function(String content) postComments,
   }) {
     return updateComments(comment);
   }
@@ -498,11 +309,9 @@ class _$_UpdateComments implements _UpdateComments {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(TextPost post)? fetchTextComments,
-    TResult Function(ComicPost post)? fetchComicComments,
+    TResult Function(Post post)? fetchComments,
     TResult Function(List<Comment> comment)? updateComments,
-    TResult Function(String content)? postTextComments,
-    TResult Function(String content)? postComicComments,
+    TResult Function(String content)? postComments,
   }) {
     return updateComments?.call(comment);
   }
@@ -510,11 +319,9 @@ class _$_UpdateComments implements _UpdateComments {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(TextPost post)? fetchTextComments,
-    TResult Function(ComicPost post)? fetchComicComments,
+    TResult Function(Post post)? fetchComments,
     TResult Function(List<Comment> comment)? updateComments,
-    TResult Function(String content)? postTextComments,
-    TResult Function(String content)? postComicComments,
+    TResult Function(String content)? postComments,
     required TResult orElse(),
   }) {
     if (updateComments != null) {
@@ -526,11 +333,9 @@ class _$_UpdateComments implements _UpdateComments {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_FetchTextComments value) fetchTextComments,
-    required TResult Function(_FetchPictureComments value) fetchComicComments,
+    required TResult Function(_FetchTextComments value) fetchComments,
     required TResult Function(_UpdateComments value) updateComments,
-    required TResult Function(_PostTextComments value) postTextComments,
-    required TResult Function(_PostComicComments value) postComicComments,
+    required TResult Function(_PostTextComments value) postComments,
   }) {
     return updateComments(this);
   }
@@ -538,11 +343,9 @@ class _$_UpdateComments implements _UpdateComments {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_FetchTextComments value)? fetchTextComments,
-    TResult Function(_FetchPictureComments value)? fetchComicComments,
+    TResult Function(_FetchTextComments value)? fetchComments,
     TResult Function(_UpdateComments value)? updateComments,
-    TResult Function(_PostTextComments value)? postTextComments,
-    TResult Function(_PostComicComments value)? postComicComments,
+    TResult Function(_PostTextComments value)? postComments,
   }) {
     return updateComments?.call(this);
   }
@@ -550,11 +353,9 @@ class _$_UpdateComments implements _UpdateComments {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_FetchTextComments value)? fetchTextComments,
-    TResult Function(_FetchPictureComments value)? fetchComicComments,
+    TResult Function(_FetchTextComments value)? fetchComments,
     TResult Function(_UpdateComments value)? updateComments,
-    TResult Function(_PostTextComments value)? postTextComments,
-    TResult Function(_PostComicComments value)? postComicComments,
+    TResult Function(_PostTextComments value)? postComments,
     required TResult orElse(),
   }) {
     if (updateComments != null) {
@@ -616,7 +417,7 @@ class _$_PostTextComments implements _PostTextComments {
 
   @override
   String toString() {
-    return 'CommentEvent.postTextComments(content: $content)';
+    return 'CommentEvent.postComments(content: $content)';
   }
 
   @override
@@ -639,39 +440,33 @@ class _$_PostTextComments implements _PostTextComments {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(TextPost post) fetchTextComments,
-    required TResult Function(ComicPost post) fetchComicComments,
+    required TResult Function(Post post) fetchComments,
     required TResult Function(List<Comment> comment) updateComments,
-    required TResult Function(String content) postTextComments,
-    required TResult Function(String content) postComicComments,
+    required TResult Function(String content) postComments,
   }) {
-    return postTextComments(content);
+    return postComments(content);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(TextPost post)? fetchTextComments,
-    TResult Function(ComicPost post)? fetchComicComments,
+    TResult Function(Post post)? fetchComments,
     TResult Function(List<Comment> comment)? updateComments,
-    TResult Function(String content)? postTextComments,
-    TResult Function(String content)? postComicComments,
+    TResult Function(String content)? postComments,
   }) {
-    return postTextComments?.call(content);
+    return postComments?.call(content);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(TextPost post)? fetchTextComments,
-    TResult Function(ComicPost post)? fetchComicComments,
+    TResult Function(Post post)? fetchComments,
     TResult Function(List<Comment> comment)? updateComments,
-    TResult Function(String content)? postTextComments,
-    TResult Function(String content)? postComicComments,
+    TResult Function(String content)? postComments,
     required TResult orElse(),
   }) {
-    if (postTextComments != null) {
-      return postTextComments(content);
+    if (postComments != null) {
+      return postComments(content);
     }
     return orElse();
   }
@@ -679,39 +474,33 @@ class _$_PostTextComments implements _PostTextComments {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_FetchTextComments value) fetchTextComments,
-    required TResult Function(_FetchPictureComments value) fetchComicComments,
+    required TResult Function(_FetchTextComments value) fetchComments,
     required TResult Function(_UpdateComments value) updateComments,
-    required TResult Function(_PostTextComments value) postTextComments,
-    required TResult Function(_PostComicComments value) postComicComments,
+    required TResult Function(_PostTextComments value) postComments,
   }) {
-    return postTextComments(this);
+    return postComments(this);
   }
 
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_FetchTextComments value)? fetchTextComments,
-    TResult Function(_FetchPictureComments value)? fetchComicComments,
+    TResult Function(_FetchTextComments value)? fetchComments,
     TResult Function(_UpdateComments value)? updateComments,
-    TResult Function(_PostTextComments value)? postTextComments,
-    TResult Function(_PostComicComments value)? postComicComments,
+    TResult Function(_PostTextComments value)? postComments,
   }) {
-    return postTextComments?.call(this);
+    return postComments?.call(this);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_FetchTextComments value)? fetchTextComments,
-    TResult Function(_FetchPictureComments value)? fetchComicComments,
+    TResult Function(_FetchTextComments value)? fetchComments,
     TResult Function(_UpdateComments value)? updateComments,
-    TResult Function(_PostTextComments value)? postTextComments,
-    TResult Function(_PostComicComments value)? postComicComments,
+    TResult Function(_PostTextComments value)? postComments,
     required TResult orElse(),
   }) {
-    if (postTextComments != null) {
-      return postTextComments(this);
+    if (postComments != null) {
+      return postComments(this);
     }
     return orElse();
   }
@@ -728,163 +517,8 @@ abstract class _PostTextComments implements CommentEvent {
 }
 
 /// @nodoc
-abstract class _$$_PostComicCommentsCopyWith<$Res> {
-  factory _$$_PostComicCommentsCopyWith(_$_PostComicComments value,
-          $Res Function(_$_PostComicComments) then) =
-      __$$_PostComicCommentsCopyWithImpl<$Res>;
-  $Res call({String content});
-}
-
-/// @nodoc
-class __$$_PostComicCommentsCopyWithImpl<$Res>
-    extends _$CommentEventCopyWithImpl<$Res>
-    implements _$$_PostComicCommentsCopyWith<$Res> {
-  __$$_PostComicCommentsCopyWithImpl(
-      _$_PostComicComments _value, $Res Function(_$_PostComicComments) _then)
-      : super(_value, (v) => _then(v as _$_PostComicComments));
-
-  @override
-  _$_PostComicComments get _value => super._value as _$_PostComicComments;
-
-  @override
-  $Res call({
-    Object? content = freezed,
-  }) {
-    return _then(_$_PostComicComments(
-      content: content == freezed
-          ? _value.content
-          : content // ignore: cast_nullable_to_non_nullable
-              as String,
-    ));
-  }
-}
-
-/// @nodoc
-
-class _$_PostComicComments implements _PostComicComments {
-  const _$_PostComicComments({required this.content});
-
-  @override
-  final String content;
-
-  @override
-  String toString() {
-    return 'CommentEvent.postComicComments(content: $content)';
-  }
-
-  @override
-  bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$_PostComicComments &&
-            const DeepCollectionEquality().equals(other.content, content));
-  }
-
-  @override
-  int get hashCode =>
-      Object.hash(runtimeType, const DeepCollectionEquality().hash(content));
-
-  @JsonKey(ignore: true)
-  @override
-  _$$_PostComicCommentsCopyWith<_$_PostComicComments> get copyWith =>
-      __$$_PostComicCommentsCopyWithImpl<_$_PostComicComments>(
-          this, _$identity);
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function(TextPost post) fetchTextComments,
-    required TResult Function(ComicPost post) fetchComicComments,
-    required TResult Function(List<Comment> comment) updateComments,
-    required TResult Function(String content) postTextComments,
-    required TResult Function(String content) postComicComments,
-  }) {
-    return postComicComments(content);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(TextPost post)? fetchTextComments,
-    TResult Function(ComicPost post)? fetchComicComments,
-    TResult Function(List<Comment> comment)? updateComments,
-    TResult Function(String content)? postTextComments,
-    TResult Function(String content)? postComicComments,
-  }) {
-    return postComicComments?.call(content);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function(TextPost post)? fetchTextComments,
-    TResult Function(ComicPost post)? fetchComicComments,
-    TResult Function(List<Comment> comment)? updateComments,
-    TResult Function(String content)? postTextComments,
-    TResult Function(String content)? postComicComments,
-    required TResult orElse(),
-  }) {
-    if (postComicComments != null) {
-      return postComicComments(content);
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_FetchTextComments value) fetchTextComments,
-    required TResult Function(_FetchPictureComments value) fetchComicComments,
-    required TResult Function(_UpdateComments value) updateComments,
-    required TResult Function(_PostTextComments value) postTextComments,
-    required TResult Function(_PostComicComments value) postComicComments,
-  }) {
-    return postComicComments(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_FetchTextComments value)? fetchTextComments,
-    TResult Function(_FetchPictureComments value)? fetchComicComments,
-    TResult Function(_UpdateComments value)? updateComments,
-    TResult Function(_PostTextComments value)? postTextComments,
-    TResult Function(_PostComicComments value)? postComicComments,
-  }) {
-    return postComicComments?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(_FetchTextComments value)? fetchTextComments,
-    TResult Function(_FetchPictureComments value)? fetchComicComments,
-    TResult Function(_UpdateComments value)? updateComments,
-    TResult Function(_PostTextComments value)? postTextComments,
-    TResult Function(_PostComicComments value)? postComicComments,
-    required TResult orElse(),
-  }) {
-    if (postComicComments != null) {
-      return postComicComments(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class _PostComicComments implements CommentEvent {
-  const factory _PostComicComments({required final String content}) =
-      _$_PostComicComments;
-
-  String get content;
-  @JsonKey(ignore: true)
-  _$$_PostComicCommentsCopyWith<_$_PostComicComments> get copyWith =>
-      throw _privateConstructorUsedError;
-}
-
-/// @nodoc
 mixin _$CommentState {
-  TextPost? get textPost => throw _privateConstructorUsedError;
-  ComicPost? get comicPost => throw _privateConstructorUsedError;
+  Post? get post => throw _privateConstructorUsedError;
   List<Comment> get comment => throw _privateConstructorUsedError;
   CommentStatus get status => throw _privateConstructorUsedError;
   Exception? get failure => throw _privateConstructorUsedError;
@@ -900,14 +534,12 @@ abstract class $CommentStateCopyWith<$Res> {
           CommentState value, $Res Function(CommentState) then) =
       _$CommentStateCopyWithImpl<$Res>;
   $Res call(
-      {TextPost? textPost,
-      ComicPost? comicPost,
+      {Post? post,
       List<Comment> comment,
       CommentStatus status,
       Exception? failure});
 
-  $TextPostCopyWith<$Res>? get textPost;
-  $ComicPostCopyWith<$Res>? get comicPost;
+  $PostCopyWith<$Res>? get post;
 }
 
 /// @nodoc
@@ -920,21 +552,16 @@ class _$CommentStateCopyWithImpl<$Res> implements $CommentStateCopyWith<$Res> {
 
   @override
   $Res call({
-    Object? textPost = freezed,
-    Object? comicPost = freezed,
+    Object? post = freezed,
     Object? comment = freezed,
     Object? status = freezed,
     Object? failure = freezed,
   }) {
     return _then(_value.copyWith(
-      textPost: textPost == freezed
-          ? _value.textPost
-          : textPost // ignore: cast_nullable_to_non_nullable
-              as TextPost?,
-      comicPost: comicPost == freezed
-          ? _value.comicPost
-          : comicPost // ignore: cast_nullable_to_non_nullable
-              as ComicPost?,
+      post: post == freezed
+          ? _value.post
+          : post // ignore: cast_nullable_to_non_nullable
+              as Post?,
       comment: comment == freezed
           ? _value.comment
           : comment // ignore: cast_nullable_to_non_nullable
@@ -951,24 +578,13 @@ class _$CommentStateCopyWithImpl<$Res> implements $CommentStateCopyWith<$Res> {
   }
 
   @override
-  $TextPostCopyWith<$Res>? get textPost {
-    if (_value.textPost == null) {
+  $PostCopyWith<$Res>? get post {
+    if (_value.post == null) {
       return null;
     }
 
-    return $TextPostCopyWith<$Res>(_value.textPost!, (value) {
-      return _then(_value.copyWith(textPost: value));
-    });
-  }
-
-  @override
-  $ComicPostCopyWith<$Res>? get comicPost {
-    if (_value.comicPost == null) {
-      return null;
-    }
-
-    return $ComicPostCopyWith<$Res>(_value.comicPost!, (value) {
-      return _then(_value.copyWith(comicPost: value));
+    return $PostCopyWith<$Res>(_value.post!, (value) {
+      return _then(_value.copyWith(post: value));
     });
   }
 }
@@ -981,16 +597,13 @@ abstract class _$$_CommentsStateCopyWith<$Res>
       __$$_CommentsStateCopyWithImpl<$Res>;
   @override
   $Res call(
-      {TextPost? textPost,
-      ComicPost? comicPost,
+      {Post? post,
       List<Comment> comment,
       CommentStatus status,
       Exception? failure});
 
   @override
-  $TextPostCopyWith<$Res>? get textPost;
-  @override
-  $ComicPostCopyWith<$Res>? get comicPost;
+  $PostCopyWith<$Res>? get post;
 }
 
 /// @nodoc
@@ -1006,21 +619,16 @@ class __$$_CommentsStateCopyWithImpl<$Res>
 
   @override
   $Res call({
-    Object? textPost = freezed,
-    Object? comicPost = freezed,
+    Object? post = freezed,
     Object? comment = freezed,
     Object? status = freezed,
     Object? failure = freezed,
   }) {
     return _then(_$_CommentsState(
-      textPost: textPost == freezed
-          ? _value.textPost
-          : textPost // ignore: cast_nullable_to_non_nullable
-              as TextPost?,
-      comicPost: comicPost == freezed
-          ? _value.comicPost
-          : comicPost // ignore: cast_nullable_to_non_nullable
-              as ComicPost?,
+      post: post == freezed
+          ? _value.post
+          : post // ignore: cast_nullable_to_non_nullable
+              as Post?,
       comment: comment == freezed
           ? _value._comment
           : comment // ignore: cast_nullable_to_non_nullable
@@ -1041,17 +649,14 @@ class __$$_CommentsStateCopyWithImpl<$Res>
 
 class _$_CommentsState implements _CommentsState {
   const _$_CommentsState(
-      {required this.textPost,
-      required this.comicPost,
+      {required this.post,
       required final List<Comment> comment,
       required this.status,
       required this.failure})
       : _comment = comment;
 
   @override
-  final TextPost? textPost;
-  @override
-  final ComicPost? comicPost;
+  final Post? post;
   final List<Comment> _comment;
   @override
   List<Comment> get comment {
@@ -1066,7 +671,7 @@ class _$_CommentsState implements _CommentsState {
 
   @override
   String toString() {
-    return 'CommentState(textPost: $textPost, comicPost: $comicPost, comment: $comment, status: $status, failure: $failure)';
+    return 'CommentState(post: $post, comment: $comment, status: $status, failure: $failure)';
   }
 
   @override
@@ -1074,8 +679,7 @@ class _$_CommentsState implements _CommentsState {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_CommentsState &&
-            const DeepCollectionEquality().equals(other.textPost, textPost) &&
-            const DeepCollectionEquality().equals(other.comicPost, comicPost) &&
+            const DeepCollectionEquality().equals(other.post, post) &&
             const DeepCollectionEquality().equals(other._comment, _comment) &&
             const DeepCollectionEquality().equals(other.status, status) &&
             const DeepCollectionEquality().equals(other.failure, failure));
@@ -1084,8 +688,7 @@ class _$_CommentsState implements _CommentsState {
   @override
   int get hashCode => Object.hash(
       runtimeType,
-      const DeepCollectionEquality().hash(textPost),
-      const DeepCollectionEquality().hash(comicPost),
+      const DeepCollectionEquality().hash(post),
       const DeepCollectionEquality().hash(_comment),
       const DeepCollectionEquality().hash(status),
       const DeepCollectionEquality().hash(failure));
@@ -1098,16 +701,13 @@ class _$_CommentsState implements _CommentsState {
 
 abstract class _CommentsState implements CommentState {
   const factory _CommentsState(
-      {required final TextPost? textPost,
-      required final ComicPost? comicPost,
+      {required final Post? post,
       required final List<Comment> comment,
       required final CommentStatus status,
       required final Exception? failure}) = _$_CommentsState;
 
   @override
-  TextPost? get textPost;
-  @override
-  ComicPost? get comicPost;
+  Post? get post;
   @override
   List<Comment> get comment;
   @override

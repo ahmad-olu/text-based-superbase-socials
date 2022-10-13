@@ -16,43 +16,42 @@ final _privateConstructorUsedError = UnsupportedError(
 
 /// @nodoc
 mixin _$PostActorEvent {
+  Post get post => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(TextPost post) saveTextPost,
-    required TResult Function(ComicPost post) saveComicPost,
+    required TResult Function(Post post) savePost,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(TextPost post)? saveTextPost,
-    TResult Function(ComicPost post)? saveComicPost,
+    TResult Function(Post post)? savePost,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(TextPost post)? saveTextPost,
-    TResult Function(ComicPost post)? saveComicPost,
+    TResult Function(Post post)? savePost,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_SaveTextPost value) saveTextPost,
-    required TResult Function(_SaveComicPost value) saveComicPost,
+    required TResult Function(_SavePost value) savePost,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_SaveTextPost value)? saveTextPost,
-    TResult Function(_SaveComicPost value)? saveComicPost,
+    TResult Function(_SavePost value)? savePost,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_SaveTextPost value)? saveTextPost,
-    TResult Function(_SaveComicPost value)? saveComicPost,
+    TResult Function(_SavePost value)? savePost,
     required TResult orElse(),
   }) =>
+      throw _privateConstructorUsedError;
+
+  @JsonKey(ignore: true)
+  $PostActorEventCopyWith<PostActorEvent> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -61,6 +60,9 @@ abstract class $PostActorEventCopyWith<$Res> {
   factory $PostActorEventCopyWith(
           PostActorEvent value, $Res Function(PostActorEvent) then) =
       _$PostActorEventCopyWithImpl<$Res>;
+  $Res call({Post post});
+
+  $PostCopyWith<$Res> get post;
 }
 
 /// @nodoc
@@ -71,67 +73,81 @@ class _$PostActorEventCopyWithImpl<$Res>
   final PostActorEvent _value;
   // ignore: unused_field
   final $Res Function(PostActorEvent) _then;
-}
-
-/// @nodoc
-abstract class _$$_SaveTextPostCopyWith<$Res> {
-  factory _$$_SaveTextPostCopyWith(
-          _$_SaveTextPost value, $Res Function(_$_SaveTextPost) then) =
-      __$$_SaveTextPostCopyWithImpl<$Res>;
-  $Res call({TextPost post});
-
-  $TextPostCopyWith<$Res> get post;
-}
-
-/// @nodoc
-class __$$_SaveTextPostCopyWithImpl<$Res>
-    extends _$PostActorEventCopyWithImpl<$Res>
-    implements _$$_SaveTextPostCopyWith<$Res> {
-  __$$_SaveTextPostCopyWithImpl(
-      _$_SaveTextPost _value, $Res Function(_$_SaveTextPost) _then)
-      : super(_value, (v) => _then(v as _$_SaveTextPost));
-
-  @override
-  _$_SaveTextPost get _value => super._value as _$_SaveTextPost;
 
   @override
   $Res call({
     Object? post = freezed,
   }) {
-    return _then(_$_SaveTextPost(
-      post == freezed
+    return _then(_value.copyWith(
+      post: post == freezed
           ? _value.post
           : post // ignore: cast_nullable_to_non_nullable
-              as TextPost,
+              as Post,
     ));
   }
 
   @override
-  $TextPostCopyWith<$Res> get post {
-    return $TextPostCopyWith<$Res>(_value.post, (value) {
+  $PostCopyWith<$Res> get post {
+    return $PostCopyWith<$Res>(_value.post, (value) {
       return _then(_value.copyWith(post: value));
     });
   }
 }
 
 /// @nodoc
-
-class _$_SaveTextPost implements _SaveTextPost {
-  const _$_SaveTextPost(this.post);
+abstract class _$$_SavePostCopyWith<$Res>
+    implements $PostActorEventCopyWith<$Res> {
+  factory _$$_SavePostCopyWith(
+          _$_SavePost value, $Res Function(_$_SavePost) then) =
+      __$$_SavePostCopyWithImpl<$Res>;
+  @override
+  $Res call({Post post});
 
   @override
-  final TextPost post;
+  $PostCopyWith<$Res> get post;
+}
+
+/// @nodoc
+class __$$_SavePostCopyWithImpl<$Res> extends _$PostActorEventCopyWithImpl<$Res>
+    implements _$$_SavePostCopyWith<$Res> {
+  __$$_SavePostCopyWithImpl(
+      _$_SavePost _value, $Res Function(_$_SavePost) _then)
+      : super(_value, (v) => _then(v as _$_SavePost));
+
+  @override
+  _$_SavePost get _value => super._value as _$_SavePost;
+
+  @override
+  $Res call({
+    Object? post = freezed,
+  }) {
+    return _then(_$_SavePost(
+      post == freezed
+          ? _value.post
+          : post // ignore: cast_nullable_to_non_nullable
+              as Post,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$_SavePost implements _SavePost {
+  const _$_SavePost(this.post);
+
+  @override
+  final Post post;
 
   @override
   String toString() {
-    return 'PostActorEvent.saveTextPost(post: $post)';
+    return 'PostActorEvent.savePost(post: $post)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_SaveTextPost &&
+            other is _$_SavePost &&
             const DeepCollectionEquality().equals(other.post, post));
   }
 
@@ -141,36 +157,33 @@ class _$_SaveTextPost implements _SaveTextPost {
 
   @JsonKey(ignore: true)
   @override
-  _$$_SaveTextPostCopyWith<_$_SaveTextPost> get copyWith =>
-      __$$_SaveTextPostCopyWithImpl<_$_SaveTextPost>(this, _$identity);
+  _$$_SavePostCopyWith<_$_SavePost> get copyWith =>
+      __$$_SavePostCopyWithImpl<_$_SavePost>(this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(TextPost post) saveTextPost,
-    required TResult Function(ComicPost post) saveComicPost,
+    required TResult Function(Post post) savePost,
   }) {
-    return saveTextPost(post);
+    return savePost(post);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(TextPost post)? saveTextPost,
-    TResult Function(ComicPost post)? saveComicPost,
+    TResult Function(Post post)? savePost,
   }) {
-    return saveTextPost?.call(post);
+    return savePost?.call(post);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(TextPost post)? saveTextPost,
-    TResult Function(ComicPost post)? saveComicPost,
+    TResult Function(Post post)? savePost,
     required TResult orElse(),
   }) {
-    if (saveTextPost != null) {
-      return saveTextPost(post);
+    if (savePost != null) {
+      return savePost(post);
     }
     return orElse();
   }
@@ -178,184 +191,40 @@ class _$_SaveTextPost implements _SaveTextPost {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_SaveTextPost value) saveTextPost,
-    required TResult Function(_SaveComicPost value) saveComicPost,
+    required TResult Function(_SavePost value) savePost,
   }) {
-    return saveTextPost(this);
+    return savePost(this);
   }
 
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_SaveTextPost value)? saveTextPost,
-    TResult Function(_SaveComicPost value)? saveComicPost,
+    TResult Function(_SavePost value)? savePost,
   }) {
-    return saveTextPost?.call(this);
+    return savePost?.call(this);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_SaveTextPost value)? saveTextPost,
-    TResult Function(_SaveComicPost value)? saveComicPost,
+    TResult Function(_SavePost value)? savePost,
     required TResult orElse(),
   }) {
-    if (saveTextPost != null) {
-      return saveTextPost(this);
+    if (savePost != null) {
+      return savePost(this);
     }
     return orElse();
   }
 }
 
-abstract class _SaveTextPost implements PostActorEvent {
-  const factory _SaveTextPost(final TextPost post) = _$_SaveTextPost;
+abstract class _SavePost implements PostActorEvent {
+  const factory _SavePost(final Post post) = _$_SavePost;
 
-  TextPost get post;
+  @override
+  Post get post;
+  @override
   @JsonKey(ignore: true)
-  _$$_SaveTextPostCopyWith<_$_SaveTextPost> get copyWith =>
-      throw _privateConstructorUsedError;
-}
-
-/// @nodoc
-abstract class _$$_SaveComicPostCopyWith<$Res> {
-  factory _$$_SaveComicPostCopyWith(
-          _$_SaveComicPost value, $Res Function(_$_SaveComicPost) then) =
-      __$$_SaveComicPostCopyWithImpl<$Res>;
-  $Res call({ComicPost post});
-
-  $ComicPostCopyWith<$Res> get post;
-}
-
-/// @nodoc
-class __$$_SaveComicPostCopyWithImpl<$Res>
-    extends _$PostActorEventCopyWithImpl<$Res>
-    implements _$$_SaveComicPostCopyWith<$Res> {
-  __$$_SaveComicPostCopyWithImpl(
-      _$_SaveComicPost _value, $Res Function(_$_SaveComicPost) _then)
-      : super(_value, (v) => _then(v as _$_SaveComicPost));
-
-  @override
-  _$_SaveComicPost get _value => super._value as _$_SaveComicPost;
-
-  @override
-  $Res call({
-    Object? post = freezed,
-  }) {
-    return _then(_$_SaveComicPost(
-      post == freezed
-          ? _value.post
-          : post // ignore: cast_nullable_to_non_nullable
-              as ComicPost,
-    ));
-  }
-
-  @override
-  $ComicPostCopyWith<$Res> get post {
-    return $ComicPostCopyWith<$Res>(_value.post, (value) {
-      return _then(_value.copyWith(post: value));
-    });
-  }
-}
-
-/// @nodoc
-
-class _$_SaveComicPost implements _SaveComicPost {
-  const _$_SaveComicPost(this.post);
-
-  @override
-  final ComicPost post;
-
-  @override
-  String toString() {
-    return 'PostActorEvent.saveComicPost(post: $post)';
-  }
-
-  @override
-  bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$_SaveComicPost &&
-            const DeepCollectionEquality().equals(other.post, post));
-  }
-
-  @override
-  int get hashCode =>
-      Object.hash(runtimeType, const DeepCollectionEquality().hash(post));
-
-  @JsonKey(ignore: true)
-  @override
-  _$$_SaveComicPostCopyWith<_$_SaveComicPost> get copyWith =>
-      __$$_SaveComicPostCopyWithImpl<_$_SaveComicPost>(this, _$identity);
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function(TextPost post) saveTextPost,
-    required TResult Function(ComicPost post) saveComicPost,
-  }) {
-    return saveComicPost(post);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(TextPost post)? saveTextPost,
-    TResult Function(ComicPost post)? saveComicPost,
-  }) {
-    return saveComicPost?.call(post);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function(TextPost post)? saveTextPost,
-    TResult Function(ComicPost post)? saveComicPost,
-    required TResult orElse(),
-  }) {
-    if (saveComicPost != null) {
-      return saveComicPost(post);
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_SaveTextPost value) saveTextPost,
-    required TResult Function(_SaveComicPost value) saveComicPost,
-  }) {
-    return saveComicPost(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_SaveTextPost value)? saveTextPost,
-    TResult Function(_SaveComicPost value)? saveComicPost,
-  }) {
-    return saveComicPost?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(_SaveTextPost value)? saveTextPost,
-    TResult Function(_SaveComicPost value)? saveComicPost,
-    required TResult orElse(),
-  }) {
-    if (saveComicPost != null) {
-      return saveComicPost(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class _SaveComicPost implements PostActorEvent {
-  const factory _SaveComicPost(final ComicPost post) = _$_SaveComicPost;
-
-  ComicPost get post;
-  @JsonKey(ignore: true)
-  _$$_SaveComicPostCopyWith<_$_SaveComicPost> get copyWith =>
+  _$$_SavePostCopyWith<_$_SavePost> get copyWith =>
       throw _privateConstructorUsedError;
 }
 

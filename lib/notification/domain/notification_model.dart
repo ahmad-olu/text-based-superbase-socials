@@ -4,10 +4,8 @@ import 'package:geat/core/enum/enum.dart';
 import 'package:geat/core/helper/firabse_user_refrence_helper.dart';
 import 'package:geat/core/helper/firebase_refrence_helper_for_notification.dart';
 import 'package:geat/core/helper/firebase_time_stamp_helper.dart';
-import 'package:geat/post/domain/comic_post_model.dart';
-import 'package:geat/post/domain/text_post_model.dart';
+import 'package:geat/post/domain/post_model.dart';
 import 'package:geat/profile/domain/user_model.dart';
-import 'package:geat/reImagined/domain/reImagied_model.dart';
 part 'notification_model.g.dart';
 part 'notification_model.freezed.dart';
 
@@ -22,14 +20,9 @@ class Notification with _$Notification {
     )
         required dynamic fromUser,
     @JsonKey(
-      toJson: fireStoreTextPostToJson,
+      toJson: fireStorePostToJson,
     )
-        dynamic textPost,
-    @JsonKey(
-      toJson: fireStoreComicPostToJson,
-    )
-        dynamic comicPost,
-    // @JsonKey(
+        dynamic post, // @JsonKey(
     //   toJson: fireStoreReImaginedToJson,
     // )
     //     dynamic reImagined,
@@ -47,18 +40,15 @@ class Notification with _$Notification {
     final data = doc.data()! as Map<String, dynamic>;
     final fromUserRef = data['fromUser'] as DocumentReference;
     final fromUserDoc = await fromUserRef.get();
-    final fromTextPostRef = data['textPost'] as DocumentReference?;
-    final fromTextPostDoc = await fromTextPostRef?.get();
-    final fromComicPostRef = data['comicPost'] as DocumentReference?;
-    final fromComicPostDoc = await fromComicPostRef?.get();
+    final fromPostRef = data['post'] as DocumentReference?;
+    final fromPostDoc = await fromPostRef?.get();
     // final fromReImaginedRef = data['reImagined'] as DocumentReference?;
     // final fromReImaginedDoc = await fromReImaginedRef?.get();
 
     return Notification.fromJson(data).copyWith(
       id: doc.id,
       fromUser: User.fromFireStore(fromUserDoc),
-      textPost: await TextPost.fromFireStore(fromTextPostDoc),
-      comicPost: await ComicPost.fromFireStore(fromComicPostDoc),
+      post: await Post.fromFireStore(fromPostDoc),
       // reImagined: await ReImagined.fromFireStore(fromReImaginedDoc),
     );
   }

@@ -23,10 +23,8 @@ mixin _$SavedPost {
   String? get id => throw _privateConstructorUsedError;
   String get savedOwner => throw _privateConstructorUsedError;
   PostType get postType => throw _privateConstructorUsedError;
-  @JsonKey(toJson: fireStoreTextPostToJson)
-  dynamic get textPost => throw _privateConstructorUsedError;
-  @JsonKey(toJson: fireStoreComicPostToJson)
-  dynamic get comicPost => throw _privateConstructorUsedError;
+  @JsonKey(toJson: fireStorePostToJson)
+  dynamic get post => throw _privateConstructorUsedError;
   @JsonKey(
       toJson: fireStoreTimestampToJson, fromJson: fireStoreTimestampFromJson)
   dynamic get dateCreated => throw _privateConstructorUsedError;
@@ -45,10 +43,8 @@ abstract class $SavedPostCopyWith<$Res> {
       {String? id,
       String savedOwner,
       PostType postType,
-      @JsonKey(toJson: fireStoreTextPostToJson)
-          dynamic textPost,
-      @JsonKey(toJson: fireStoreComicPostToJson)
-          dynamic comicPost,
+      @JsonKey(toJson: fireStorePostToJson)
+          dynamic post,
       @JsonKey(toJson: fireStoreTimestampToJson, fromJson: fireStoreTimestampFromJson)
           dynamic dateCreated});
 }
@@ -66,8 +62,7 @@ class _$SavedPostCopyWithImpl<$Res> implements $SavedPostCopyWith<$Res> {
     Object? id = freezed,
     Object? savedOwner = freezed,
     Object? postType = freezed,
-    Object? textPost = freezed,
-    Object? comicPost = freezed,
+    Object? post = freezed,
     Object? dateCreated = freezed,
   }) {
     return _then(_value.copyWith(
@@ -83,13 +78,9 @@ class _$SavedPostCopyWithImpl<$Res> implements $SavedPostCopyWith<$Res> {
           ? _value.postType
           : postType // ignore: cast_nullable_to_non_nullable
               as PostType,
-      textPost: textPost == freezed
-          ? _value.textPost
-          : textPost // ignore: cast_nullable_to_non_nullable
-              as dynamic,
-      comicPost: comicPost == freezed
-          ? _value.comicPost
-          : comicPost // ignore: cast_nullable_to_non_nullable
+      post: post == freezed
+          ? _value.post
+          : post // ignore: cast_nullable_to_non_nullable
               as dynamic,
       dateCreated: dateCreated == freezed
           ? _value.dateCreated
@@ -109,10 +100,8 @@ abstract class _$$_SavedPostCopyWith<$Res> implements $SavedPostCopyWith<$Res> {
       {String? id,
       String savedOwner,
       PostType postType,
-      @JsonKey(toJson: fireStoreTextPostToJson)
-          dynamic textPost,
-      @JsonKey(toJson: fireStoreComicPostToJson)
-          dynamic comicPost,
+      @JsonKey(toJson: fireStorePostToJson)
+          dynamic post,
       @JsonKey(toJson: fireStoreTimestampToJson, fromJson: fireStoreTimestampFromJson)
           dynamic dateCreated});
 }
@@ -132,8 +121,7 @@ class __$$_SavedPostCopyWithImpl<$Res> extends _$SavedPostCopyWithImpl<$Res>
     Object? id = freezed,
     Object? savedOwner = freezed,
     Object? postType = freezed,
-    Object? textPost = freezed,
-    Object? comicPost = freezed,
+    Object? post = freezed,
     Object? dateCreated = freezed,
   }) {
     return _then(_$_SavedPost(
@@ -149,13 +137,9 @@ class __$$_SavedPostCopyWithImpl<$Res> extends _$SavedPostCopyWithImpl<$Res>
           ? _value.postType
           : postType // ignore: cast_nullable_to_non_nullable
               as PostType,
-      textPost: textPost == freezed
-          ? _value.textPost
-          : textPost // ignore: cast_nullable_to_non_nullable
-              as dynamic,
-      comicPost: comicPost == freezed
-          ? _value.comicPost
-          : comicPost // ignore: cast_nullable_to_non_nullable
+      post: post == freezed
+          ? _value.post
+          : post // ignore: cast_nullable_to_non_nullable
               as dynamic,
       dateCreated: dateCreated == freezed
           ? _value.dateCreated
@@ -172,10 +156,8 @@ class _$_SavedPost extends _SavedPost {
       {this.id,
       required this.savedOwner,
       required this.postType,
-      @JsonKey(toJson: fireStoreTextPostToJson)
-          this.textPost,
-      @JsonKey(toJson: fireStoreComicPostToJson)
-          this.comicPost,
+      @JsonKey(toJson: fireStorePostToJson)
+          this.post,
       @JsonKey(toJson: fireStoreTimestampToJson, fromJson: fireStoreTimestampFromJson)
           required this.dateCreated})
       : super._();
@@ -190,11 +172,8 @@ class _$_SavedPost extends _SavedPost {
   @override
   final PostType postType;
   @override
-  @JsonKey(toJson: fireStoreTextPostToJson)
-  final dynamic textPost;
-  @override
-  @JsonKey(toJson: fireStoreComicPostToJson)
-  final dynamic comicPost;
+  @JsonKey(toJson: fireStorePostToJson)
+  final dynamic post;
   @override
   @JsonKey(
       toJson: fireStoreTimestampToJson, fromJson: fireStoreTimestampFromJson)
@@ -202,7 +181,7 @@ class _$_SavedPost extends _SavedPost {
 
   @override
   String toString() {
-    return 'SavedPost(id: $id, savedOwner: $savedOwner, postType: $postType, textPost: $textPost, comicPost: $comicPost, dateCreated: $dateCreated)';
+    return 'SavedPost(id: $id, savedOwner: $savedOwner, postType: $postType, post: $post, dateCreated: $dateCreated)';
   }
 
   @override
@@ -214,8 +193,7 @@ class _$_SavedPost extends _SavedPost {
             const DeepCollectionEquality()
                 .equals(other.savedOwner, savedOwner) &&
             const DeepCollectionEquality().equals(other.postType, postType) &&
-            const DeepCollectionEquality().equals(other.textPost, textPost) &&
-            const DeepCollectionEquality().equals(other.comicPost, comicPost) &&
+            const DeepCollectionEquality().equals(other.post, post) &&
             const DeepCollectionEquality()
                 .equals(other.dateCreated, dateCreated));
   }
@@ -227,8 +205,7 @@ class _$_SavedPost extends _SavedPost {
       const DeepCollectionEquality().hash(id),
       const DeepCollectionEquality().hash(savedOwner),
       const DeepCollectionEquality().hash(postType),
-      const DeepCollectionEquality().hash(textPost),
-      const DeepCollectionEquality().hash(comicPost),
+      const DeepCollectionEquality().hash(post),
       const DeepCollectionEquality().hash(dateCreated));
 
   @JsonKey(ignore: true)
@@ -249,10 +226,8 @@ abstract class _SavedPost extends SavedPost {
       {final String? id,
       required final String savedOwner,
       required final PostType postType,
-      @JsonKey(toJson: fireStoreTextPostToJson)
-          final dynamic textPost,
-      @JsonKey(toJson: fireStoreComicPostToJson)
-          final dynamic comicPost,
+      @JsonKey(toJson: fireStorePostToJson)
+          final dynamic post,
       @JsonKey(toJson: fireStoreTimestampToJson, fromJson: fireStoreTimestampFromJson)
           required final dynamic dateCreated}) = _$_SavedPost;
   const _SavedPost._() : super._();
@@ -267,11 +242,8 @@ abstract class _SavedPost extends SavedPost {
   @override
   PostType get postType;
   @override
-  @JsonKey(toJson: fireStoreTextPostToJson)
-  dynamic get textPost;
-  @override
-  @JsonKey(toJson: fireStoreComicPostToJson)
-  dynamic get comicPost;
+  @JsonKey(toJson: fireStorePostToJson)
+  dynamic get post;
   @override
   @JsonKey(
       toJson: fireStoreTimestampToJson, fromJson: fireStoreTimestampFromJson)

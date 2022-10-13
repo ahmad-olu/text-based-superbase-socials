@@ -24,10 +24,8 @@ mixin _$Notification {
   NotifType get type => throw _privateConstructorUsedError;
   @JsonKey(toJson: fireStoreUserToJson)
   dynamic get fromUser => throw _privateConstructorUsedError;
-  @JsonKey(toJson: fireStoreTextPostToJson)
-  dynamic get textPost => throw _privateConstructorUsedError;
-  @JsonKey(toJson: fireStoreComicPostToJson)
-  dynamic get comicPost => throw _privateConstructorUsedError; // @JsonKey(
+  @JsonKey(toJson: fireStorePostToJson)
+  dynamic get post => throw _privateConstructorUsedError; // @JsonKey(
 //   toJson: fireStoreReImaginedToJson,
 // )
 //     dynamic reImagined,
@@ -51,10 +49,8 @@ abstract class $NotificationCopyWith<$Res> {
       NotifType type,
       @JsonKey(toJson: fireStoreUserToJson)
           dynamic fromUser,
-      @JsonKey(toJson: fireStoreTextPostToJson)
-          dynamic textPost,
-      @JsonKey(toJson: fireStoreComicPostToJson)
-          dynamic comicPost,
+      @JsonKey(toJson: fireStorePostToJson)
+          dynamic post,
       @JsonKey(toJson: fireStoreTimestampToJson, fromJson: fireStoreTimestampFromJson)
           dynamic date});
 }
@@ -72,8 +68,7 @@ class _$NotificationCopyWithImpl<$Res> implements $NotificationCopyWith<$Res> {
     Object? id = freezed,
     Object? type = freezed,
     Object? fromUser = freezed,
-    Object? textPost = freezed,
-    Object? comicPost = freezed,
+    Object? post = freezed,
     Object? date = freezed,
   }) {
     return _then(_value.copyWith(
@@ -89,13 +84,9 @@ class _$NotificationCopyWithImpl<$Res> implements $NotificationCopyWith<$Res> {
           ? _value.fromUser
           : fromUser // ignore: cast_nullable_to_non_nullable
               as dynamic,
-      textPost: textPost == freezed
-          ? _value.textPost
-          : textPost // ignore: cast_nullable_to_non_nullable
-              as dynamic,
-      comicPost: comicPost == freezed
-          ? _value.comicPost
-          : comicPost // ignore: cast_nullable_to_non_nullable
+      post: post == freezed
+          ? _value.post
+          : post // ignore: cast_nullable_to_non_nullable
               as dynamic,
       date: date == freezed
           ? _value.date
@@ -117,10 +108,8 @@ abstract class _$$_NotificationCopyWith<$Res>
       NotifType type,
       @JsonKey(toJson: fireStoreUserToJson)
           dynamic fromUser,
-      @JsonKey(toJson: fireStoreTextPostToJson)
-          dynamic textPost,
-      @JsonKey(toJson: fireStoreComicPostToJson)
-          dynamic comicPost,
+      @JsonKey(toJson: fireStorePostToJson)
+          dynamic post,
       @JsonKey(toJson: fireStoreTimestampToJson, fromJson: fireStoreTimestampFromJson)
           dynamic date});
 }
@@ -141,8 +130,7 @@ class __$$_NotificationCopyWithImpl<$Res>
     Object? id = freezed,
     Object? type = freezed,
     Object? fromUser = freezed,
-    Object? textPost = freezed,
-    Object? comicPost = freezed,
+    Object? post = freezed,
     Object? date = freezed,
   }) {
     return _then(_$_Notification(
@@ -158,13 +146,9 @@ class __$$_NotificationCopyWithImpl<$Res>
           ? _value.fromUser
           : fromUser // ignore: cast_nullable_to_non_nullable
               as dynamic,
-      textPost: textPost == freezed
-          ? _value.textPost
-          : textPost // ignore: cast_nullable_to_non_nullable
-              as dynamic,
-      comicPost: comicPost == freezed
-          ? _value.comicPost
-          : comicPost // ignore: cast_nullable_to_non_nullable
+      post: post == freezed
+          ? _value.post
+          : post // ignore: cast_nullable_to_non_nullable
               as dynamic,
       date: date == freezed
           ? _value.date
@@ -182,10 +166,8 @@ class _$_Notification extends _Notification {
       required this.type,
       @JsonKey(toJson: fireStoreUserToJson)
           required this.fromUser,
-      @JsonKey(toJson: fireStoreTextPostToJson)
-          this.textPost,
-      @JsonKey(toJson: fireStoreComicPostToJson)
-          this.comicPost,
+      @JsonKey(toJson: fireStorePostToJson)
+          this.post,
       @JsonKey(toJson: fireStoreTimestampToJson, fromJson: fireStoreTimestampFromJson)
           required this.date})
       : super._();
@@ -201,11 +183,8 @@ class _$_Notification extends _Notification {
   @JsonKey(toJson: fireStoreUserToJson)
   final dynamic fromUser;
   @override
-  @JsonKey(toJson: fireStoreTextPostToJson)
-  final dynamic textPost;
-  @override
-  @JsonKey(toJson: fireStoreComicPostToJson)
-  final dynamic comicPost;
+  @JsonKey(toJson: fireStorePostToJson)
+  final dynamic post;
 // @JsonKey(
 //   toJson: fireStoreReImaginedToJson,
 // )
@@ -217,7 +196,7 @@ class _$_Notification extends _Notification {
 
   @override
   String toString() {
-    return 'Notification(id: $id, type: $type, fromUser: $fromUser, textPost: $textPost, comicPost: $comicPost, date: $date)';
+    return 'Notification(id: $id, type: $type, fromUser: $fromUser, post: $post, date: $date)';
   }
 
   @override
@@ -228,8 +207,7 @@ class _$_Notification extends _Notification {
             const DeepCollectionEquality().equals(other.id, id) &&
             const DeepCollectionEquality().equals(other.type, type) &&
             const DeepCollectionEquality().equals(other.fromUser, fromUser) &&
-            const DeepCollectionEquality().equals(other.textPost, textPost) &&
-            const DeepCollectionEquality().equals(other.comicPost, comicPost) &&
+            const DeepCollectionEquality().equals(other.post, post) &&
             const DeepCollectionEquality().equals(other.date, date));
   }
 
@@ -240,8 +218,7 @@ class _$_Notification extends _Notification {
       const DeepCollectionEquality().hash(id),
       const DeepCollectionEquality().hash(type),
       const DeepCollectionEquality().hash(fromUser),
-      const DeepCollectionEquality().hash(textPost),
-      const DeepCollectionEquality().hash(comicPost),
+      const DeepCollectionEquality().hash(post),
       const DeepCollectionEquality().hash(date));
 
   @JsonKey(ignore: true)
@@ -263,10 +240,8 @@ abstract class _Notification extends Notification {
       required final NotifType type,
       @JsonKey(toJson: fireStoreUserToJson)
           required final dynamic fromUser,
-      @JsonKey(toJson: fireStoreTextPostToJson)
-          final dynamic textPost,
-      @JsonKey(toJson: fireStoreComicPostToJson)
-          final dynamic comicPost,
+      @JsonKey(toJson: fireStorePostToJson)
+          final dynamic post,
       @JsonKey(toJson: fireStoreTimestampToJson, fromJson: fireStoreTimestampFromJson)
           required final dynamic date}) = _$_Notification;
   const _Notification._() : super._();
@@ -282,11 +257,8 @@ abstract class _Notification extends Notification {
   @JsonKey(toJson: fireStoreUserToJson)
   dynamic get fromUser;
   @override
-  @JsonKey(toJson: fireStoreTextPostToJson)
-  dynamic get textPost;
-  @override
-  @JsonKey(toJson: fireStoreComicPostToJson)
-  dynamic get comicPost;
+  @JsonKey(toJson: fireStorePostToJson)
+  dynamic get post;
   @override // @JsonKey(
 //   toJson: fireStoreReImaginedToJson,
 // )

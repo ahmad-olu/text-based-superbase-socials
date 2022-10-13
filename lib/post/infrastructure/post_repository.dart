@@ -6,9 +6,8 @@ import 'package:geat/core/domain/model/category_model.dart';
 import 'package:geat/core/domain/model/saved_post_model.dart';
 import 'package:geat/core/enum/enum.dart';
 import 'package:geat/notification/domain/notification_model.dart';
-import 'package:geat/post/domain/comic_post_model.dart';
 import 'package:geat/post/domain/i_post_repository.dart';
-import 'package:geat/post/domain/text_post_model.dart';
+import 'package:geat/post/domain/post_model.dart';
 import 'package:geat/profile/domain/user_model.dart';
 import 'package:geat/reImagined/domain/reImagied_model.dart';
 
@@ -17,11 +16,9 @@ class PostRepository implements IPostRepository {
 
   PostRepository(this._firebaseFirestore);
   @override
-  Future<void> createTextPost({required TextPost textPost}) async {
+  Future<void> createPost({required Post post}) async {
     try {
-      await _firebaseFirestore
-          .collection(Paths.textPosts)
-          .add(textPost.toJson());
+      await _firebaseFirestore.collection(Paths.posts).add(post.toJson());
     } on FirebaseException catch (e) {
       if (e.code.contains('PERMISSION_DENIED')) {
         throw InsufficientPermissionException();
@@ -36,41 +33,22 @@ class PostRepository implements IPostRepository {
   }
 
   @override
-  Future<void> createComicPost({required ComicPost comicPost}) async {
-    try {
-      await _firebaseFirestore
-          .collection(Paths.comicPosts)
-          .add(comicPost.toJson());
-    } on FirebaseException catch (e) {
-      if (e.code.contains('PERMISSION_DENIED')) {
-        throw InsufficientPermissionException();
-      } else if (e.code.contains('FirebaseNetworkException')) {
-        throw NetworkErrorException();
-      } else {
-        throw GenericGeatException();
-      }
-    } catch (_) {
-      throw GenericGeatException();
-    }
-  }
-
-  @override
-  Future<void> createTextComments({
-    required TextPost textPost,
+  Future<void> createComments({
+    required Post post,
     required Comment comment,
   }) async {
-    final author = textPost.author as User;
+    final author = post.author as User;
     try {
       await _firebaseFirestore
           .collection(Paths.comments)
           .doc(comment.postId)
-          .collection(Paths.textPostComments)
+          .collection(Paths.postComments)
           .add(comment.toJson());
 
       final notification = Notification(
         type: NotifType.comment,
         fromUser: comment.author,
-        textPost: textPost,
+        post: post,
         date: FieldValue.serverTimestamp(),
       );
       _firebaseFirestore
@@ -92,50 +70,16 @@ class PostRepository implements IPostRepository {
   }
 
   @override
-  Future<void> createComicComments({
-    required ComicPost comicPost,
-    required Comment comment,
+  Future<void> createReImagined({
+    required Post post,
+    required ReImagined reImagined,
   }) async {
-    final author = comicPost.author as User;
-    try {
-      await _firebaseFirestore
-          .collection(Paths.comments)
-          .doc(comment.postId)
-          .collection(Paths.comicPostComments)
-          .add(comment.toJson());
-      final notification = Notification(
-        type: NotifType.comment,
-        fromUser: comment.author,
-        comicPost: comicPost,
-        date: FieldValue.serverTimestamp(),
-      );
-      _firebaseFirestore
-          .collection(Paths.notifications)
-          .doc(author.id)
-          .collection(Paths.userNotifications)
-          .add(notification.toJson());
-    } on FirebaseException catch (e) {
-      if (e.code.contains('PERMISSION_DENIED')) {
-        throw InsufficientPermissionException();
-      } else if (e.code.contains('FirebaseNetworkException')) {
-        throw NetworkErrorException();
-      } else {
-        throw GenericGeatException();
-      }
-    } catch (_) {
-      throw GenericGeatException();
-    }
-  }
-
-  @override
-  Future<void> createTextReImagined(
-      {required TextPost textPost, required ReImagined reImagined}) async {
     //final author = reImagined.author as User;
     try {
       await _firebaseFirestore
           .collection(Paths.reImagined)
           .doc(reImagined.postId)
-          .collection(Paths.textPostReImagined)
+          .collection(Paths.postReImagined)
           .add(reImagined.toJson());
       // final notification = Notification(
       //   type: NotifType.reImagined,
@@ -162,24 +106,24 @@ class PostRepository implements IPostRepository {
   }
 
   @override
-  void createComicLike({required ComicPost post, required String? userId}) {
+  void createLike({required Post post, required String? userId}) {
     final author = post.author as User;
     try {
       _firebaseFirestore
-          .collection(Paths.comicPosts)
+          .collection(Paths.posts)
           .doc(post.id)
           .update({'likes': FieldValue.increment(1)});
 
       _firebaseFirestore
           .collection(Paths.likes)
           .doc(post.id)
-          .collection(Paths.comicPostLikes)
+          .collection(Paths.postLikes)
           .doc(userId)
           .set({});
       final notification = Notification(
         type: NotifType.like,
         fromUser: User.empty.copyWith(id: userId!),
-        comicPost: post,
+        post: post,
         date: FieldValue.serverTimestamp(),
       );
 
@@ -202,17 +146,18 @@ class PostRepository implements IPostRepository {
   }
 
   @override
-  void createReWriteLike({required ReImagined post, required String? userId}) {
-    final author = post.author as User;
+  void createReImaginedLike(
+      {required ReImagined reImagined, required String? userId}) {
+    final author = reImagined.author as User;
     try {
       _firebaseFirestore
           .collection(Paths.reImagined)
-          .doc(post.id)
+          .doc(reImagined.id)
           .update({'likes': FieldValue.increment(1)});
 
       _firebaseFirestore
           .collection(Paths.likes)
-          .doc(post.id)
+          .doc(reImagined.id)
           .collection(Paths.reImaginedPostLikes)
           .doc(userId)
           .set({});
@@ -242,58 +187,16 @@ class PostRepository implements IPostRepository {
   }
 
   @override
-  void createTextLike({required TextPost post, required String? userId}) {
-    final author = post.author as User;
-    try {
-      _firebaseFirestore
-          .collection(Paths.textPosts)
-          .doc(post.id)
-          .update({'likes': FieldValue.increment(1)});
-
-      _firebaseFirestore
-          .collection(Paths.likes)
-          .doc(post.id)
-          .collection(Paths.textPostLikes)
-          .doc(userId)
-          .set({});
-
-      final notification = Notification(
-        type: NotifType.like,
-        fromUser: User.empty.copyWith(id: userId!),
-        textPost: post,
-        date: FieldValue.serverTimestamp(),
-      );
-
-      _firebaseFirestore
-          .collection(Paths.notifications)
-          .doc(author.id)
-          .collection(Paths.userNotifications)
-          .add(notification.toJson());
-    } on FirebaseException catch (e) {
-      if (e.code.contains('PERMISSION_DENIED')) {
-        throw InsufficientPermissionException();
-      } else if (e.code.contains('FirebaseNetworkException')) {
-        throw NetworkErrorException();
-      } else {
-        throw GenericGeatException();
-      }
-    } catch (_) {
-      throw GenericGeatException();
-    }
-  }
-
-  @override
-  Stream<List<Future<TextPost?>>> getUserTextPost({required String userId}) {
+  Stream<List<Future<Post?>>> getUserPost({required String userId}) {
     try {
       final authorRef = _firebaseFirestore.collection(Paths.users).doc(userId);
       return _firebaseFirestore
-          .collection(Paths.textPosts)
+          .collection(Paths.posts)
           .where('author', isEqualTo: authorRef)
           .orderBy('dateCreated', descending: true)
           .snapshots()
           .map(
-            (snap) =>
-                snap.docs.map((doc) => TextPost.fromFireStore(doc)).toList(),
+            (snap) => snap.docs.map((doc) => Post.fromFireStore(doc)).toList(),
           );
     } on FirebaseException catch (e) {
       if (e.code.contains('PERMISSION_DENIED')) {
@@ -309,38 +212,12 @@ class PostRepository implements IPostRepository {
   }
 
   @override
-  Stream<List<Future<ComicPost?>>> getUserComicPost({required String userId}) {
-    try {
-      final authorRef = _firebaseFirestore.collection(Paths.users).doc(userId);
-      return _firebaseFirestore
-          .collection(Paths.comicPosts)
-          .where('author', isEqualTo: authorRef)
-          .orderBy('dateCreated', descending: true)
-          .snapshots()
-          .map(
-            (snap) =>
-                snap.docs.map((doc) => ComicPost.fromFireStore(doc)).toList(),
-          );
-    } on FirebaseException catch (e) {
-      if (e.code.contains('PERMISSION_DENIED')) {
-        throw InsufficientPermissionException();
-      } else if (e.code.contains('FirebaseNetworkException')) {
-        throw NetworkErrorException();
-      } else {
-        throw GenericGeatException();
-      }
-    } catch (_) {
-      throw GenericGeatException();
-    }
-  }
-
-  @override
-  Stream<List<Future<Comment>>> getTextPostComment({required String postId}) {
+  Stream<List<Future<Comment>>> getPostComment({required String postId}) {
     try {
       return _firebaseFirestore
           .collection(Paths.comments)
           .doc(postId)
-          .collection(Paths.textPostComments)
+          .collection(Paths.postComments)
           .orderBy('date', descending: false)
           .snapshots()
           .map(
@@ -361,40 +238,14 @@ class PostRepository implements IPostRepository {
   }
 
   @override
-  Stream<List<Future<Comment>>> getComicPostComment({required String postId}) {
-    try {
-      return _firebaseFirestore
-          .collection(Paths.comments)
-          .doc(postId)
-          .collection(Paths.comicPostComments)
-          .orderBy('date', descending: false)
-          .snapshots()
-          .map(
-            (snap) =>
-                snap.docs.map((doc) => Comment.fromFireStore(doc)).toList(),
-          );
-    } on FirebaseException catch (e) {
-      if (e.code.contains('PERMISSION_DENIED')) {
-        throw InsufficientPermissionException();
-      } else if (e.code.contains('FirebaseNetworkException')) {
-        throw NetworkErrorException();
-      } else {
-        throw GenericGeatException();
-      }
-    } catch (_) {
-      throw GenericGeatException();
-    }
-  }
-
-  @override
-  Stream<List<Future<ReImagined?>>> getTextPostReWrite({
+  Stream<List<Future<ReImagined?>>> getPostReImagined({
     required String postId,
   }) {
     try {
       return _firebaseFirestore
           .collection(Paths.reImagined)
           .doc(postId)
-          .collection(Paths.textPostReImagined)
+          .collection(Paths.postReImagined)
           .orderBy('date', descending: false)
           .snapshots()
           .map(
@@ -415,7 +266,7 @@ class PostRepository implements IPostRepository {
   }
 
   @override
-  Future<List<TextPost?>> getUserTextFeed({
+  Future<List<Post?>> getUserFeed({
     required String? userId,
     String? lastPostId,
   }) async {
@@ -425,7 +276,7 @@ class PostRepository implements IPostRepository {
         postsSnap = await _firebaseFirestore
             .collection(Paths.feeds)
             .doc(userId)
-            .collection(Paths.userTextFeed)
+            .collection(Paths.userFeed)
             .orderBy('dateCreated', descending: true)
             .limit(3)
             .get();
@@ -433,7 +284,7 @@ class PostRepository implements IPostRepository {
         final lastPostDoc = await _firebaseFirestore
             .collection(Paths.feeds)
             .doc(userId)
-            .collection(Paths.userTextFeed)
+            .collection(Paths.userFeed)
             .doc(lastPostId)
             .get();
 
@@ -444,7 +295,7 @@ class PostRepository implements IPostRepository {
         postsSnap = await _firebaseFirestore
             .collection(Paths.feeds)
             .doc(userId)
-            .collection(Paths.userTextFeed)
+            .collection(Paths.userFeed)
             .orderBy('dateCreated', descending: true)
             .startAfterDocument(lastPostDoc)
             .limit(3)
@@ -454,7 +305,7 @@ class PostRepository implements IPostRepository {
       final posts = Future.wait(
         postsSnap.docs.map((docs) async {
           final doc = docs as QueryDocumentSnapshot<Map<String, dynamic>>;
-          return TextPost.fromFireStore(doc);
+          return Post.fromFireStore(doc);
         }),
       );
       return posts;
@@ -472,66 +323,9 @@ class PostRepository implements IPostRepository {
   }
 
   @override
-  Future<List<ComicPost?>> getUserComicFeed({
+  Future<Set<String>> getLikedPostIds({
     required String? userId,
-    String? lastPostId,
-  }) async {
-    try {
-      QuerySnapshot postsSnap;
-      if (lastPostId == null) {
-        postsSnap = await _firebaseFirestore
-            .collection(Paths.feeds)
-            .doc(userId)
-            .collection(Paths.userComicFeed)
-            .orderBy('dateCreated', descending: true)
-            .limit(3)
-            .get();
-      } else {
-        final lastPostDoc = await _firebaseFirestore
-            .collection(Paths.feeds)
-            .doc(userId)
-            .collection(Paths.userComicFeed)
-            .doc(lastPostId)
-            .get();
-
-        if (!lastPostDoc.exists) {
-          return [];
-        }
-
-        postsSnap = await _firebaseFirestore
-            .collection(Paths.feeds)
-            .doc(userId)
-            .collection(Paths.userComicFeed)
-            .orderBy('dateCreated', descending: true)
-            .startAfterDocument(lastPostDoc)
-            .limit(3)
-            .get();
-      }
-
-      final posts = Future.wait(
-        postsSnap.docs.map((docs) async {
-          final doc = docs as QueryDocumentSnapshot<Map<String, dynamic>>;
-          return ComicPost.fromFireStore(doc);
-        }),
-      );
-      return posts;
-    } on FirebaseException catch (e) {
-      if (e.code.contains('PERMISSION_DENIED')) {
-        throw InsufficientPermissionException();
-      } else if (e.code.contains('FirebaseNetworkException')) {
-        throw NetworkErrorException();
-      } else {
-        throw GenericGeatException();
-      }
-    } catch (_) {
-      throw GenericGeatException();
-    }
-  }
-
-  @override
-  Future<Set<String>> getTextLikedPostIds({
-    required String? userId,
-    required List<TextPost?> posts,
+    required List<Post?> posts,
   }) async {
     try {
       final postIds = <String>{};
@@ -539,7 +333,7 @@ class PostRepository implements IPostRepository {
         final likeDoc = await _firebaseFirestore
             .collection(Paths.likes)
             .doc(post!.id)
-            .collection(Paths.textPostLikes)
+            .collection(Paths.postLikes)
             .doc(userId)
             .get();
         if (likeDoc.exists) {
@@ -561,45 +355,13 @@ class PostRepository implements IPostRepository {
   }
 
   @override
-  Future<Set<String>> getComicLikedPostIds({
+  Future<Set<String>> getReImaginedLikedPostIds({
     required String? userId,
-    required List<ComicPost?> posts,
+    required List<ReImagined?> reImagined,
   }) async {
     try {
       final postIds = <String>{};
-      for (final post in posts) {
-        final likeDoc = await _firebaseFirestore
-            .collection(Paths.likes)
-            .doc(post!.id)
-            .collection(Paths.comicPostLikes)
-            .doc(userId)
-            .get();
-        if (likeDoc.exists) {
-          postIds.add(post.id!);
-        }
-      }
-      return postIds;
-    } on FirebaseException catch (e) {
-      if (e.code.contains('PERMISSION_DENIED')) {
-        throw InsufficientPermissionException();
-      } else if (e.code.contains('FirebaseNetworkException')) {
-        throw NetworkErrorException();
-      } else {
-        throw GenericGeatException();
-      }
-    } catch (_) {
-      throw GenericGeatException();
-    }
-  }
-
-  @override
-  Future<Set<String>> getReWriteLikedPostIds({
-    required String? userId,
-    required List<ReImagined?> posts,
-  }) async {
-    try {
-      final postIds = <String>{};
-      for (final post in posts) {
+      for (final post in reImagined) {
         final likeDoc = await _firebaseFirestore
             .collection(Paths.likes)
             .doc(post!.id)
@@ -625,17 +387,17 @@ class PostRepository implements IPostRepository {
   }
 
   @override
-  void deleteTextLiked({required String postId, required String? userId}) {
+  void deleteLiked({required String postId, required String? userId}) {
     try {
       _firebaseFirestore
-          .collection(Paths.textPosts)
+          .collection(Paths.posts)
           .doc(postId)
           .update({'likes': FieldValue.increment(-1)});
 
       _firebaseFirestore
           .collection(Paths.likes)
           .doc(postId)
-          .collection(Paths.textPostLikes)
+          .collection(Paths.postLikes)
           .doc(userId)
           .delete();
     } on FirebaseException catch (e) {
@@ -652,34 +414,8 @@ class PostRepository implements IPostRepository {
   }
 
   @override
-  void deleteComicLiked({required String postId, required String? userId}) {
-    try {
-      _firebaseFirestore
-          .collection(Paths.comicPosts)
-          .doc(postId)
-          .update({'likes': FieldValue.increment(-1)});
-
-      _firebaseFirestore
-          .collection(Paths.likes)
-          .doc(postId)
-          .collection(Paths.comicPostLikes)
-          .doc(userId)
-          .delete();
-    } on FirebaseException catch (e) {
-      if (e.code.contains('PERMISSION_DENIED')) {
-        throw InsufficientPermissionException();
-      } else if (e.code.contains('FirebaseNetworkException')) {
-        throw NetworkErrorException();
-      } else {
-        throw GenericGeatException();
-      }
-    } catch (_) {
-      throw GenericGeatException();
-    }
-  }
-
-  @override
-  void deleteReWriteLiked({required String postId, required String? userId}) {
+  void deleteReImaginedLiked(
+      {required String postId, required String? userId}) {
     try {
       _firebaseFirestore
           .collection(Paths.reImagined)
@@ -744,39 +480,14 @@ class PostRepository implements IPostRepository {
   }
 
   @override
-  Stream<List<Future<TextPost?>>> getAllTextPost() {
+  Stream<List<Future<Post?>>> getAllPost() {
     try {
       return _firebaseFirestore
-          .collection(Paths.textPosts)
+          .collection(Paths.posts)
           .orderBy('dateCreated', descending: true)
           .snapshots()
           .map(
-            (snap) =>
-                snap.docs.map((doc) => TextPost.fromFireStore(doc)).toList(),
-          );
-    } on FirebaseException catch (e) {
-      if (e.code.contains('PERMISSION_DENIED')) {
-        throw InsufficientPermissionException();
-      } else if (e.code.contains('FirebaseNetworkException')) {
-        throw NetworkErrorException();
-      } else {
-        throw GenericGeatException();
-      }
-    } catch (_) {
-      throw GenericGeatException();
-    }
-  }
-
-  @override
-  Stream<List<Future<ComicPost?>>> getAllComicPost() {
-    try {
-      return _firebaseFirestore
-          .collection(Paths.comicPosts)
-          .orderBy('dateCreated', descending: true)
-          .snapshots()
-          .map(
-            (snap) =>
-                snap.docs.map((doc) => ComicPost.fromFireStore(doc)).toList(),
+            (snap) => snap.docs.map((doc) => Post.fromFireStore(doc)).toList(),
           );
     } on FirebaseException catch (e) {
       if (e.code.contains('PERMISSION_DENIED')) {

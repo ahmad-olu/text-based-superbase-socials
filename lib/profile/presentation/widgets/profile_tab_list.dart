@@ -64,13 +64,9 @@ class ProfilePostList extends StatelessWidget {
                 child: TabBarView(
                   controller: tabController,
                   children: [
-                    BookGridViewText(
+                    BookGridView(
                       scrollController: scrollController,
-                      posts: profileState.textPost,
-                    ),
-                    BookGridViewComic(
-                      scrollController: scrollController,
-                      posts: profileState.picturePost,
+                      posts: profileState.post,
                     ),
                     if (profileState.isCurrentUser == true)
                       BookGridSavedPosts(

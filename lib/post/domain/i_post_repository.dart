@@ -1,64 +1,44 @@
-import 'dart:io';
-
 import 'package:geat/comment/domain/comment_model.dart';
 import 'package:geat/core/domain/model/category_model.dart';
 import 'package:geat/core/domain/model/saved_post_model.dart';
-import 'package:geat/post/domain/comic_post_model.dart';
-import 'package:geat/post/domain/text_post_model.dart';
+import 'package:geat/post/domain/post_model.dart';
 import 'package:geat/profile/domain/user_model.dart';
 import 'package:geat/reImagined/domain/reImagied_model.dart';
 
 abstract class IPostRepository {
   Future<User> getUser({required String userId});
-  Future<void> createTextPost({required TextPost textPost});
-  Future<void> createComicPost({required ComicPost comicPost});
-  Future<void> createTextReImagined(
-      {required TextPost textPost, required ReImagined reImagined});
-  Future<void> createTextComments({
-    required TextPost textPost,
+  Future<void> createPost({required Post post});
+  Future<void> createReImagined({
+    required Post post,
+    required ReImagined reImagined,
+  });
+  Future<void> createComments({
+    required Post post,
     required Comment comment,
   });
-  Future<void> createComicComments({
-    required ComicPost comicPost,
-    required Comment comment,
-  });
-  Stream<List<Future<TextPost?>>> getAllTextPost();
-  Stream<List<Future<ComicPost?>>> getAllComicPost();
-  Stream<List<Future<TextPost?>>> getUserTextPost({required String userId});
-  Stream<List<Future<ComicPost?>>> getUserComicPost({
-    required String userId,
-  });
-  Stream<List<Future<ReImagined?>>> getTextPostReWrite({
+  Stream<List<Future<Post?>>> getAllPost();
+  Stream<List<Future<Post?>>> getUserPost({required String userId});
+  Stream<List<Future<ReImagined?>>> getPostReImagined({
     required String postId,
   });
-  Stream<List<Future<Comment>>> getTextPostComment({required String postId});
-  Stream<List<Future<Comment>>> getComicPostComment({required String postId});
-  Future<List<TextPost?>> getUserTextFeed({
+  Stream<List<Future<Comment>>> getPostComment({required String postId});
+  Future<List<Post?>> getUserFeed({
     required String? userId,
     String? lastPostId,
   });
-  Future<List<ComicPost?>> getUserComicFeed({
+  void createLike({required Post post, required String? userId});
+  void createReImaginedLike(
+      {required ReImagined reImagined, required String? userId});
+  Future<Set<String>> getLikedPostIds({
     required String? userId,
-    String? lastPostId,
+    required List<Post?> posts,
   });
-  void createTextLike({required TextPost post, required String? userId});
-  void createComicLike({required ComicPost post, required String? userId});
-  void createReWriteLike({required ReImagined post, required String? userId});
-  Future<Set<String>> getTextLikedPostIds({
+  Future<Set<String>> getReImaginedLikedPostIds({
     required String? userId,
-    required List<TextPost?> posts,
+    required List<ReImagined?> reImagined,
   });
-  Future<Set<String>> getComicLikedPostIds({
-    required String? userId,
-    required List<ComicPost?> posts,
-  });
-  Future<Set<String>> getReWriteLikedPostIds({
-    required String? userId,
-    required List<ReImagined?> posts,
-  });
-  void deleteTextLiked({required String postId, required String? userId});
-  void deleteComicLiked({required String postId, required String? userId});
-  void deleteReWriteLiked({required String postId, required String? userId});
+  void deleteLiked({required String postId, required String? userId});
+  void deleteReImaginedLiked({required String postId, required String? userId});
   Future<void> createPostCategory({required PostCategory category});
   Future<void> savePosts(SavedPost savedPost);
   Stream<List<Future<SavedPost?>>> getSavedPosts({required String userId});

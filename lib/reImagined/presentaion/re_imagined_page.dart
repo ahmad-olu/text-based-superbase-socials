@@ -2,17 +2,17 @@ import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:geat/core/helper/mark_down_converter.dart';
-import 'package:geat/post/domain/text_post_model.dart';
+import 'package:geat/post/domain/post_model.dart';
 import 'package:geat/reImagined/application/bloc/re_imagined_bloc.dart';
 import 'package:super_editor/super_editor.dart';
 
 class ReImaginedPage extends StatelessWidget {
   const ReImaginedPage({
     super.key,
-    required this.textPost,
+    required this.post,
     required this.reImaginedBloc,
   });
-  final TextPost textPost;
+  final Post post;
   final ReImaginedBloc reImaginedBloc;
 
   @override

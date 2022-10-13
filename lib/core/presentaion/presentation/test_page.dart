@@ -4,7 +4,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:geat/core/constants/paths.dart';
-import 'package:geat/post/domain/text_post_model.dart';
+import 'package:geat/post/domain/post_model.dart';
 
 class TestPage extends StatelessWidget {
   const TestPage({super.key});
@@ -69,13 +69,12 @@ class _TestViewState extends State<TestView> {
           .collection(Paths.users)
           .doc('users/fvvNEOp3NOf7mF6wMNYDhdb30t63');
       final a = FirebaseFirestore.instance
-          .collection(Paths.textPosts)
+          .collection(Paths.posts)
           //.where('author', isEqualTo: authorRef)
           .orderBy('date', descending: true)
           .snapshots()
           .map(
-            (snap) =>
-                snap.docs.map((doc) => TextPost.fromFireStore(doc)).toList(),
+            (snap) => snap.docs.map((doc) => Post.fromFireStore(doc)).toList(),
           );
       a.forEach((element) {
         log(element.toString());

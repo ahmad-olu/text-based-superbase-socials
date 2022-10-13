@@ -40,7 +40,7 @@ class ProfileStat extends StatelessWidget {
             child: _Stats(
               icon: '🤫 ',
               label: 'Post',
-              count: state.textPost.length + state.picturePost.length,
+              count: state.post.length,
             ),
           ),
         ),

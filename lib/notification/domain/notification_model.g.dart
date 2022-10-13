@@ -11,8 +11,7 @@ _$_Notification _$$_NotificationFromJson(Map<String, dynamic> json) =>
       id: json['id'] as String?,
       type: $enumDecode(_$NotifTypeEnumMap, json['type']),
       fromUser: json['fromUser'],
-      textPost: json['textPost'],
-      comicPost: json['comicPost'],
+      post: json['post'],
       date: fireStoreTimestampFromJson(json['date']),
     );
 
@@ -21,8 +20,7 @@ Map<String, dynamic> _$$_NotificationToJson(_$_Notification instance) =>
       'id': instance.id,
       'type': _$NotifTypeEnumMap[instance.type]!,
       'fromUser': fireStoreUserToJson(instance.fromUser),
-      'textPost': fireStoreTextPostToJson(instance.textPost),
-      'comicPost': fireStoreComicPostToJson(instance.comicPost),
+      'post': fireStorePostToJson(instance.post),
       'date': fireStoreTimestampToJson(instance.date),
     };
 
@@ -30,7 +28,6 @@ const _$NotifTypeEnumMap = {
   NotifType.like: 'like',
   NotifType.comment: 'comment',
   NotifType.follow: 'follow',
-  NotifType.comicPost: 'comicPost',
-  NotifType.textPost: 'textPost',
+  NotifType.post: 'post',
   NotifType.reImagined: 'reImagined',
 };

@@ -3,15 +3,12 @@ import 'dart:async';
 import 'package:bloc/bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:geat/auth/application/auth_bloc/auth_bloc.dart';
-import 'package:geat/core/domain/geat_failure.dart';
 import 'package:geat/core/domain/model/saved_post_model.dart';
 import 'package:geat/feed/application/liked_post_cubit/liked_post_cubit.dart';
-import 'package:geat/post/domain/comic_post_model.dart';
-import 'package:geat/post/domain/text_post_model.dart';
+import 'package:geat/post/domain/post_model.dart';
 import 'package:geat/post/infrastructure/post_repository.dart';
 import 'package:geat/profile/domain/user_model.dart';
 import 'package:geat/profile/infrastructure/user_repository.dart';
-import 'package:geat/reImagined/domain/reImagied_model.dart';
 
 part 'profile_event.dart';
 part 'profile_state.dart';
@@ -23,8 +20,7 @@ class ProfileBloc extends Bloc<ProfileEvent, ProfileState> {
   final LikedPostCubit _likedPostCubit;
   final UserRepository _userRepository;
 
-  StreamSubscription<List<Future<TextPost?>>>? _textPostsSubscription;
-  StreamSubscription<List<Future<ComicPost?>>>? _comicPostsSubscription;
+  StreamSubscription<List<Future<Post?>>>? _postsSubscription;
   StreamSubscription<List<Future<SavedPost?>>>? _savedPostsSubscription;
   // StreamSubscription<List<Future<ReImagined?>>>? _reImaginedPostsSubscription;
   ProfileBloc(
@@ -54,27 +50,12 @@ class ProfileBloc extends Bloc<ProfileEvent, ProfileState> {
               //     add(ProfileEvent.updateTextPost(textPost.items));
               //   },
               // );
-              // emit.onEach(
-              //   _iPostRepository.getUserpicturePost(userId: e.userid),
-              //   onData: (QuerySnapshot<ComicPost> comicPost) {
-              //     add(ProfileEvent.updatePicturePost(comicPost.items));
-              //   },
-              // );
-
-              _textPostsSubscription?.cancel();
-              _textPostsSubscription = _postRepository
-                  .getUserTextPost(userId: e.userId)
+              _postsSubscription?.cancel();
+              _postsSubscription = _postRepository
+                  .getUserPost(userId: e.userId)
                   .listen((posts) async {
                 final allPosts = await Future.wait(posts);
-                add(ProfileEvent.updateTextPost(allPosts));
-              });
-
-              _comicPostsSubscription?.cancel();
-              _comicPostsSubscription = _postRepository
-                  .getUserComicPost(userId: e.userId)
-                  .listen((posts) async {
-                final allPosts = await Future.wait(posts);
-                add(ProfileEvent.updateComicPost(allPosts));
+                add(ProfileEvent.updatePost(allPosts));
               });
 
               _savedPostsSubscription?.cancel();
@@ -101,21 +82,13 @@ class ProfileBloc extends Bloc<ProfileEvent, ProfileState> {
               );
             }
           },
-          updateTextPost: (e) async {
-            emit(state.copyWith(textPost: e.textPost));
-            final likedPostIds = await _postRepository.getTextLikedPostIds(
+          updatePost: (e) async {
+            emit(state.copyWith(post: e.post));
+            final likedPostIds = await _postRepository.getLikedPostIds(
               userId: _authBloc.state.user!.uid,
-              posts: e.textPost,
+              posts: e.post,
             );
-            _likedPostCubit.updateLikedTextPost(postIds: likedPostIds);
-          },
-          updateComicPost: (e) async {
-            emit(state.copyWith(picturePost: e.comicPost));
-            final likedPostIds = await _postRepository.getComicLikedPostIds(
-              userId: _authBloc.state.user!.uid,
-              posts: e.comicPost,
-            );
-            _likedPostCubit.updateLikedComicPost(postIds: likedPostIds);
+            _likedPostCubit.updateLikedPost(postIds: likedPostIds);
           },
           updateSavedPosts: (e) async {
             emit(state.copyWith(savedPosts: e.savedPosts));
@@ -163,8 +136,7 @@ class ProfileBloc extends Bloc<ProfileEvent, ProfileState> {
   }
   @override
   Future<void> close() {
-    _textPostsSubscription?.cancel();
-    _comicPostsSubscription?.cancel();
+    _postsSubscription?.cancel();
     // _reImaginedPostsSubscription?.cancel();
     _savedPostsSubscription?.cancel();
     return super.close();

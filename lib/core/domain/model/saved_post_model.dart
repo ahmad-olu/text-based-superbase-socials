@@ -3,8 +3,7 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:geat/core/enum/enum.dart';
 import 'package:geat/core/helper/firebase_refrence_helper_for_notification.dart';
 import 'package:geat/core/helper/firebase_time_stamp_helper.dart';
-import 'package:geat/post/domain/comic_post_model.dart';
-import 'package:geat/post/domain/text_post_model.dart';
+import 'package:geat/post/domain/post_model.dart';
 part 'saved_post_model.freezed.dart';
 part 'saved_post_model.g.dart';
 
@@ -16,13 +15,9 @@ class SavedPost with _$SavedPost {
     required String savedOwner,
     required PostType postType,
     @JsonKey(
-      toJson: fireStoreTextPostToJson,
+      toJson: fireStorePostToJson,
     )
-        dynamic textPost,
-    @JsonKey(
-      toJson: fireStoreComicPostToJson,
-    )
-        dynamic comicPost,
+        dynamic post,
     @JsonKey(
       toJson: fireStoreTimestampToJson,
       fromJson: fireStoreTimestampFromJson,
@@ -35,14 +30,11 @@ class SavedPost with _$SavedPost {
 
   static Future<SavedPost> fromFireStore(DocumentSnapshot doc) async {
     final data = doc.data()! as Map<String, dynamic>;
-    final fromTextPostRef = data['textPost'] as DocumentReference?;
-    final fromTextPostDoc = await fromTextPostRef?.get();
-    final fromComicPostRef = data['comicPost'] as DocumentReference?;
-    final fromComicPostDoc = await fromComicPostRef?.get();
+    final fromPostRef = data['post'] as DocumentReference?;
+    final fromPostDoc = await fromPostRef?.get();
     return SavedPost.fromJson(data).copyWith(
       id: doc.id,
-      textPost: await TextPost.fromFireStore(fromTextPostDoc),
-      comicPost: await ComicPost.fromFireStore(fromComicPostDoc),
+      post: await Post.fromFireStore(fromPostDoc),
     );
   }
 }

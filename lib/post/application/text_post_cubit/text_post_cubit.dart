@@ -4,11 +4,9 @@ import 'package:bloc/bloc.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:geat/auth/application/auth_bloc/auth_bloc.dart';
-import 'package:geat/core/domain/geat_failure.dart';
-import 'package:geat/core/domain/model/category_model.dart';
 import 'package:geat/core/enum/enum.dart';
 import 'package:geat/core/infrastructure/storage_repository.dart';
-import 'package:geat/post/domain/text_post_model.dart';
+import 'package:geat/post/domain/post_model.dart';
 import 'package:geat/post/infrastructure/post_repository.dart';
 
 part 'text_post_state.dart';
@@ -40,7 +38,7 @@ class TextPostCubit extends Cubit<TextPostState> {
 
   Future<void> submit() async {
     emit(state.copyWith(status: TextPostStatus.submitting));
-    String? postImageUrl;
+    List<String> postImageUrl = [];
     try {
       final author =
           await _postRepository.getUser(userId: _authBloc.state.user!.uid);
@@ -50,9 +48,9 @@ class TextPostCubit extends Cubit<TextPostState> {
         );
       }
 
-      final post = TextPost(
+      final post = Post(
         author: author,
-        imageUrl: postImageUrl,
+        imageUrls: postImageUrl,
         title: state.title,
         subTitle: '',
         content: state.contents,
@@ -62,7 +60,7 @@ class TextPostCubit extends Cubit<TextPostState> {
         category: [],
         dateCreated: FieldValue.serverTimestamp(),
       );
-      await _postRepository.createTextPost(textPost: post);
+      await _postRepository.createPost(post: post);
       emit(state.copyWith(status: TextPostStatus.submitted));
     } on Exception catch (e) {
       emit(

@@ -10,8 +10,7 @@ import 'package:geat/feed/application/all_feed_bloc/all_feed_bloc.dart';
 import 'package:geat/feed/application/feed_bloc/feed_bloc.dart';
 import 'package:geat/feed/application/liked_post_cubit/liked_post_cubit.dart';
 import 'package:geat/feed/application/post_actor_bloc/post_actor_bloc.dart';
-import 'package:geat/post/domain/comic_post_model.dart';
-import 'package:geat/post/domain/text_post_model.dart';
+import 'package:geat/post/domain/post_model.dart';
 import 'package:geat/post/infrastructure/post_repository.dart';
 import 'package:geat/profile/domain/user_model.dart';
 import 'package:geat/profile/presentation/widgets/user_profile_image.dart';
@@ -29,9 +28,7 @@ class FeedsPage extends StatelessWidget {
             context.read<PostRepository>(),
             context.read<AuthBloc>(),
             context.read<LikedPostCubit>(),
-          )
-            ..add(const FeedEvent.fetchTextPosts())
-            ..add(const FeedEvent.fetchPicturePosts()),
+          )..add(const FeedEvent.fetchPosts()),
         ),
         BlocProvider(
           create: (context) => AllFeedBloc(
@@ -58,13 +55,7 @@ class FeedsViewWidget extends HookWidget {
           !scrollController.position.outOfRange &&
           context.read<FeedBloc>().state.status != FeedStatus.paginating &&
           tabController.index == 0) {
-        context.read<FeedBloc>().add(const FeedEvent.paginateTextPosts());
-      } else if (scrollController.offset >=
-              scrollController.position.maxScrollExtent &&
-          !scrollController.position.outOfRange &&
-          context.read<FeedBloc>().state.status != FeedStatus.paginating &&
-          tabController.index == 1) {
-        context.read<FeedBloc>().add(const FeedEvent.paginatePicturePosts());
+        context.read<FeedBloc>().add(const FeedEvent.paginatePosts());
       }
     });
     return BlocConsumer<FeedBloc, FeedState>(
@@ -89,18 +80,11 @@ class FeedsViewWidget extends HookWidget {
                     GestureDetector(
                       onTap: () {
                         if (tabController.index == 0) {
-                          if (state.textPost.isEmpty &&
+                          if (state.post.isEmpty &&
                               state.status == FeedStatus.loaded) {
                             context
                                 .read<FeedBloc>()
-                                .add(const FeedEvent.fetchTextPosts());
-                          }
-                        } else if (tabController.index == 1) {
-                          if (state.picturePost.isEmpty &&
-                              state.status == FeedStatus.loaded) {
-                            context
-                                .read<FeedBloc>()
-                                .add(const FeedEvent.fetchPicturePosts());
+                                .add(const FeedEvent.fetchPosts());
                           }
                         }
                       },
@@ -126,33 +110,6 @@ class FeedsViewWidget extends HookWidget {
                 state: state,
               ),
             ],
-          ),
-          floatingActionButton: Padding(
-            padding: const EdgeInsets.only(bottom: 73),
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.end,
-              children: [
-                FloatingActionButton(
-                  heroTag: 'floating-action-btn-1',
-                  onPressed: () => context.router.push(const TextPostRoute()),
-                  backgroundColor: theme.colorScheme.secondary
-                      .withOpacity(0.5)
-                      .withAlpha(100),
-                  hoverColor: theme.colorScheme.secondary.withOpacity(0.5),
-                  child: const Icon(Icons.abc),
-                ),
-                const SizedBox(height: 16),
-                FloatingActionButton(
-                  heroTag: 'floating-action-btn-2',
-                  onPressed: () => context.router.push(const ComicPostRoute()),
-                  backgroundColor: theme.colorScheme.secondary
-                      .withOpacity(0.5)
-                      .withAlpha(100),
-                  hoverColor: theme.colorScheme.secondary.withOpacity(0.5),
-                  child: const Icon(Icons.image),
-                ),
-              ],
-            ),
           ),
         );
       },
@@ -218,18 +175,8 @@ class FeedList extends StatelessWidget {
           child: RefreshIndicator(
             onRefresh: () async {
               if (tabController.index == 0) {
-                if (state.textPost.isEmpty &&
-                    state.status == FeedStatus.loaded) {
-                  context
-                      .read<FeedBloc>()
-                      .add(const FeedEvent.fetchTextPosts());
-                }
-              } else if (tabController.index == 1) {
-                if (state.picturePost.isEmpty &&
-                    state.status == FeedStatus.loaded) {
-                  context
-                      .read<FeedBloc>()
-                      .add(const FeedEvent.fetchPicturePosts());
+                if (state.post.isEmpty && state.status == FeedStatus.loaded) {
+                  context.read<FeedBloc>().add(const FeedEvent.fetchPosts());
                 }
               }
             },
@@ -242,32 +189,18 @@ class FeedList extends StatelessWidget {
                     return TabBarView(
                       controller: tabController,
                       children: [
-                        if (state.textPost.isEmpty)
+                        if (state.post.isEmpty)
                           const EmptyFeedView()
                         else
-                          TextFeedCard(
-                            textPosts: state.textPost,
+                          FeedCard(
+                            posts: state.post,
                             scrollController: scrollController,
                           ),
-                        if (state.picturePost.isEmpty)
+                        if (allFeedState.post.isEmpty)
                           const EmptyFeedView()
                         else
-                          ComicFeedCard(
-                            comicPosts: state.picturePost,
-                            scrollController: scrollController,
-                          ),
-                        if (allFeedState.textPost.isEmpty)
-                          const EmptyFeedView()
-                        else
-                          TextFeedCard(
-                            textPosts: allFeedState.textPost,
-                            scrollController: scrollController,
-                          ),
-                        if (allFeedState.picturePost.isEmpty)
-                          const EmptyFeedView()
-                        else
-                          ComicFeedCard(
-                            comicPosts: allFeedState.picturePost,
+                          FeedCard(
+                            posts: allFeedState.post,
                             scrollController: scrollController,
                           ),
                       ],
@@ -283,10 +216,8 @@ class FeedList extends StatelessWidget {
 }
 
 const feedTabTitle = <Widget>[
-  Tab(text: 'Books'),
-  Tab(text: 'Comic'),
-  Tab(text: 'Latest-Books'),
-  Tab(text: 'Latest-Comic'),
+  Tab(text: 'Feed'),
+  Tab(text: 'Latest-Geat'),
   // const Tab(text: 'featured'),
   // const Tab(text: 'New'),
   // const Tab(text: 'Explore'),
@@ -354,158 +285,6 @@ class FeedsLoadingStateWidget extends StatelessWidget {
   }
 }
 
-class ComicFeedCard extends StatelessWidget {
-  const ComicFeedCard({
-    super.key,
-    required this.comicPosts,
-    required this.scrollController,
-  });
-  final List<ComicPost?> comicPosts;
-  final ScrollController scrollController;
-
-  @override
-  Widget build(BuildContext context) {
-    final comicPost = comicPosts;
-
-    return GridView.builder(
-      controller: scrollController,
-      itemCount: comicPost.length,
-      gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-        crossAxisCount: 2,
-        mainAxisSpacing: 10,
-        crossAxisSpacing: 10,
-        childAspectRatio: 0.7,
-        //repeatPattern: QuiltedGridRepeatPattern.inverted,
-      ),
-      padding: const EdgeInsets.all(10),
-      itemBuilder: (context, index) {
-        final comic = comicPost[index];
-        final author = comic!.author as User;
-        final likedPostState = context.watch<LikedPostCubit>().state;
-        final isLiked = likedPostState.likedComicPostIds.contains(comic.id);
-        final recentlyLiked =
-            likedPostState.recentlyLikedComicPostIds.contains(comic.id);
-        return Container(
-          height: 200,
-          decoration: BoxDecoration(
-            color: Theme.of(context).colorScheme.primary,
-            borderRadius: const BorderRadius.all(Radius.circular(8.2)),
-          ),
-          child: Card(
-            color: Theme.of(context).scaffoldBackgroundColor,
-            child: Stack(
-              //clipBehavior: Clip.antiAlias,
-              fit: StackFit.expand,
-              children: [
-                GestureDetector(
-                  onTap: () =>
-                      context.router.push(ComicFeedsDetailsRoute(posts: comic)),
-                  child: postImageDisplay(comic),
-                ),
-                Positioned(
-                  top: 2,
-                  left: 2,
-                  child: GestureDetector(
-                    onTap: () => context.router.push(
-                      ProfileRoute(userId: author.id),
-                    ),
-                    child: Container(
-                      decoration: BoxDecoration(
-                        //color: Theme.of(context).colorScheme.primary,
-                        borderRadius:
-                            const BorderRadius.all(Radius.circular(40)),
-                        border: Border.all(
-                          color: Theme.of(context)
-                              .colorScheme
-                              .primary
-                              .withOpacity(0.5),
-                          strokeAlign: StrokeAlign.center,
-                        ),
-                      ),
-                      child: UserProfileImageWidget(
-                        radius: 25,
-                        profileImageUrl: author.profileImageUrl ?? '',
-                      ),
-                    ),
-                  ),
-                ),
-                Positioned(
-                  bottom: 2,
-                  left: 2,
-                  right: 2,
-                  child: Container(
-                    height: 35,
-                    color: Theme.of(context)
-                        .scaffoldBackgroundColor
-                        .withOpacity(0.5),
-                    child: Padding(
-                      padding: const EdgeInsets.all(2.0),
-                      child: FittedBox(
-                        child: Text(
-                          comic.title,
-                          style: Theme.of(context).textTheme.headline5,
-                          overflow: TextOverflow.clip,
-                        ),
-                      ),
-                    ),
-                  ),
-                ),
-                ExtrasViewWidgets(
-                  isLiked: isLiked,
-                  recentlyLiked: recentlyLiked,
-                  onLike: () {
-                    if (isLiked) {
-                      context
-                          .read<LikedPostCubit>()
-                          .unLikeComicPost(post: comic);
-                    } else {
-                      context.read<LikedPostCubit>().likeComicPost(post: comic);
-                    }
-                  },
-                  likes: comic.likes,
-                  onCommentTap: () =>
-                      context.router.push(CommentComicRoute(comicPost: comic)),
-                ),
-                Positioned(
-                  top: 2,
-                  right: 2,
-                  child: Container(
-                    height: 35,
-                    color: Theme.of(context)
-                        .scaffoldBackgroundColor
-                        .withOpacity(0.5),
-                    child: Padding(
-                      padding: const EdgeInsets.all(2.0),
-                      child: IconButton(
-                        onPressed: () => context
-                            .read<PostActorBloc>()
-                            .add(PostActorEvent.saveComicPost(comic)),
-                        icon: const Icon(
-                          Icons.save_alt_rounded,
-                          color: Colors.green,
-                        ),
-                      ),
-                    ),
-                  ),
-                ),
-              ],
-            ),
-          ),
-        );
-      },
-    );
-  }
-
-  Widget postImageDisplay(ComicPost comic) {
-    return comic.imageUrls.isEmpty
-        ? Image.asset('assets/images/color line.jpeg')
-        : CachedNetworkImage(
-            imageUrl: comic.imageUrls.first,
-            fit: BoxFit.cover,
-          );
-  }
-}
-
 class ExtrasViewWidgets extends StatelessWidget {
   const ExtrasViewWidgets({
     super.key,
@@ -556,21 +335,21 @@ class ExtrasViewWidgets extends StatelessWidget {
   }
 }
 
-class TextFeedCard extends StatelessWidget {
-  const TextFeedCard({
+class FeedCard extends StatelessWidget {
+  const FeedCard({
     super.key,
-    required this.textPosts,
+    required this.posts,
     required this.scrollController,
   });
-  final List<TextPost?> textPosts;
+  final List<Post?> posts;
   final ScrollController scrollController;
 
   @override
   Widget build(BuildContext context) {
-    final textPost = textPosts;
+    final post = posts;
     return GridView.builder(
       controller: scrollController,
-      itemCount: textPost.length,
+      itemCount: post.length,
       gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
         crossAxisCount: 2,
         mainAxisSpacing: 10,
@@ -580,12 +359,12 @@ class TextFeedCard extends StatelessWidget {
       ),
       padding: const EdgeInsets.all(10),
       itemBuilder: (context, index) {
-        final text = textPost[index];
-        final author = text!.author as User;
+        final p = post[index];
+        final author = p!.author as User;
         final likedPostState = context.watch<LikedPostCubit>().state;
-        final isLiked = likedPostState.likedTextPostIds.contains(text.id);
+        final isLiked = likedPostState.likedPostIds.contains(p.id);
         final recentlyLiked =
-            likedPostState.recentlyLikedTextPostIds.contains(text.id);
+            likedPostState.recentlyLikedPostIds.contains(p.id);
         return Container(
           height: 200,
           decoration: BoxDecoration(
@@ -600,8 +379,8 @@ class TextFeedCard extends StatelessWidget {
               children: [
                 GestureDetector(
                   onTap: () =>
-                      context.router.push(TextFeedsDetailsRoute(posts: text)),
-                  child: postImageDisplay(text),
+                      context.router.push(TextFeedsDetailsRoute(posts: p)),
+                  child: postImageDisplay(p),
                 ),
                 Positioned(
                   top: 2,
@@ -643,7 +422,7 @@ class TextFeedCard extends StatelessWidget {
                       padding: const EdgeInsets.all(2.0),
                       child: FittedBox(
                         child: Text(
-                          text.title,
+                          p.title,
                           style: Theme.of(context).textTheme.headline5,
                           overflow: TextOverflow.clip,
                         ),
@@ -656,14 +435,14 @@ class TextFeedCard extends StatelessWidget {
                   recentlyLiked: recentlyLiked,
                   onLike: () {
                     if (isLiked) {
-                      context.read<LikedPostCubit>().unLikeTextPost(post: text);
+                      context.read<LikedPostCubit>().unLikePost(post: p);
                     } else {
-                      context.read<LikedPostCubit>().likeTextPost(post: text);
+                      context.read<LikedPostCubit>().likePost(post: p);
                     }
                   },
-                  likes: text.likes,
+                  likes: p.likes,
                   onCommentTap: () =>
-                      context.router.push(CommentTextRoute(textPost: text)),
+                      context.router.push(CommentTextRoute(post: p)),
                 ),
                 Positioned(
                   top: 2,
@@ -678,7 +457,7 @@ class TextFeedCard extends StatelessWidget {
                       child: IconButton(
                         onPressed: () => context
                             .read<PostActorBloc>()
-                            .add(PostActorEvent.saveTextPost(text)),
+                            .add(PostActorEvent.savePost(p)),
                         icon: const Icon(
                           Icons.save_alt_rounded,
                           color: Colors.green,
@@ -695,15 +474,9 @@ class TextFeedCard extends StatelessWidget {
     );
   }
 
-  Widget postImageDisplay(TextPost text) {
-    return text.imageUrl != null
-        ? CachedNetworkImage(
-            imageUrl: text.imageUrl!,
-            fit: BoxFit.cover,
-          )
-        : Image.asset(
-            'assets/images/night building.jpeg',
-            fit: BoxFit.fill,
-          );
+  Widget postImageDisplay(Post text) {
+    return text.imageUrls!.isEmpty
+        ? CachedNetworkImage(imageUrl: text.imageUrls!.first, fit: BoxFit.cover)
+        : Image.asset('assets/images/night building.jpeg', fit: BoxFit.cover);
   }
 }

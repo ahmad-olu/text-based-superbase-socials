@@ -22,10 +22,8 @@ PostCategory _$PostCategoryFromJson(Map<String, dynamic> json) {
 mixin _$PostCategory {
   String? get id => throw _privateConstructorUsedError;
   String get category => throw _privateConstructorUsedError;
-  @JsonKey(toJson: fireStoreTextPostToJson)
-  dynamic get textPost => throw _privateConstructorUsedError;
-  @JsonKey(toJson: fireStoreComicPostToJson)
-  dynamic get comicPost => throw _privateConstructorUsedError;
+  @JsonKey(toJson: fireStorePostToJson)
+  dynamic get post => throw _privateConstructorUsedError;
   PostType get postType => throw _privateConstructorUsedError;
   @JsonKey(toJson: fireStoreUserToJson)
   dynamic get author => throw _privateConstructorUsedError;
@@ -44,8 +42,7 @@ abstract class $PostCategoryCopyWith<$Res> {
   $Res call(
       {String? id,
       String category,
-      @JsonKey(toJson: fireStoreTextPostToJson) dynamic textPost,
-      @JsonKey(toJson: fireStoreComicPostToJson) dynamic comicPost,
+      @JsonKey(toJson: fireStorePostToJson) dynamic post,
       PostType postType,
       @JsonKey(toJson: fireStoreUserToJson) dynamic author});
 }
@@ -62,8 +59,7 @@ class _$PostCategoryCopyWithImpl<$Res> implements $PostCategoryCopyWith<$Res> {
   $Res call({
     Object? id = freezed,
     Object? category = freezed,
-    Object? textPost = freezed,
-    Object? comicPost = freezed,
+    Object? post = freezed,
     Object? postType = freezed,
     Object? author = freezed,
   }) {
@@ -76,13 +72,9 @@ class _$PostCategoryCopyWithImpl<$Res> implements $PostCategoryCopyWith<$Res> {
           ? _value.category
           : category // ignore: cast_nullable_to_non_nullable
               as String,
-      textPost: textPost == freezed
-          ? _value.textPost
-          : textPost // ignore: cast_nullable_to_non_nullable
-              as dynamic,
-      comicPost: comicPost == freezed
-          ? _value.comicPost
-          : comicPost // ignore: cast_nullable_to_non_nullable
+      post: post == freezed
+          ? _value.post
+          : post // ignore: cast_nullable_to_non_nullable
               as dynamic,
       postType: postType == freezed
           ? _value.postType
@@ -106,8 +98,7 @@ abstract class _$$_PostCategoryCopyWith<$Res>
   $Res call(
       {String? id,
       String category,
-      @JsonKey(toJson: fireStoreTextPostToJson) dynamic textPost,
-      @JsonKey(toJson: fireStoreComicPostToJson) dynamic comicPost,
+      @JsonKey(toJson: fireStorePostToJson) dynamic post,
       PostType postType,
       @JsonKey(toJson: fireStoreUserToJson) dynamic author});
 }
@@ -127,8 +118,7 @@ class __$$_PostCategoryCopyWithImpl<$Res>
   $Res call({
     Object? id = freezed,
     Object? category = freezed,
-    Object? textPost = freezed,
-    Object? comicPost = freezed,
+    Object? post = freezed,
     Object? postType = freezed,
     Object? author = freezed,
   }) {
@@ -141,13 +131,9 @@ class __$$_PostCategoryCopyWithImpl<$Res>
           ? _value.category
           : category // ignore: cast_nullable_to_non_nullable
               as String,
-      textPost: textPost == freezed
-          ? _value.textPost
-          : textPost // ignore: cast_nullable_to_non_nullable
-              as dynamic,
-      comicPost: comicPost == freezed
-          ? _value.comicPost
-          : comicPost // ignore: cast_nullable_to_non_nullable
+      post: post == freezed
+          ? _value.post
+          : post // ignore: cast_nullable_to_non_nullable
               as dynamic,
       postType: postType == freezed
           ? _value.postType
@@ -167,8 +153,7 @@ class _$_PostCategory extends _PostCategory {
   const _$_PostCategory(
       {this.id,
       required this.category,
-      @JsonKey(toJson: fireStoreTextPostToJson) this.textPost,
-      @JsonKey(toJson: fireStoreComicPostToJson) this.comicPost,
+      @JsonKey(toJson: fireStorePostToJson) this.post,
       required this.postType,
       @JsonKey(toJson: fireStoreUserToJson) required this.author})
       : super._();
@@ -181,11 +166,8 @@ class _$_PostCategory extends _PostCategory {
   @override
   final String category;
   @override
-  @JsonKey(toJson: fireStoreTextPostToJson)
-  final dynamic textPost;
-  @override
-  @JsonKey(toJson: fireStoreComicPostToJson)
-  final dynamic comicPost;
+  @JsonKey(toJson: fireStorePostToJson)
+  final dynamic post;
   @override
   final PostType postType;
   @override
@@ -194,7 +176,7 @@ class _$_PostCategory extends _PostCategory {
 
   @override
   String toString() {
-    return 'PostCategory(id: $id, category: $category, textPost: $textPost, comicPost: $comicPost, postType: $postType, author: $author)';
+    return 'PostCategory(id: $id, category: $category, post: $post, postType: $postType, author: $author)';
   }
 
   @override
@@ -204,8 +186,7 @@ class _$_PostCategory extends _PostCategory {
             other is _$_PostCategory &&
             const DeepCollectionEquality().equals(other.id, id) &&
             const DeepCollectionEquality().equals(other.category, category) &&
-            const DeepCollectionEquality().equals(other.textPost, textPost) &&
-            const DeepCollectionEquality().equals(other.comicPost, comicPost) &&
+            const DeepCollectionEquality().equals(other.post, post) &&
             const DeepCollectionEquality().equals(other.postType, postType) &&
             const DeepCollectionEquality().equals(other.author, author));
   }
@@ -216,8 +197,7 @@ class _$_PostCategory extends _PostCategory {
       runtimeType,
       const DeepCollectionEquality().hash(id),
       const DeepCollectionEquality().hash(category),
-      const DeepCollectionEquality().hash(textPost),
-      const DeepCollectionEquality().hash(comicPost),
+      const DeepCollectionEquality().hash(post),
       const DeepCollectionEquality().hash(postType),
       const DeepCollectionEquality().hash(author));
 
@@ -238,10 +218,8 @@ abstract class _PostCategory extends PostCategory {
   const factory _PostCategory(
       {final String? id,
       required final String category,
-      @JsonKey(toJson: fireStoreTextPostToJson)
-          final dynamic textPost,
-      @JsonKey(toJson: fireStoreComicPostToJson)
-          final dynamic comicPost,
+      @JsonKey(toJson: fireStorePostToJson)
+          final dynamic post,
       required final PostType postType,
       @JsonKey(toJson: fireStoreUserToJson)
           required final dynamic author}) = _$_PostCategory;
@@ -255,11 +233,8 @@ abstract class _PostCategory extends PostCategory {
   @override
   String get category;
   @override
-  @JsonKey(toJson: fireStoreTextPostToJson)
-  dynamic get textPost;
-  @override
-  @JsonKey(toJson: fireStoreComicPostToJson)
-  dynamic get comicPost;
+  @JsonKey(toJson: fireStorePostToJson)
+  dynamic get post;
   @override
   PostType get postType;
   @override

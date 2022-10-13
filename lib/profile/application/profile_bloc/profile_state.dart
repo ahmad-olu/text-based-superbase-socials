@@ -6,8 +6,7 @@ enum ProfileStatus { initial, loading, loaded, error }
 class ProfileState with _$ProfileState {
   const factory ProfileState({
     required User user,
-    required List<TextPost?> textPost,
-    required List<ComicPost?> picturePost,
+    required List<Post?> post,
     //required List<ReImagined?> reWrite,
     required List<SavedPost?> savedPosts,
     //todo: rewrite post for profile state
@@ -18,8 +17,7 @@ class ProfileState with _$ProfileState {
   }) = _ProfileState;
   factory ProfileState.initial() => const _ProfileState(
         user: User.empty,
-        textPost: [],
-        picturePost: [],
+        post: [],
         savedPosts: [],
         //reWrite: [],
         isCurrentUser: false,

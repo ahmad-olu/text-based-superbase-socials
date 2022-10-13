@@ -2,7 +2,6 @@ enum NotifType {
   like,
   comment,
   follow,
-  comicPost,
-  textPost,
+  post,
   reImagined,
 }

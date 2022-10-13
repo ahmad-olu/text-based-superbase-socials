@@ -6,7 +6,7 @@ abstract class IStorageRepository {
     required File? image,
   });
 
-  Future<String> uploadTextPostImage({
+  Future<List<String>> uploadTextPostImage({
     required File? image,
   });
   Future<List<String>> uploadComicPostImage({

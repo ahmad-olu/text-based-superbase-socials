@@ -8,8 +8,7 @@ import 'package:geat/core/routes/app_router.gr.dart';
 import 'package:geat/notification/application/bloc/notification_bloc.dart';
 import 'package:geat/notification/domain/notification_model.dart' as notify;
 import 'package:geat/notification/infrastructure/notification_repository.dart';
-import 'package:geat/post/domain/comic_post_model.dart';
-import 'package:geat/post/domain/text_post_model.dart';
+import 'package:geat/post/domain/post_model.dart';
 import 'package:geat/profile/domain/user_model.dart';
 import 'package:geat/profile/presentation/widgets/user_profile_image.dart';
 import 'package:intl/intl.dart';
@@ -144,12 +143,11 @@ class NotificationView extends StatelessWidget {
   Widget _getTrailing(BuildContext context, notify.Notification notification) {
     if (notification.type == NotifType.like ||
         notification.type == NotifType.comment) {
-      if (notification.textPost != null) {
-        final textPost = notification.textPost as TextPost;
+      if (notification.post != null) {
+        final post = notification.post as Post;
         return GestureDetector(
-          onTap: () =>
-              context.router.push(CommentTextRoute(textPost: textPost)),
-          child: textPost.imageUrl == null
+          onTap: () => context.router.push(CommentTextRoute(post: post)),
+          child: post.imageUrls!.isEmpty
               ? Image.asset(
                   'assets/images/night building.jpeg',
                   fit: BoxFit.fill,
@@ -157,21 +155,10 @@ class NotificationView extends StatelessWidget {
                   width: 60.0,
                 )
               : CachedNetworkImage(
-                  imageUrl: textPost.imageUrl!,
+                  imageUrl: post.imageUrls!.first,
                   height: 60.0,
                   width: 60.0,
                 ),
-        );
-      } else if (notification.comicPost != null) {
-        final comicPost = notification.comicPost as ComicPost;
-        return GestureDetector(
-          onTap: () =>
-              context.router.push(CommentComicRoute(comicPost: comicPost)),
-          child: CachedNetworkImage(
-            imageUrl: comicPost.imageUrls.first,
-            height: 60.0,
-            width: 60.0,
-          ),
         );
       }
     } else if (notification.type == NotifType.follow) {
@@ -197,10 +184,7 @@ class NotificationView extends StatelessWidget {
         return 'Commented On your Post';
       case NotifType.follow:
         return 'Followed you';
-
-      case NotifType.comicPost:
-        return '';
-      case NotifType.textPost:
+      case NotifType.post:
         return '';
       case NotifType.reImagined:
         return '';

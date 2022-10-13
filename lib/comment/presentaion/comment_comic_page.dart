@@ -5,15 +5,15 @@ import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:geat/auth/application/auth_bloc/auth_bloc.dart';
 import 'package:geat/comment/application/comment_bloc/comment_bloc.dart';
 import 'package:geat/core/routes/app_router.gr.dart';
-import 'package:geat/post/domain/comic_post_model.dart';
+import 'package:geat/post/domain/post_model.dart';
 import 'package:geat/post/infrastructure/post_repository.dart';
 import 'package:geat/profile/domain/user_model.dart';
 import 'package:geat/profile/presentation/widgets/user_profile_image.dart';
 import 'package:intl/intl.dart';
 
 class CommentComicPage extends StatelessWidget {
-  const CommentComicPage({super.key, required this.comicPost});
-  final ComicPost comicPost;
+  const CommentComicPage({super.key, required this.post});
+  final Post post;
 
   @override
   Widget build(BuildContext context) {
@@ -21,7 +21,7 @@ class CommentComicPage extends StatelessWidget {
       create: (context) => CommentBloc(
         context.read<PostRepository>(),
         context.read<AuthBloc>(),
-      )..add(CommentEvent.fetchComicComments(post: comicPost)),
+      )..add(CommentEvent.fetchComments(post: post)),
       child: const CommentComicView(),
     );
   }
@@ -126,7 +126,7 @@ class CommentComicView extends HookWidget {
                                   final content = commentController.text.trim();
                                   if (content.isNotEmpty) {
                                     context.read<CommentBloc>().add(
-                                          CommentEvent.postComicComments(
+                                          CommentEvent.postComments(
                                             content: content,
                                           ),
                                         );

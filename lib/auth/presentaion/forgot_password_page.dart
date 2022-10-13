@@ -27,7 +27,7 @@ class ForgotPasswordView extends HookWidget {
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
-    final _emailController = useTextEditingController(text: '');
+    final emailController = useTextEditingController(text: '');
     return Scaffold(
       appBar: AppBar(
         title: const Text('Forgot Password'),
@@ -64,7 +64,7 @@ class ForgotPasswordView extends HookWidget {
                           keyboardType: TextInputType.emailAddress,
                           autocorrect: false,
                           autofocus: true,
-                          controller: _emailController,
+                          controller: emailController,
                           decoration: const InputDecoration(
                             hintText: 'bob@gmail.com',
                             labelText: 'Email Address',
@@ -85,7 +85,7 @@ class ForgotPasswordView extends HookWidget {
                             onPressed: () async {
                               context.read<ExtraAuthBloc>().add(
                                     ExtraAuthEvent.forgotPassword(
-                                      email: _emailController.text,
+                                      email: emailController.text,
                                     ),
                                   );
                             },

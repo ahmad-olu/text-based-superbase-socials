@@ -3,7 +3,7 @@
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
 
-part of 'comic_post_model.dart';
+part of 'post_model.dart';
 
 // **************************************************************************
 // FreezedGenerator
@@ -14,20 +14,21 @@ T _$identity<T>(T value) => value;
 final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
-ComicPost _$ComicPostFromJson(Map<String, dynamic> json) {
-  return _ComicPost.fromJson(json);
+Post _$PostFromJson(Map<String, dynamic> json) {
+  return _Post.fromJson(json);
 }
 
 /// @nodoc
-mixin _$ComicPost {
+mixin _$Post {
   String? get id => throw _privateConstructorUsedError;
   @JsonKey(toJson: fireStoreUserToJson)
   dynamic get author => throw _privateConstructorUsedError;
   String get title => throw _privateConstructorUsedError;
   String? get subTitle => throw _privateConstructorUsedError;
-  List<String> get imageUrls => throw _privateConstructorUsedError;
+  List<String>? get imageUrls => throw _privateConstructorUsedError;
   bool get canReImagine => throw _privateConstructorUsedError;
-  PostType? get postType => throw _privateConstructorUsedError;
+  String? get content => throw _privateConstructorUsedError;
+  PostType get postType => throw _privateConstructorUsedError;
   List<String>? get category => throw _privateConstructorUsedError;
   int get likes => throw _privateConstructorUsedError;
   @JsonKey(
@@ -36,23 +37,23 @@ mixin _$ComicPost {
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
-  $ComicPostCopyWith<ComicPost> get copyWith =>
-      throw _privateConstructorUsedError;
+  $PostCopyWith<Post> get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $ComicPostCopyWith<$Res> {
-  factory $ComicPostCopyWith(ComicPost value, $Res Function(ComicPost) then) =
-      _$ComicPostCopyWithImpl<$Res>;
+abstract class $PostCopyWith<$Res> {
+  factory $PostCopyWith(Post value, $Res Function(Post) then) =
+      _$PostCopyWithImpl<$Res>;
   $Res call(
       {String? id,
       @JsonKey(toJson: fireStoreUserToJson)
           dynamic author,
       String title,
       String? subTitle,
-      List<String> imageUrls,
+      List<String>? imageUrls,
       bool canReImagine,
-      PostType? postType,
+      String? content,
+      PostType postType,
       List<String>? category,
       int likes,
       @JsonKey(toJson: fireStoreTimestampToJson, fromJson: fireStoreTimestampFromJson)
@@ -60,12 +61,12 @@ abstract class $ComicPostCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$ComicPostCopyWithImpl<$Res> implements $ComicPostCopyWith<$Res> {
-  _$ComicPostCopyWithImpl(this._value, this._then);
+class _$PostCopyWithImpl<$Res> implements $PostCopyWith<$Res> {
+  _$PostCopyWithImpl(this._value, this._then);
 
-  final ComicPost _value;
+  final Post _value;
   // ignore: unused_field
-  final $Res Function(ComicPost) _then;
+  final $Res Function(Post) _then;
 
   @override
   $Res call({
@@ -75,6 +76,7 @@ class _$ComicPostCopyWithImpl<$Res> implements $ComicPostCopyWith<$Res> {
     Object? subTitle = freezed,
     Object? imageUrls = freezed,
     Object? canReImagine = freezed,
+    Object? content = freezed,
     Object? postType = freezed,
     Object? category = freezed,
     Object? likes = freezed,
@@ -100,15 +102,19 @@ class _$ComicPostCopyWithImpl<$Res> implements $ComicPostCopyWith<$Res> {
       imageUrls: imageUrls == freezed
           ? _value.imageUrls
           : imageUrls // ignore: cast_nullable_to_non_nullable
-              as List<String>,
+              as List<String>?,
       canReImagine: canReImagine == freezed
           ? _value.canReImagine
           : canReImagine // ignore: cast_nullable_to_non_nullable
               as bool,
+      content: content == freezed
+          ? _value.content
+          : content // ignore: cast_nullable_to_non_nullable
+              as String?,
       postType: postType == freezed
           ? _value.postType
           : postType // ignore: cast_nullable_to_non_nullable
-              as PostType?,
+              as PostType,
       category: category == freezed
           ? _value.category
           : category // ignore: cast_nullable_to_non_nullable
@@ -126,10 +132,9 @@ class _$ComicPostCopyWithImpl<$Res> implements $ComicPostCopyWith<$Res> {
 }
 
 /// @nodoc
-abstract class _$$_ComicPostCopyWith<$Res> implements $ComicPostCopyWith<$Res> {
-  factory _$$_ComicPostCopyWith(
-          _$_ComicPost value, $Res Function(_$_ComicPost) then) =
-      __$$_ComicPostCopyWithImpl<$Res>;
+abstract class _$$_PostCopyWith<$Res> implements $PostCopyWith<$Res> {
+  factory _$$_PostCopyWith(_$_Post value, $Res Function(_$_Post) then) =
+      __$$_PostCopyWithImpl<$Res>;
   @override
   $Res call(
       {String? id,
@@ -137,9 +142,10 @@ abstract class _$$_ComicPostCopyWith<$Res> implements $ComicPostCopyWith<$Res> {
           dynamic author,
       String title,
       String? subTitle,
-      List<String> imageUrls,
+      List<String>? imageUrls,
       bool canReImagine,
-      PostType? postType,
+      String? content,
+      PostType postType,
       List<String>? category,
       int likes,
       @JsonKey(toJson: fireStoreTimestampToJson, fromJson: fireStoreTimestampFromJson)
@@ -147,14 +153,13 @@ abstract class _$$_ComicPostCopyWith<$Res> implements $ComicPostCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$$_ComicPostCopyWithImpl<$Res> extends _$ComicPostCopyWithImpl<$Res>
-    implements _$$_ComicPostCopyWith<$Res> {
-  __$$_ComicPostCopyWithImpl(
-      _$_ComicPost _value, $Res Function(_$_ComicPost) _then)
-      : super(_value, (v) => _then(v as _$_ComicPost));
+class __$$_PostCopyWithImpl<$Res> extends _$PostCopyWithImpl<$Res>
+    implements _$$_PostCopyWith<$Res> {
+  __$$_PostCopyWithImpl(_$_Post _value, $Res Function(_$_Post) _then)
+      : super(_value, (v) => _then(v as _$_Post));
 
   @override
-  _$_ComicPost get _value => super._value as _$_ComicPost;
+  _$_Post get _value => super._value as _$_Post;
 
   @override
   $Res call({
@@ -164,12 +169,13 @@ class __$$_ComicPostCopyWithImpl<$Res> extends _$ComicPostCopyWithImpl<$Res>
     Object? subTitle = freezed,
     Object? imageUrls = freezed,
     Object? canReImagine = freezed,
+    Object? content = freezed,
     Object? postType = freezed,
     Object? category = freezed,
     Object? likes = freezed,
     Object? dateCreated = freezed,
   }) {
-    return _then(_$_ComicPost(
+    return _then(_$_Post(
       id: id == freezed
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
@@ -189,15 +195,19 @@ class __$$_ComicPostCopyWithImpl<$Res> extends _$ComicPostCopyWithImpl<$Res>
       imageUrls: imageUrls == freezed
           ? _value._imageUrls
           : imageUrls // ignore: cast_nullable_to_non_nullable
-              as List<String>,
+              as List<String>?,
       canReImagine: canReImagine == freezed
           ? _value.canReImagine
           : canReImagine // ignore: cast_nullable_to_non_nullable
               as bool,
+      content: content == freezed
+          ? _value.content
+          : content // ignore: cast_nullable_to_non_nullable
+              as String?,
       postType: postType == freezed
           ? _value.postType
           : postType // ignore: cast_nullable_to_non_nullable
-              as PostType?,
+              as PostType,
       category: category == freezed
           ? _value._category
           : category // ignore: cast_nullable_to_non_nullable
@@ -216,15 +226,16 @@ class __$$_ComicPostCopyWithImpl<$Res> extends _$ComicPostCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_ComicPost extends _ComicPost {
-  const _$_ComicPost(
+class _$_Post extends _Post {
+  const _$_Post(
       {this.id,
       @JsonKey(toJson: fireStoreUserToJson)
           required this.author,
       required this.title,
       required this.subTitle,
-      required final List<String> imageUrls,
+      required final List<String>? imageUrls,
       required this.canReImagine,
+      required this.content,
       required this.postType,
       required final List<String>? category,
       required this.likes,
@@ -234,8 +245,7 @@ class _$_ComicPost extends _ComicPost {
         _category = category,
         super._();
 
-  factory _$_ComicPost.fromJson(Map<String, dynamic> json) =>
-      _$$_ComicPostFromJson(json);
+  factory _$_Post.fromJson(Map<String, dynamic> json) => _$$_PostFromJson(json);
 
   @override
   final String? id;
@@ -246,17 +256,21 @@ class _$_ComicPost extends _ComicPost {
   final String title;
   @override
   final String? subTitle;
-  final List<String> _imageUrls;
+  final List<String>? _imageUrls;
   @override
-  List<String> get imageUrls {
+  List<String>? get imageUrls {
+    final value = _imageUrls;
+    if (value == null) return null;
     // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(_imageUrls);
+    return EqualUnmodifiableListView(value);
   }
 
   @override
   final bool canReImagine;
   @override
-  final PostType? postType;
+  final String? content;
+  @override
+  final PostType postType;
   final List<String>? _category;
   @override
   List<String>? get category {
@@ -275,14 +289,14 @@ class _$_ComicPost extends _ComicPost {
 
   @override
   String toString() {
-    return 'ComicPost(id: $id, author: $author, title: $title, subTitle: $subTitle, imageUrls: $imageUrls, canReImagine: $canReImagine, postType: $postType, category: $category, likes: $likes, dateCreated: $dateCreated)';
+    return 'Post(id: $id, author: $author, title: $title, subTitle: $subTitle, imageUrls: $imageUrls, canReImagine: $canReImagine, content: $content, postType: $postType, category: $category, likes: $likes, dateCreated: $dateCreated)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_ComicPost &&
+            other is _$_Post &&
             const DeepCollectionEquality().equals(other.id, id) &&
             const DeepCollectionEquality().equals(other.author, author) &&
             const DeepCollectionEquality().equals(other.title, title) &&
@@ -291,6 +305,7 @@ class _$_ComicPost extends _ComicPost {
                 .equals(other._imageUrls, _imageUrls) &&
             const DeepCollectionEquality()
                 .equals(other.canReImagine, canReImagine) &&
+            const DeepCollectionEquality().equals(other.content, content) &&
             const DeepCollectionEquality().equals(other.postType, postType) &&
             const DeepCollectionEquality().equals(other._category, _category) &&
             const DeepCollectionEquality().equals(other.likes, likes) &&
@@ -308,6 +323,7 @@ class _$_ComicPost extends _ComicPost {
       const DeepCollectionEquality().hash(subTitle),
       const DeepCollectionEquality().hash(_imageUrls),
       const DeepCollectionEquality().hash(canReImagine),
+      const DeepCollectionEquality().hash(content),
       const DeepCollectionEquality().hash(postType),
       const DeepCollectionEquality().hash(_category),
       const DeepCollectionEquality().hash(likes),
@@ -315,35 +331,35 @@ class _$_ComicPost extends _ComicPost {
 
   @JsonKey(ignore: true)
   @override
-  _$$_ComicPostCopyWith<_$_ComicPost> get copyWith =>
-      __$$_ComicPostCopyWithImpl<_$_ComicPost>(this, _$identity);
+  _$$_PostCopyWith<_$_Post> get copyWith =>
+      __$$_PostCopyWithImpl<_$_Post>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_ComicPostToJson(
+    return _$$_PostToJson(
       this,
     );
   }
 }
 
-abstract class _ComicPost extends ComicPost {
-  const factory _ComicPost(
+abstract class _Post extends Post {
+  const factory _Post(
       {final String? id,
       @JsonKey(toJson: fireStoreUserToJson)
           required final dynamic author,
       required final String title,
       required final String? subTitle,
-      required final List<String> imageUrls,
+      required final List<String>? imageUrls,
       required final bool canReImagine,
-      required final PostType? postType,
+      required final String? content,
+      required final PostType postType,
       required final List<String>? category,
       required final int likes,
       @JsonKey(toJson: fireStoreTimestampToJson, fromJson: fireStoreTimestampFromJson)
-          required final dynamic dateCreated}) = _$_ComicPost;
-  const _ComicPost._() : super._();
+          required final dynamic dateCreated}) = _$_Post;
+  const _Post._() : super._();
 
-  factory _ComicPost.fromJson(Map<String, dynamic> json) =
-      _$_ComicPost.fromJson;
+  factory _Post.fromJson(Map<String, dynamic> json) = _$_Post.fromJson;
 
   @override
   String? get id;
@@ -355,11 +371,13 @@ abstract class _ComicPost extends ComicPost {
   @override
   String? get subTitle;
   @override
-  List<String> get imageUrls;
+  List<String>? get imageUrls;
   @override
   bool get canReImagine;
   @override
-  PostType? get postType;
+  String? get content;
+  @override
+  PostType get postType;
   @override
   List<String>? get category;
   @override
@@ -370,6 +388,5 @@ abstract class _ComicPost extends ComicPost {
   dynamic get dateCreated;
   @override
   @JsonKey(ignore: true)
-  _$$_ComicPostCopyWith<_$_ComicPost> get copyWith =>
-      throw _privateConstructorUsedError;
+  _$$_PostCopyWith<_$_Post> get copyWith => throw _privateConstructorUsedError;
 }

@@ -4,8 +4,7 @@ import 'package:bloc/bloc.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:geat/auth/application/auth_bloc/auth_bloc.dart';
-import 'package:geat/core/domain/geat_failure.dart';
-import 'package:geat/post/domain/text_post_model.dart';
+import 'package:geat/post/domain/post_model.dart';
 import 'package:geat/post/infrastructure/post_repository.dart';
 import 'package:geat/reImagined/domain/reImagied_model.dart';
 
@@ -21,12 +20,12 @@ class ReImaginedBloc extends Bloc<ReImaginedEvent, ReImaginedState> {
       : super(ReImaginedState.initial()) {
     on<ReImaginedEvent>((event, emit) async {
       await event.map(
-        fetchTextReImagined: (e) async {
+        fetchReImagined: (e) async {
           emit(state.copyWith(status: ReImaginedStatus.loading));
           try {
             _reImaginedSubscription?.cancel();
             _reImaginedSubscription = _postRepository
-                .getTextPostReWrite(postId: e.post.id!)
+                .getPostReImagined(postId: e.post.id!)
                 .listen((reImagined) async {
               final allReImagined = await Future.wait(reImagined);
               add(
@@ -34,7 +33,7 @@ class ReImaginedBloc extends Bloc<ReImaginedEvent, ReImaginedState> {
               );
             });
             emit(
-              state.copyWith(textPost: e.post, status: ReImaginedStatus.loaded),
+              state.copyWith(post: e.post, status: ReImaginedStatus.loaded),
             );
           } on Exception catch (e) {
             emit(
@@ -57,13 +56,13 @@ class ReImaginedBloc extends Bloc<ReImaginedEvent, ReImaginedState> {
             final reImagined = ReImagined(
               author: author,
               content: e.content,
-              postId: state.textPost!.id!,
+              postId: state.post!.id!,
               likes: 0,
               date: FieldValue.serverTimestamp(),
             );
 
-            _postRepository.createTextReImagined(
-              textPost: state.textPost!,
+            _postRepository.createReImagined(
+              post: state.post!,
               reImagined: reImagined,
             );
             emit(state.copyWith(status: ReImaginedStatus.loaded));

@@ -19,8 +19,7 @@ mixin _$ProfileEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(String userId) loadUser,
-    required TResult Function(List<TextPost?> textPost) updateTextPost,
-    required TResult Function(List<ComicPost?> comicPost) updateComicPost,
+    required TResult Function(List<Post?> post) updatePost,
     required TResult Function(List<SavedPost?> savedPosts) updateSavedPosts,
     required TResult Function() followUser,
     required TResult Function() unFollowUser,
@@ -29,8 +28,7 @@ mixin _$ProfileEvent {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function(String userId)? loadUser,
-    TResult Function(List<TextPost?> textPost)? updateTextPost,
-    TResult Function(List<ComicPost?> comicPost)? updateComicPost,
+    TResult Function(List<Post?> post)? updatePost,
     TResult Function(List<SavedPost?> savedPosts)? updateSavedPosts,
     TResult Function()? followUser,
     TResult Function()? unFollowUser,
@@ -39,8 +37,7 @@ mixin _$ProfileEvent {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(String userId)? loadUser,
-    TResult Function(List<TextPost?> textPost)? updateTextPost,
-    TResult Function(List<ComicPost?> comicPost)? updateComicPost,
+    TResult Function(List<Post?> post)? updatePost,
     TResult Function(List<SavedPost?> savedPosts)? updateSavedPosts,
     TResult Function()? followUser,
     TResult Function()? unFollowUser,
@@ -50,8 +47,7 @@ mixin _$ProfileEvent {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_LoadUser value) loadUser,
-    required TResult Function(_UpdateTextPost value) updateTextPost,
-    required TResult Function(_UpdatePicturePost value) updateComicPost,
+    required TResult Function(_UpdatePost value) updatePost,
     required TResult Function(_UpdateSavedPosts value) updateSavedPosts,
     required TResult Function(_FollowUser value) followUser,
     required TResult Function(_UnFollowUser value) unFollowUser,
@@ -60,8 +56,7 @@ mixin _$ProfileEvent {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(_LoadUser value)? loadUser,
-    TResult Function(_UpdateTextPost value)? updateTextPost,
-    TResult Function(_UpdatePicturePost value)? updateComicPost,
+    TResult Function(_UpdatePost value)? updatePost,
     TResult Function(_UpdateSavedPosts value)? updateSavedPosts,
     TResult Function(_FollowUser value)? followUser,
     TResult Function(_UnFollowUser value)? unFollowUser,
@@ -70,8 +65,7 @@ mixin _$ProfileEvent {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_LoadUser value)? loadUser,
-    TResult Function(_UpdateTextPost value)? updateTextPost,
-    TResult Function(_UpdatePicturePost value)? updateComicPost,
+    TResult Function(_UpdatePost value)? updatePost,
     TResult Function(_UpdateSavedPosts value)? updateSavedPosts,
     TResult Function(_FollowUser value)? followUser,
     TResult Function(_UnFollowUser value)? unFollowUser,
@@ -161,8 +155,7 @@ class _$_LoadUser implements _LoadUser {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(String userId) loadUser,
-    required TResult Function(List<TextPost?> textPost) updateTextPost,
-    required TResult Function(List<ComicPost?> comicPost) updateComicPost,
+    required TResult Function(List<Post?> post) updatePost,
     required TResult Function(List<SavedPost?> savedPosts) updateSavedPosts,
     required TResult Function() followUser,
     required TResult Function() unFollowUser,
@@ -174,8 +167,7 @@ class _$_LoadUser implements _LoadUser {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function(String userId)? loadUser,
-    TResult Function(List<TextPost?> textPost)? updateTextPost,
-    TResult Function(List<ComicPost?> comicPost)? updateComicPost,
+    TResult Function(List<Post?> post)? updatePost,
     TResult Function(List<SavedPost?> savedPosts)? updateSavedPosts,
     TResult Function()? followUser,
     TResult Function()? unFollowUser,
@@ -187,8 +179,7 @@ class _$_LoadUser implements _LoadUser {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(String userId)? loadUser,
-    TResult Function(List<TextPost?> textPost)? updateTextPost,
-    TResult Function(List<ComicPost?> comicPost)? updateComicPost,
+    TResult Function(List<Post?> post)? updatePost,
     TResult Function(List<SavedPost?> savedPosts)? updateSavedPosts,
     TResult Function()? followUser,
     TResult Function()? unFollowUser,
@@ -204,8 +195,7 @@ class _$_LoadUser implements _LoadUser {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_LoadUser value) loadUser,
-    required TResult Function(_UpdateTextPost value) updateTextPost,
-    required TResult Function(_UpdatePicturePost value) updateComicPost,
+    required TResult Function(_UpdatePost value) updatePost,
     required TResult Function(_UpdateSavedPosts value) updateSavedPosts,
     required TResult Function(_FollowUser value) followUser,
     required TResult Function(_UnFollowUser value) unFollowUser,
@@ -217,8 +207,7 @@ class _$_LoadUser implements _LoadUser {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(_LoadUser value)? loadUser,
-    TResult Function(_UpdateTextPost value)? updateTextPost,
-    TResult Function(_UpdatePicturePost value)? updateComicPost,
+    TResult Function(_UpdatePost value)? updatePost,
     TResult Function(_UpdateSavedPosts value)? updateSavedPosts,
     TResult Function(_FollowUser value)? followUser,
     TResult Function(_UnFollowUser value)? unFollowUser,
@@ -230,8 +219,7 @@ class _$_LoadUser implements _LoadUser {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_LoadUser value)? loadUser,
-    TResult Function(_UpdateTextPost value)? updateTextPost,
-    TResult Function(_UpdatePicturePost value)? updateComicPost,
+    TResult Function(_UpdatePost value)? updatePost,
     TResult Function(_UpdateSavedPosts value)? updateSavedPosts,
     TResult Function(_FollowUser value)? followUser,
     TResult Function(_UnFollowUser value)? unFollowUser,
@@ -254,111 +242,106 @@ abstract class _LoadUser implements ProfileEvent {
 }
 
 /// @nodoc
-abstract class _$$_UpdateTextPostCopyWith<$Res> {
-  factory _$$_UpdateTextPostCopyWith(
-          _$_UpdateTextPost value, $Res Function(_$_UpdateTextPost) then) =
-      __$$_UpdateTextPostCopyWithImpl<$Res>;
-  $Res call({List<TextPost?> textPost});
+abstract class _$$_UpdatePostCopyWith<$Res> {
+  factory _$$_UpdatePostCopyWith(
+          _$_UpdatePost value, $Res Function(_$_UpdatePost) then) =
+      __$$_UpdatePostCopyWithImpl<$Res>;
+  $Res call({List<Post?> post});
 }
 
 /// @nodoc
-class __$$_UpdateTextPostCopyWithImpl<$Res>
-    extends _$ProfileEventCopyWithImpl<$Res>
-    implements _$$_UpdateTextPostCopyWith<$Res> {
-  __$$_UpdateTextPostCopyWithImpl(
-      _$_UpdateTextPost _value, $Res Function(_$_UpdateTextPost) _then)
-      : super(_value, (v) => _then(v as _$_UpdateTextPost));
+class __$$_UpdatePostCopyWithImpl<$Res> extends _$ProfileEventCopyWithImpl<$Res>
+    implements _$$_UpdatePostCopyWith<$Res> {
+  __$$_UpdatePostCopyWithImpl(
+      _$_UpdatePost _value, $Res Function(_$_UpdatePost) _then)
+      : super(_value, (v) => _then(v as _$_UpdatePost));
 
   @override
-  _$_UpdateTextPost get _value => super._value as _$_UpdateTextPost;
+  _$_UpdatePost get _value => super._value as _$_UpdatePost;
 
   @override
   $Res call({
-    Object? textPost = freezed,
+    Object? post = freezed,
   }) {
-    return _then(_$_UpdateTextPost(
-      textPost == freezed
-          ? _value._textPost
-          : textPost // ignore: cast_nullable_to_non_nullable
-              as List<TextPost?>,
+    return _then(_$_UpdatePost(
+      post == freezed
+          ? _value._post
+          : post // ignore: cast_nullable_to_non_nullable
+              as List<Post?>,
     ));
   }
 }
 
 /// @nodoc
 
-class _$_UpdateTextPost implements _UpdateTextPost {
-  const _$_UpdateTextPost(final List<TextPost?> textPost)
-      : _textPost = textPost;
+class _$_UpdatePost implements _UpdatePost {
+  const _$_UpdatePost(final List<Post?> post) : _post = post;
 
-  final List<TextPost?> _textPost;
+  final List<Post?> _post;
   @override
-  List<TextPost?> get textPost {
+  List<Post?> get post {
     // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(_textPost);
+    return EqualUnmodifiableListView(_post);
   }
 
   @override
   String toString() {
-    return 'ProfileEvent.updateTextPost(textPost: $textPost)';
+    return 'ProfileEvent.updatePost(post: $post)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_UpdateTextPost &&
-            const DeepCollectionEquality().equals(other._textPost, _textPost));
+            other is _$_UpdatePost &&
+            const DeepCollectionEquality().equals(other._post, _post));
   }
 
   @override
   int get hashCode =>
-      Object.hash(runtimeType, const DeepCollectionEquality().hash(_textPost));
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(_post));
 
   @JsonKey(ignore: true)
   @override
-  _$$_UpdateTextPostCopyWith<_$_UpdateTextPost> get copyWith =>
-      __$$_UpdateTextPostCopyWithImpl<_$_UpdateTextPost>(this, _$identity);
+  _$$_UpdatePostCopyWith<_$_UpdatePost> get copyWith =>
+      __$$_UpdatePostCopyWithImpl<_$_UpdatePost>(this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(String userId) loadUser,
-    required TResult Function(List<TextPost?> textPost) updateTextPost,
-    required TResult Function(List<ComicPost?> comicPost) updateComicPost,
+    required TResult Function(List<Post?> post) updatePost,
     required TResult Function(List<SavedPost?> savedPosts) updateSavedPosts,
     required TResult Function() followUser,
     required TResult Function() unFollowUser,
   }) {
-    return updateTextPost(textPost);
+    return updatePost(post);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function(String userId)? loadUser,
-    TResult Function(List<TextPost?> textPost)? updateTextPost,
-    TResult Function(List<ComicPost?> comicPost)? updateComicPost,
+    TResult Function(List<Post?> post)? updatePost,
     TResult Function(List<SavedPost?> savedPosts)? updateSavedPosts,
     TResult Function()? followUser,
     TResult Function()? unFollowUser,
   }) {
-    return updateTextPost?.call(textPost);
+    return updatePost?.call(post);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(String userId)? loadUser,
-    TResult Function(List<TextPost?> textPost)? updateTextPost,
-    TResult Function(List<ComicPost?> comicPost)? updateComicPost,
+    TResult Function(List<Post?> post)? updatePost,
     TResult Function(List<SavedPost?> savedPosts)? updateSavedPosts,
     TResult Function()? followUser,
     TResult Function()? unFollowUser,
     required TResult orElse(),
   }) {
-    if (updateTextPost != null) {
-      return updateTextPost(textPost);
+    if (updatePost != null) {
+      return updatePost(post);
     }
     return orElse();
   }
@@ -367,219 +350,49 @@ class _$_UpdateTextPost implements _UpdateTextPost {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_LoadUser value) loadUser,
-    required TResult Function(_UpdateTextPost value) updateTextPost,
-    required TResult Function(_UpdatePicturePost value) updateComicPost,
+    required TResult Function(_UpdatePost value) updatePost,
     required TResult Function(_UpdateSavedPosts value) updateSavedPosts,
     required TResult Function(_FollowUser value) followUser,
     required TResult Function(_UnFollowUser value) unFollowUser,
   }) {
-    return updateTextPost(this);
+    return updatePost(this);
   }
 
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(_LoadUser value)? loadUser,
-    TResult Function(_UpdateTextPost value)? updateTextPost,
-    TResult Function(_UpdatePicturePost value)? updateComicPost,
+    TResult Function(_UpdatePost value)? updatePost,
     TResult Function(_UpdateSavedPosts value)? updateSavedPosts,
     TResult Function(_FollowUser value)? followUser,
     TResult Function(_UnFollowUser value)? unFollowUser,
   }) {
-    return updateTextPost?.call(this);
+    return updatePost?.call(this);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_LoadUser value)? loadUser,
-    TResult Function(_UpdateTextPost value)? updateTextPost,
-    TResult Function(_UpdatePicturePost value)? updateComicPost,
+    TResult Function(_UpdatePost value)? updatePost,
     TResult Function(_UpdateSavedPosts value)? updateSavedPosts,
     TResult Function(_FollowUser value)? followUser,
     TResult Function(_UnFollowUser value)? unFollowUser,
     required TResult orElse(),
   }) {
-    if (updateTextPost != null) {
-      return updateTextPost(this);
+    if (updatePost != null) {
+      return updatePost(this);
     }
     return orElse();
   }
 }
 
-abstract class _UpdateTextPost implements ProfileEvent {
-  const factory _UpdateTextPost(final List<TextPost?> textPost) =
-      _$_UpdateTextPost;
+abstract class _UpdatePost implements ProfileEvent {
+  const factory _UpdatePost(final List<Post?> post) = _$_UpdatePost;
 
-  List<TextPost?> get textPost;
+  List<Post?> get post;
   @JsonKey(ignore: true)
-  _$$_UpdateTextPostCopyWith<_$_UpdateTextPost> get copyWith =>
-      throw _privateConstructorUsedError;
-}
-
-/// @nodoc
-abstract class _$$_UpdatePicturePostCopyWith<$Res> {
-  factory _$$_UpdatePicturePostCopyWith(_$_UpdatePicturePost value,
-          $Res Function(_$_UpdatePicturePost) then) =
-      __$$_UpdatePicturePostCopyWithImpl<$Res>;
-  $Res call({List<ComicPost?> comicPost});
-}
-
-/// @nodoc
-class __$$_UpdatePicturePostCopyWithImpl<$Res>
-    extends _$ProfileEventCopyWithImpl<$Res>
-    implements _$$_UpdatePicturePostCopyWith<$Res> {
-  __$$_UpdatePicturePostCopyWithImpl(
-      _$_UpdatePicturePost _value, $Res Function(_$_UpdatePicturePost) _then)
-      : super(_value, (v) => _then(v as _$_UpdatePicturePost));
-
-  @override
-  _$_UpdatePicturePost get _value => super._value as _$_UpdatePicturePost;
-
-  @override
-  $Res call({
-    Object? comicPost = freezed,
-  }) {
-    return _then(_$_UpdatePicturePost(
-      comicPost == freezed
-          ? _value._comicPost
-          : comicPost // ignore: cast_nullable_to_non_nullable
-              as List<ComicPost?>,
-    ));
-  }
-}
-
-/// @nodoc
-
-class _$_UpdatePicturePost implements _UpdatePicturePost {
-  const _$_UpdatePicturePost(final List<ComicPost?> comicPost)
-      : _comicPost = comicPost;
-
-  final List<ComicPost?> _comicPost;
-  @override
-  List<ComicPost?> get comicPost {
-    // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(_comicPost);
-  }
-
-  @override
-  String toString() {
-    return 'ProfileEvent.updateComicPost(comicPost: $comicPost)';
-  }
-
-  @override
-  bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$_UpdatePicturePost &&
-            const DeepCollectionEquality()
-                .equals(other._comicPost, _comicPost));
-  }
-
-  @override
-  int get hashCode =>
-      Object.hash(runtimeType, const DeepCollectionEquality().hash(_comicPost));
-
-  @JsonKey(ignore: true)
-  @override
-  _$$_UpdatePicturePostCopyWith<_$_UpdatePicturePost> get copyWith =>
-      __$$_UpdatePicturePostCopyWithImpl<_$_UpdatePicturePost>(
-          this, _$identity);
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function(String userId) loadUser,
-    required TResult Function(List<TextPost?> textPost) updateTextPost,
-    required TResult Function(List<ComicPost?> comicPost) updateComicPost,
-    required TResult Function(List<SavedPost?> savedPosts) updateSavedPosts,
-    required TResult Function() followUser,
-    required TResult Function() unFollowUser,
-  }) {
-    return updateComicPost(comicPost);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(String userId)? loadUser,
-    TResult Function(List<TextPost?> textPost)? updateTextPost,
-    TResult Function(List<ComicPost?> comicPost)? updateComicPost,
-    TResult Function(List<SavedPost?> savedPosts)? updateSavedPosts,
-    TResult Function()? followUser,
-    TResult Function()? unFollowUser,
-  }) {
-    return updateComicPost?.call(comicPost);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String userId)? loadUser,
-    TResult Function(List<TextPost?> textPost)? updateTextPost,
-    TResult Function(List<ComicPost?> comicPost)? updateComicPost,
-    TResult Function(List<SavedPost?> savedPosts)? updateSavedPosts,
-    TResult Function()? followUser,
-    TResult Function()? unFollowUser,
-    required TResult orElse(),
-  }) {
-    if (updateComicPost != null) {
-      return updateComicPost(comicPost);
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_LoadUser value) loadUser,
-    required TResult Function(_UpdateTextPost value) updateTextPost,
-    required TResult Function(_UpdatePicturePost value) updateComicPost,
-    required TResult Function(_UpdateSavedPosts value) updateSavedPosts,
-    required TResult Function(_FollowUser value) followUser,
-    required TResult Function(_UnFollowUser value) unFollowUser,
-  }) {
-    return updateComicPost(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_LoadUser value)? loadUser,
-    TResult Function(_UpdateTextPost value)? updateTextPost,
-    TResult Function(_UpdatePicturePost value)? updateComicPost,
-    TResult Function(_UpdateSavedPosts value)? updateSavedPosts,
-    TResult Function(_FollowUser value)? followUser,
-    TResult Function(_UnFollowUser value)? unFollowUser,
-  }) {
-    return updateComicPost?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(_LoadUser value)? loadUser,
-    TResult Function(_UpdateTextPost value)? updateTextPost,
-    TResult Function(_UpdatePicturePost value)? updateComicPost,
-    TResult Function(_UpdateSavedPosts value)? updateSavedPosts,
-    TResult Function(_FollowUser value)? followUser,
-    TResult Function(_UnFollowUser value)? unFollowUser,
-    required TResult orElse(),
-  }) {
-    if (updateComicPost != null) {
-      return updateComicPost(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class _UpdatePicturePost implements ProfileEvent {
-  const factory _UpdatePicturePost(final List<ComicPost?> comicPost) =
-      _$_UpdatePicturePost;
-
-  List<ComicPost?> get comicPost;
-  @JsonKey(ignore: true)
-  _$$_UpdatePicturePostCopyWith<_$_UpdatePicturePost> get copyWith =>
+  _$$_UpdatePostCopyWith<_$_UpdatePost> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -655,8 +468,7 @@ class _$_UpdateSavedPosts implements _UpdateSavedPosts {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(String userId) loadUser,
-    required TResult Function(List<TextPost?> textPost) updateTextPost,
-    required TResult Function(List<ComicPost?> comicPost) updateComicPost,
+    required TResult Function(List<Post?> post) updatePost,
     required TResult Function(List<SavedPost?> savedPosts) updateSavedPosts,
     required TResult Function() followUser,
     required TResult Function() unFollowUser,
@@ -668,8 +480,7 @@ class _$_UpdateSavedPosts implements _UpdateSavedPosts {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function(String userId)? loadUser,
-    TResult Function(List<TextPost?> textPost)? updateTextPost,
-    TResult Function(List<ComicPost?> comicPost)? updateComicPost,
+    TResult Function(List<Post?> post)? updatePost,
     TResult Function(List<SavedPost?> savedPosts)? updateSavedPosts,
     TResult Function()? followUser,
     TResult Function()? unFollowUser,
@@ -681,8 +492,7 @@ class _$_UpdateSavedPosts implements _UpdateSavedPosts {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(String userId)? loadUser,
-    TResult Function(List<TextPost?> textPost)? updateTextPost,
-    TResult Function(List<ComicPost?> comicPost)? updateComicPost,
+    TResult Function(List<Post?> post)? updatePost,
     TResult Function(List<SavedPost?> savedPosts)? updateSavedPosts,
     TResult Function()? followUser,
     TResult Function()? unFollowUser,
@@ -698,8 +508,7 @@ class _$_UpdateSavedPosts implements _UpdateSavedPosts {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_LoadUser value) loadUser,
-    required TResult Function(_UpdateTextPost value) updateTextPost,
-    required TResult Function(_UpdatePicturePost value) updateComicPost,
+    required TResult Function(_UpdatePost value) updatePost,
     required TResult Function(_UpdateSavedPosts value) updateSavedPosts,
     required TResult Function(_FollowUser value) followUser,
     required TResult Function(_UnFollowUser value) unFollowUser,
@@ -711,8 +520,7 @@ class _$_UpdateSavedPosts implements _UpdateSavedPosts {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(_LoadUser value)? loadUser,
-    TResult Function(_UpdateTextPost value)? updateTextPost,
-    TResult Function(_UpdatePicturePost value)? updateComicPost,
+    TResult Function(_UpdatePost value)? updatePost,
     TResult Function(_UpdateSavedPosts value)? updateSavedPosts,
     TResult Function(_FollowUser value)? followUser,
     TResult Function(_UnFollowUser value)? unFollowUser,
@@ -724,8 +532,7 @@ class _$_UpdateSavedPosts implements _UpdateSavedPosts {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_LoadUser value)? loadUser,
-    TResult Function(_UpdateTextPost value)? updateTextPost,
-    TResult Function(_UpdatePicturePost value)? updateComicPost,
+    TResult Function(_UpdatePost value)? updatePost,
     TResult Function(_UpdateSavedPosts value)? updateSavedPosts,
     TResult Function(_FollowUser value)? followUser,
     TResult Function(_UnFollowUser value)? unFollowUser,
@@ -789,8 +596,7 @@ class _$_FollowUser implements _FollowUser {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(String userId) loadUser,
-    required TResult Function(List<TextPost?> textPost) updateTextPost,
-    required TResult Function(List<ComicPost?> comicPost) updateComicPost,
+    required TResult Function(List<Post?> post) updatePost,
     required TResult Function(List<SavedPost?> savedPosts) updateSavedPosts,
     required TResult Function() followUser,
     required TResult Function() unFollowUser,
@@ -802,8 +608,7 @@ class _$_FollowUser implements _FollowUser {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function(String userId)? loadUser,
-    TResult Function(List<TextPost?> textPost)? updateTextPost,
-    TResult Function(List<ComicPost?> comicPost)? updateComicPost,
+    TResult Function(List<Post?> post)? updatePost,
     TResult Function(List<SavedPost?> savedPosts)? updateSavedPosts,
     TResult Function()? followUser,
     TResult Function()? unFollowUser,
@@ -815,8 +620,7 @@ class _$_FollowUser implements _FollowUser {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(String userId)? loadUser,
-    TResult Function(List<TextPost?> textPost)? updateTextPost,
-    TResult Function(List<ComicPost?> comicPost)? updateComicPost,
+    TResult Function(List<Post?> post)? updatePost,
     TResult Function(List<SavedPost?> savedPosts)? updateSavedPosts,
     TResult Function()? followUser,
     TResult Function()? unFollowUser,
@@ -832,8 +636,7 @@ class _$_FollowUser implements _FollowUser {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_LoadUser value) loadUser,
-    required TResult Function(_UpdateTextPost value) updateTextPost,
-    required TResult Function(_UpdatePicturePost value) updateComicPost,
+    required TResult Function(_UpdatePost value) updatePost,
     required TResult Function(_UpdateSavedPosts value) updateSavedPosts,
     required TResult Function(_FollowUser value) followUser,
     required TResult Function(_UnFollowUser value) unFollowUser,
@@ -845,8 +648,7 @@ class _$_FollowUser implements _FollowUser {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(_LoadUser value)? loadUser,
-    TResult Function(_UpdateTextPost value)? updateTextPost,
-    TResult Function(_UpdatePicturePost value)? updateComicPost,
+    TResult Function(_UpdatePost value)? updatePost,
     TResult Function(_UpdateSavedPosts value)? updateSavedPosts,
     TResult Function(_FollowUser value)? followUser,
     TResult Function(_UnFollowUser value)? unFollowUser,
@@ -858,8 +660,7 @@ class _$_FollowUser implements _FollowUser {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_LoadUser value)? loadUser,
-    TResult Function(_UpdateTextPost value)? updateTextPost,
-    TResult Function(_UpdatePicturePost value)? updateComicPost,
+    TResult Function(_UpdatePost value)? updatePost,
     TResult Function(_UpdateSavedPosts value)? updateSavedPosts,
     TResult Function(_FollowUser value)? followUser,
     TResult Function(_UnFollowUser value)? unFollowUser,
@@ -918,8 +719,7 @@ class _$_UnFollowUser implements _UnFollowUser {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(String userId) loadUser,
-    required TResult Function(List<TextPost?> textPost) updateTextPost,
-    required TResult Function(List<ComicPost?> comicPost) updateComicPost,
+    required TResult Function(List<Post?> post) updatePost,
     required TResult Function(List<SavedPost?> savedPosts) updateSavedPosts,
     required TResult Function() followUser,
     required TResult Function() unFollowUser,
@@ -931,8 +731,7 @@ class _$_UnFollowUser implements _UnFollowUser {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function(String userId)? loadUser,
-    TResult Function(List<TextPost?> textPost)? updateTextPost,
-    TResult Function(List<ComicPost?> comicPost)? updateComicPost,
+    TResult Function(List<Post?> post)? updatePost,
     TResult Function(List<SavedPost?> savedPosts)? updateSavedPosts,
     TResult Function()? followUser,
     TResult Function()? unFollowUser,
@@ -944,8 +743,7 @@ class _$_UnFollowUser implements _UnFollowUser {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(String userId)? loadUser,
-    TResult Function(List<TextPost?> textPost)? updateTextPost,
-    TResult Function(List<ComicPost?> comicPost)? updateComicPost,
+    TResult Function(List<Post?> post)? updatePost,
     TResult Function(List<SavedPost?> savedPosts)? updateSavedPosts,
     TResult Function()? followUser,
     TResult Function()? unFollowUser,
@@ -961,8 +759,7 @@ class _$_UnFollowUser implements _UnFollowUser {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_LoadUser value) loadUser,
-    required TResult Function(_UpdateTextPost value) updateTextPost,
-    required TResult Function(_UpdatePicturePost value) updateComicPost,
+    required TResult Function(_UpdatePost value) updatePost,
     required TResult Function(_UpdateSavedPosts value) updateSavedPosts,
     required TResult Function(_FollowUser value) followUser,
     required TResult Function(_UnFollowUser value) unFollowUser,
@@ -974,8 +771,7 @@ class _$_UnFollowUser implements _UnFollowUser {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(_LoadUser value)? loadUser,
-    TResult Function(_UpdateTextPost value)? updateTextPost,
-    TResult Function(_UpdatePicturePost value)? updateComicPost,
+    TResult Function(_UpdatePost value)? updatePost,
     TResult Function(_UpdateSavedPosts value)? updateSavedPosts,
     TResult Function(_FollowUser value)? followUser,
     TResult Function(_UnFollowUser value)? unFollowUser,
@@ -987,8 +783,7 @@ class _$_UnFollowUser implements _UnFollowUser {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_LoadUser value)? loadUser,
-    TResult Function(_UpdateTextPost value)? updateTextPost,
-    TResult Function(_UpdatePicturePost value)? updateComicPost,
+    TResult Function(_UpdatePost value)? updatePost,
     TResult Function(_UpdateSavedPosts value)? updateSavedPosts,
     TResult Function(_FollowUser value)? followUser,
     TResult Function(_UnFollowUser value)? unFollowUser,
@@ -1008,8 +803,7 @@ abstract class _UnFollowUser implements ProfileEvent {
 /// @nodoc
 mixin _$ProfileState {
   User get user => throw _privateConstructorUsedError;
-  List<TextPost?> get textPost => throw _privateConstructorUsedError;
-  List<ComicPost?> get picturePost =>
+  List<Post?> get post =>
       throw _privateConstructorUsedError; //required List<ReImagined?> reWrite,
   List<SavedPost?> get savedPosts =>
       throw _privateConstructorUsedError; //todo: rewrite post for profile state
@@ -1030,8 +824,7 @@ abstract class $ProfileStateCopyWith<$Res> {
       _$ProfileStateCopyWithImpl<$Res>;
   $Res call(
       {User user,
-      List<TextPost?> textPost,
-      List<ComicPost?> picturePost,
+      List<Post?> post,
       List<SavedPost?> savedPosts,
       bool isCurrentUser,
       bool isFollowing,
@@ -1052,8 +845,7 @@ class _$ProfileStateCopyWithImpl<$Res> implements $ProfileStateCopyWith<$Res> {
   @override
   $Res call({
     Object? user = freezed,
-    Object? textPost = freezed,
-    Object? picturePost = freezed,
+    Object? post = freezed,
     Object? savedPosts = freezed,
     Object? isCurrentUser = freezed,
     Object? isFollowing = freezed,
@@ -1065,14 +857,10 @@ class _$ProfileStateCopyWithImpl<$Res> implements $ProfileStateCopyWith<$Res> {
           ? _value.user
           : user // ignore: cast_nullable_to_non_nullable
               as User,
-      textPost: textPost == freezed
-          ? _value.textPost
-          : textPost // ignore: cast_nullable_to_non_nullable
-              as List<TextPost?>,
-      picturePost: picturePost == freezed
-          ? _value.picturePost
-          : picturePost // ignore: cast_nullable_to_non_nullable
-              as List<ComicPost?>,
+      post: post == freezed
+          ? _value.post
+          : post // ignore: cast_nullable_to_non_nullable
+              as List<Post?>,
       savedPosts: savedPosts == freezed
           ? _value.savedPosts
           : savedPosts // ignore: cast_nullable_to_non_nullable
@@ -1113,8 +901,7 @@ abstract class _$$_ProfileStateCopyWith<$Res>
   @override
   $Res call(
       {User user,
-      List<TextPost?> textPost,
-      List<ComicPost?> picturePost,
+      List<Post?> post,
       List<SavedPost?> savedPosts,
       bool isCurrentUser,
       bool isFollowing,
@@ -1139,8 +926,7 @@ class __$$_ProfileStateCopyWithImpl<$Res>
   @override
   $Res call({
     Object? user = freezed,
-    Object? textPost = freezed,
-    Object? picturePost = freezed,
+    Object? post = freezed,
     Object? savedPosts = freezed,
     Object? isCurrentUser = freezed,
     Object? isFollowing = freezed,
@@ -1152,14 +938,10 @@ class __$$_ProfileStateCopyWithImpl<$Res>
           ? _value.user
           : user // ignore: cast_nullable_to_non_nullable
               as User,
-      textPost: textPost == freezed
-          ? _value._textPost
-          : textPost // ignore: cast_nullable_to_non_nullable
-              as List<TextPost?>,
-      picturePost: picturePost == freezed
-          ? _value._picturePost
-          : picturePost // ignore: cast_nullable_to_non_nullable
-              as List<ComicPost?>,
+      post: post == freezed
+          ? _value._post
+          : post // ignore: cast_nullable_to_non_nullable
+              as List<Post?>,
       savedPosts: savedPosts == freezed
           ? _value._savedPosts
           : savedPosts // ignore: cast_nullable_to_non_nullable
@@ -1189,31 +971,22 @@ class __$$_ProfileStateCopyWithImpl<$Res>
 class _$_ProfileState implements _ProfileState {
   const _$_ProfileState(
       {required this.user,
-      required final List<TextPost?> textPost,
-      required final List<ComicPost?> picturePost,
+      required final List<Post?> post,
       required final List<SavedPost?> savedPosts,
       required this.isCurrentUser,
       required this.isFollowing,
       required this.status,
       required this.failure})
-      : _textPost = textPost,
-        _picturePost = picturePost,
+      : _post = post,
         _savedPosts = savedPosts;
 
   @override
   final User user;
-  final List<TextPost?> _textPost;
+  final List<Post?> _post;
   @override
-  List<TextPost?> get textPost {
+  List<Post?> get post {
     // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(_textPost);
-  }
-
-  final List<ComicPost?> _picturePost;
-  @override
-  List<ComicPost?> get picturePost {
-    // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(_picturePost);
+    return EqualUnmodifiableListView(_post);
   }
 
 //required List<ReImagined?> reWrite,
@@ -1237,7 +1010,7 @@ class _$_ProfileState implements _ProfileState {
 
   @override
   String toString() {
-    return 'ProfileState(user: $user, textPost: $textPost, picturePost: $picturePost, savedPosts: $savedPosts, isCurrentUser: $isCurrentUser, isFollowing: $isFollowing, status: $status, failure: $failure)';
+    return 'ProfileState(user: $user, post: $post, savedPosts: $savedPosts, isCurrentUser: $isCurrentUser, isFollowing: $isFollowing, status: $status, failure: $failure)';
   }
 
   @override
@@ -1246,9 +1019,7 @@ class _$_ProfileState implements _ProfileState {
         (other.runtimeType == runtimeType &&
             other is _$_ProfileState &&
             const DeepCollectionEquality().equals(other.user, user) &&
-            const DeepCollectionEquality().equals(other._textPost, _textPost) &&
-            const DeepCollectionEquality()
-                .equals(other._picturePost, _picturePost) &&
+            const DeepCollectionEquality().equals(other._post, _post) &&
             const DeepCollectionEquality()
                 .equals(other._savedPosts, _savedPosts) &&
             const DeepCollectionEquality()
@@ -1263,8 +1034,7 @@ class _$_ProfileState implements _ProfileState {
   int get hashCode => Object.hash(
       runtimeType,
       const DeepCollectionEquality().hash(user),
-      const DeepCollectionEquality().hash(_textPost),
-      const DeepCollectionEquality().hash(_picturePost),
+      const DeepCollectionEquality().hash(_post),
       const DeepCollectionEquality().hash(_savedPosts),
       const DeepCollectionEquality().hash(isCurrentUser),
       const DeepCollectionEquality().hash(isFollowing),
@@ -1280,8 +1050,7 @@ class _$_ProfileState implements _ProfileState {
 abstract class _ProfileState implements ProfileState {
   const factory _ProfileState(
       {required final User user,
-      required final List<TextPost?> textPost,
-      required final List<ComicPost?> picturePost,
+      required final List<Post?> post,
       required final List<SavedPost?> savedPosts,
       required final bool isCurrentUser,
       required final bool isFollowing,
@@ -1291,9 +1060,7 @@ abstract class _ProfileState implements ProfileState {
   @override
   User get user;
   @override
-  List<TextPost?> get textPost;
-  @override
-  List<ComicPost?> get picturePost;
+  List<Post?> get post;
   @override //required List<ReImagined?> reWrite,
   List<SavedPost?> get savedPosts;
   @override //todo: rewrite post for profile state

@@ -16,12 +16,8 @@ final _privateConstructorUsedError = UnsupportedError(
 
 /// @nodoc
 mixin _$LikedPostState {
-  Set<String> get likedTextPostIds => throw _privateConstructorUsedError;
-  Set<String> get recentlyLikedTextPostIds =>
-      throw _privateConstructorUsedError;
-  Set<String> get likedComicPostIds => throw _privateConstructorUsedError;
-  Set<String> get recentlyLikedComicPostIds =>
-      throw _privateConstructorUsedError;
+  Set<String> get likedPostIds => throw _privateConstructorUsedError;
+  Set<String> get recentlyLikedPostIds => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $LikedPostStateCopyWith<LikedPostState> get copyWith =>
@@ -33,11 +29,7 @@ abstract class $LikedPostStateCopyWith<$Res> {
   factory $LikedPostStateCopyWith(
           LikedPostState value, $Res Function(LikedPostState) then) =
       _$LikedPostStateCopyWithImpl<$Res>;
-  $Res call(
-      {Set<String> likedTextPostIds,
-      Set<String> recentlyLikedTextPostIds,
-      Set<String> likedComicPostIds,
-      Set<String> recentlyLikedComicPostIds});
+  $Res call({Set<String> likedPostIds, Set<String> recentlyLikedPostIds});
 }
 
 /// @nodoc
@@ -51,27 +43,17 @@ class _$LikedPostStateCopyWithImpl<$Res>
 
   @override
   $Res call({
-    Object? likedTextPostIds = freezed,
-    Object? recentlyLikedTextPostIds = freezed,
-    Object? likedComicPostIds = freezed,
-    Object? recentlyLikedComicPostIds = freezed,
+    Object? likedPostIds = freezed,
+    Object? recentlyLikedPostIds = freezed,
   }) {
     return _then(_value.copyWith(
-      likedTextPostIds: likedTextPostIds == freezed
-          ? _value.likedTextPostIds
-          : likedTextPostIds // ignore: cast_nullable_to_non_nullable
+      likedPostIds: likedPostIds == freezed
+          ? _value.likedPostIds
+          : likedPostIds // ignore: cast_nullable_to_non_nullable
               as Set<String>,
-      recentlyLikedTextPostIds: recentlyLikedTextPostIds == freezed
-          ? _value.recentlyLikedTextPostIds
-          : recentlyLikedTextPostIds // ignore: cast_nullable_to_non_nullable
-              as Set<String>,
-      likedComicPostIds: likedComicPostIds == freezed
-          ? _value.likedComicPostIds
-          : likedComicPostIds // ignore: cast_nullable_to_non_nullable
-              as Set<String>,
-      recentlyLikedComicPostIds: recentlyLikedComicPostIds == freezed
-          ? _value.recentlyLikedComicPostIds
-          : recentlyLikedComicPostIds // ignore: cast_nullable_to_non_nullable
+      recentlyLikedPostIds: recentlyLikedPostIds == freezed
+          ? _value.recentlyLikedPostIds
+          : recentlyLikedPostIds // ignore: cast_nullable_to_non_nullable
               as Set<String>,
     ));
   }
@@ -84,11 +66,7 @@ abstract class _$$_LikedPostStateCopyWith<$Res>
           _$_LikedPostState value, $Res Function(_$_LikedPostState) then) =
       __$$_LikedPostStateCopyWithImpl<$Res>;
   @override
-  $Res call(
-      {Set<String> likedTextPostIds,
-      Set<String> recentlyLikedTextPostIds,
-      Set<String> likedComicPostIds,
-      Set<String> recentlyLikedComicPostIds});
+  $Res call({Set<String> likedPostIds, Set<String> recentlyLikedPostIds});
 }
 
 /// @nodoc
@@ -104,27 +82,17 @@ class __$$_LikedPostStateCopyWithImpl<$Res>
 
   @override
   $Res call({
-    Object? likedTextPostIds = freezed,
-    Object? recentlyLikedTextPostIds = freezed,
-    Object? likedComicPostIds = freezed,
-    Object? recentlyLikedComicPostIds = freezed,
+    Object? likedPostIds = freezed,
+    Object? recentlyLikedPostIds = freezed,
   }) {
     return _then(_$_LikedPostState(
-      likedTextPostIds: likedTextPostIds == freezed
-          ? _value._likedTextPostIds
-          : likedTextPostIds // ignore: cast_nullable_to_non_nullable
+      likedPostIds: likedPostIds == freezed
+          ? _value._likedPostIds
+          : likedPostIds // ignore: cast_nullable_to_non_nullable
               as Set<String>,
-      recentlyLikedTextPostIds: recentlyLikedTextPostIds == freezed
-          ? _value._recentlyLikedTextPostIds
-          : recentlyLikedTextPostIds // ignore: cast_nullable_to_non_nullable
-              as Set<String>,
-      likedComicPostIds: likedComicPostIds == freezed
-          ? _value._likedComicPostIds
-          : likedComicPostIds // ignore: cast_nullable_to_non_nullable
-              as Set<String>,
-      recentlyLikedComicPostIds: recentlyLikedComicPostIds == freezed
-          ? _value._recentlyLikedComicPostIds
-          : recentlyLikedComicPostIds // ignore: cast_nullable_to_non_nullable
+      recentlyLikedPostIds: recentlyLikedPostIds == freezed
+          ? _value._recentlyLikedPostIds
+          : recentlyLikedPostIds // ignore: cast_nullable_to_non_nullable
               as Set<String>,
     ));
   }
@@ -134,46 +102,28 @@ class __$$_LikedPostStateCopyWithImpl<$Res>
 
 class _$_LikedPostState implements _LikedPostState {
   const _$_LikedPostState(
-      {required final Set<String> likedTextPostIds,
-      required final Set<String> recentlyLikedTextPostIds,
-      required final Set<String> likedComicPostIds,
-      required final Set<String> recentlyLikedComicPostIds})
-      : _likedTextPostIds = likedTextPostIds,
-        _recentlyLikedTextPostIds = recentlyLikedTextPostIds,
-        _likedComicPostIds = likedComicPostIds,
-        _recentlyLikedComicPostIds = recentlyLikedComicPostIds;
+      {required final Set<String> likedPostIds,
+      required final Set<String> recentlyLikedPostIds})
+      : _likedPostIds = likedPostIds,
+        _recentlyLikedPostIds = recentlyLikedPostIds;
 
-  final Set<String> _likedTextPostIds;
+  final Set<String> _likedPostIds;
   @override
-  Set<String> get likedTextPostIds {
+  Set<String> get likedPostIds {
     // ignore: implicit_dynamic_type
-    return EqualUnmodifiableSetView(_likedTextPostIds);
+    return EqualUnmodifiableSetView(_likedPostIds);
   }
 
-  final Set<String> _recentlyLikedTextPostIds;
+  final Set<String> _recentlyLikedPostIds;
   @override
-  Set<String> get recentlyLikedTextPostIds {
+  Set<String> get recentlyLikedPostIds {
     // ignore: implicit_dynamic_type
-    return EqualUnmodifiableSetView(_recentlyLikedTextPostIds);
-  }
-
-  final Set<String> _likedComicPostIds;
-  @override
-  Set<String> get likedComicPostIds {
-    // ignore: implicit_dynamic_type
-    return EqualUnmodifiableSetView(_likedComicPostIds);
-  }
-
-  final Set<String> _recentlyLikedComicPostIds;
-  @override
-  Set<String> get recentlyLikedComicPostIds {
-    // ignore: implicit_dynamic_type
-    return EqualUnmodifiableSetView(_recentlyLikedComicPostIds);
+    return EqualUnmodifiableSetView(_recentlyLikedPostIds);
   }
 
   @override
   String toString() {
-    return 'LikedPostState(likedTextPostIds: $likedTextPostIds, recentlyLikedTextPostIds: $recentlyLikedTextPostIds, likedComicPostIds: $likedComicPostIds, recentlyLikedComicPostIds: $recentlyLikedComicPostIds)';
+    return 'LikedPostState(likedPostIds: $likedPostIds, recentlyLikedPostIds: $recentlyLikedPostIds)';
   }
 
   @override
@@ -182,22 +132,16 @@ class _$_LikedPostState implements _LikedPostState {
         (other.runtimeType == runtimeType &&
             other is _$_LikedPostState &&
             const DeepCollectionEquality()
-                .equals(other._likedTextPostIds, _likedTextPostIds) &&
-            const DeepCollectionEquality().equals(
-                other._recentlyLikedTextPostIds, _recentlyLikedTextPostIds) &&
+                .equals(other._likedPostIds, _likedPostIds) &&
             const DeepCollectionEquality()
-                .equals(other._likedComicPostIds, _likedComicPostIds) &&
-            const DeepCollectionEquality().equals(
-                other._recentlyLikedComicPostIds, _recentlyLikedComicPostIds));
+                .equals(other._recentlyLikedPostIds, _recentlyLikedPostIds));
   }
 
   @override
   int get hashCode => Object.hash(
       runtimeType,
-      const DeepCollectionEquality().hash(_likedTextPostIds),
-      const DeepCollectionEquality().hash(_recentlyLikedTextPostIds),
-      const DeepCollectionEquality().hash(_likedComicPostIds),
-      const DeepCollectionEquality().hash(_recentlyLikedComicPostIds));
+      const DeepCollectionEquality().hash(_likedPostIds),
+      const DeepCollectionEquality().hash(_recentlyLikedPostIds));
 
   @JsonKey(ignore: true)
   @override
@@ -207,20 +151,13 @@ class _$_LikedPostState implements _LikedPostState {
 
 abstract class _LikedPostState implements LikedPostState {
   const factory _LikedPostState(
-          {required final Set<String> likedTextPostIds,
-          required final Set<String> recentlyLikedTextPostIds,
-          required final Set<String> likedComicPostIds,
-          required final Set<String> recentlyLikedComicPostIds}) =
-      _$_LikedPostState;
+      {required final Set<String> likedPostIds,
+      required final Set<String> recentlyLikedPostIds}) = _$_LikedPostState;
 
   @override
-  Set<String> get likedTextPostIds;
+  Set<String> get likedPostIds;
   @override
-  Set<String> get recentlyLikedTextPostIds;
-  @override
-  Set<String> get likedComicPostIds;
-  @override
-  Set<String> get recentlyLikedComicPostIds;
+  Set<String> get recentlyLikedPostIds;
   @override
   @JsonKey(ignore: true)
   _$$_LikedPostStateCopyWith<_$_LikedPostState> get copyWith =>

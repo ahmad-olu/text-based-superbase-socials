@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:formz/formz.dart';
 import 'package:geat/auth/application/username_check_bloc/username_check_bloc.dart';
 import 'package:geat/core/domain/username_input.dart';
 

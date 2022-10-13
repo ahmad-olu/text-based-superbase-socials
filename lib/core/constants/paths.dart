@@ -1,8 +1,7 @@
 class Paths {
   // Top level collections.
   static const String users = 'users';
-  static const String textPosts = 'textPosts';
-  static const String comicPosts = 'comicPosts';
+  static const String posts = 'posts';
   static const String likes = 'likes';
   static const String comments = 'comments';
   static const String reImagined = 'reImagined';
@@ -14,16 +13,13 @@ class Paths {
   static const String savedPost = 'savedPost';
   static const String category = 'category';
 
-  // Subcollections
-  static const String textPostLikes = 'textPostLikes';
-  static const String comicPostLikes = 'comicPostLikes';
+  // SubCollections
+  static const String postLikes = 'postLikes';
   static const String reImaginedPostLikes = 'reImaginedPostLikes';
-  static const String textPostComments = 'textPostComments';
-  static const String comicPostComments = 'comicPostComments';
-  static const String textPostReImagined = 'textPostReImagined';
+  static const String postComments = 'postComments';
+  static const String postReImagined = 'postReImagined';
   static const String userFollowers = 'userFollowers';
   static const String userFollowing = 'userFollowing';
-  static const String userTextFeed = 'userTextFeed';
-  static const String userComicFeed = 'userComicFeed';
+  static const String userFeed = 'userFeed';
   static const String userNotifications = 'userNotifications';
 }

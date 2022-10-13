@@ -12,261 +12,458 @@
 
 // ignore_for_file: no_leading_underscores_for_library_prefixes
 import 'package:auto_route/auto_route.dart' as _i8;
-import 'package:flutter/material.dart' as _i24;
+import 'package:flutter/material.dart' as _i25;
 
 import '../../auth/presentaion/forgot_password_page.dart' as _i6;
 import '../../auth/presentaion/registration_page.dart' as _i3;
 import '../../auth/presentaion/usename_page.dart' as _i4;
 import '../../auth/presentaion/verify_email_page.dart' as _i5;
 import '../../auth/presentaion/walk_in_page.dart' as _i2;
-import '../../comment/presentaion/comment_comic_page.dart' as _i18;
-import '../../comment/presentaion/comment_text_page.dart' as _i17;
+import '../../comment/presentaion/comment_comic_page.dart' as _i16;
+import '../../comment/presentaion/comment_text_page.dart' as _i15;
 import '../../feed/presentaion/book_details_page.dart' as _i12;
 import '../../feed/presentaion/comic_details_page.dart' as _i13;
 import '../../feed/presentaion/comic_feed_details_page.dart' as _i11;
 import '../../feed/presentaion/feed_page.dart' as _i9;
 import '../../feed/presentaion/text_feed_details_page.dart' as _i10;
 import '../../home/presentaion/home_page.dart' as _i7;
-import '../../notification/presentaion/notification_page.dart' as _i22;
-import '../../post/domain/comic_post_model.dart' as _i26;
-import '../../post/domain/text_post_model.dart' as _i25;
-import '../../post/presentaion/comic_post_page.dart' as _i15;
-import '../../post/presentaion/text_post_page.dart' as _i14;
+import '../../notification/presentaion/notification_page.dart' as _i23;
+import '../../post/domain/post_model.dart' as _i26;
+import '../../post/presentaion/comic_post_page.dart' as _i22;
+import '../../post/presentaion/post_page.dart' as _i20;
+import '../../post/presentaion/text_post_page.dart' as _i21;
 import '../../profile/application/profile_bloc/profile_bloc.dart' as _i28;
-import '../../profile/presentation/edit_profile_page.dart' as _i20;
-import '../../profile/presentation/profile_page.dart' as _i16;
+import '../../profile/presentation/edit_profile_page.dart' as _i18;
+import '../../profile/presentation/profile_page.dart' as _i14;
 import '../../reImagined/application/bloc/re_imagined_bloc.dart' as _i27;
-import '../../reImagined/presentaion/re_imagined_page.dart' as _i19;
-import '../../search/presentaion/search_page.dart' as _i23;
-import '../../settings/presentaion/settings_page.dart' as _i21;
+import '../../reImagined/presentaion/re_imagined_page.dart' as _i17;
+import '../../search/presentaion/search_page.dart' as _i24;
+import '../../settings/presentaion/settings_page.dart' as _i19;
 import '../../splash/presentaion/splash_page.dart' as _i1;
 
 class AppRouter extends _i8.RootStackRouter {
-  AppRouter([_i24.GlobalKey<_i24.NavigatorState>? navigatorKey])
+  AppRouter([_i25.GlobalKey<_i25.NavigatorState>? navigatorKey])
       : super(navigatorKey);
 
   @override
   final Map<String, _i8.PageFactory> pagesMap = {
     SplashRoute.name: (routeData) {
       return _i8.MaterialPageX<dynamic>(
-          routeData: routeData, child: const _i1.SplashPage());
+        routeData: routeData,
+        child: const _i1.SplashPage(),
+      );
     },
     WalkInRoute.name: (routeData) {
       return _i8.MaterialPageX<dynamic>(
-          routeData: routeData, child: const _i2.WalkInPage());
+        routeData: routeData,
+        child: const _i2.WalkInPage(),
+      );
     },
     RegistrationRoute.name: (routeData) {
       final args = routeData.argsAs<RegistrationRouteArgs>();
       return _i8.MaterialPageX<dynamic>(
-          routeData: routeData,
-          child: _i3.RegistrationPage(key: args.key, username: args.username));
+        routeData: routeData,
+        child: _i3.RegistrationPage(
+          key: args.key,
+          username: args.username,
+        ),
+      );
     },
     UserNameCheckRoute.name: (routeData) {
       return _i8.MaterialPageX<dynamic>(
-          routeData: routeData, child: const _i4.UserNameCheckPage());
+        routeData: routeData,
+        child: const _i4.UserNameCheckPage(),
+      );
     },
     VerifyEmailRoute.name: (routeData) {
       return _i8.MaterialPageX<dynamic>(
-          routeData: routeData, child: const _i5.VerifyEmailPage());
+        routeData: routeData,
+        child: const _i5.VerifyEmailPage(),
+      );
     },
     ForgotPasswordRoute.name: (routeData) {
       return _i8.MaterialPageX<dynamic>(
-          routeData: routeData, child: const _i6.ForgotPasswordPage());
+        routeData: routeData,
+        child: const _i6.ForgotPasswordPage(),
+      );
     },
     HomeRoute.name: (routeData) {
       return _i8.MaterialPageX<dynamic>(
-          routeData: routeData, child: const _i7.HomePage());
+        routeData: routeData,
+        child: const _i7.HomePage(),
+      );
     },
     FeedsRouter.name: (routeData) {
       return _i8.MaterialPageX<dynamic>(
-          routeData: routeData, child: const _i8.EmptyRouterPage());
+        routeData: routeData,
+        child: const _i8.EmptyRouterPage(),
+      );
     },
     ProfileRouter.name: (routeData) {
       return _i8.MaterialPageX<dynamic>(
-          routeData: routeData, child: const _i8.EmptyRouterPage());
+        routeData: routeData,
+        child: const _i8.EmptyRouterPage(),
+      );
+    },
+    PostRouter.name: (routeData) {
+      return _i8.MaterialPageX<dynamic>(
+        routeData: routeData,
+        child: const _i8.EmptyRouterPage(),
+      );
     },
     NotificationRouter.name: (routeData) {
       return _i8.MaterialPageX<dynamic>(
-          routeData: routeData, child: const _i8.EmptyRouterPage());
+        routeData: routeData,
+        child: const _i8.EmptyRouterPage(),
+      );
     },
     SearchRouter.name: (routeData) {
       return _i8.MaterialPageX<dynamic>(
-          routeData: routeData, child: const _i8.EmptyRouterPage());
+        routeData: routeData,
+        child: const _i8.EmptyRouterPage(),
+      );
     },
     FeedsRoute.name: (routeData) {
       return _i8.MaterialPageX<dynamic>(
-          routeData: routeData, child: const _i9.FeedsPage());
+        routeData: routeData,
+        child: const _i9.FeedsPage(),
+      );
     },
     TextFeedsDetailsRoute.name: (routeData) {
       final args = routeData.argsAs<TextFeedsDetailsRouteArgs>();
       return _i8.MaterialPageX<dynamic>(
-          routeData: routeData,
-          child: _i10.TextFeedsDetailsPage(key: args.key, posts: args.posts));
+        routeData: routeData,
+        child: _i10.TextFeedsDetailsPage(
+          key: args.key,
+          posts: args.posts,
+        ),
+      );
     },
     ComicFeedsDetailsRoute.name: (routeData) {
       final args = routeData.argsAs<ComicFeedsDetailsRouteArgs>();
       return _i8.MaterialPageX<dynamic>(
-          routeData: routeData,
-          child: _i11.ComicFeedsDetailsPage(key: args.key, posts: args.posts));
+        routeData: routeData,
+        child: _i11.ComicFeedsDetailsPage(
+          key: args.key,
+          posts: args.posts,
+        ),
+      );
     },
     BooksDetailsRoute.name: (routeData) {
       final args = routeData.argsAs<BooksDetailsRouteArgs>();
       return _i8.MaterialPageX<dynamic>(
-          routeData: routeData,
-          child: _i12.BooksDetailsPage(
-              key: args.key,
-              posts: args.posts,
-              reImagined: args.reImagined,
-              isReImaginedAvailable: args.isReImaginedAvailable));
+        routeData: routeData,
+        child: _i12.BooksDetailsPage(
+          key: args.key,
+          posts: args.posts,
+          reImagined: args.reImagined,
+          isReImaginedAvailable: args.isReImaginedAvailable,
+        ),
+      );
     },
     ComicDetailsRoute.name: (routeData) {
       return _i8.MaterialPageX<dynamic>(
-          routeData: routeData, child: const _i13.ComicDetailsPage());
-    },
-    TextPostRoute.name: (routeData) {
-      return _i8.MaterialPageX<dynamic>(
-          routeData: routeData, child: const _i14.TextPostPage());
-    },
-    ComicPostRoute.name: (routeData) {
-      return _i8.MaterialPageX<dynamic>(
-          routeData: routeData, child: const _i15.ComicPostPage());
+        routeData: routeData,
+        child: const _i13.ComicDetailsPage(),
+      );
     },
     ProfileRoute.name: (routeData) {
       final args = routeData.argsAs<ProfileRouteArgs>();
       return _i8.MaterialPageX<dynamic>(
-          routeData: routeData,
-          child: _i16.ProfilePage(key: args.key, userId: args.userId));
+        routeData: routeData,
+        child: _i14.ProfilePage(
+          key: args.key,
+          userId: args.userId,
+        ),
+      );
     },
     CommentTextRoute.name: (routeData) {
       final args = routeData.argsAs<CommentTextRouteArgs>();
       return _i8.MaterialPageX<dynamic>(
-          routeData: routeData,
-          child: _i17.CommentTextPage(key: args.key, textPost: args.textPost));
+        routeData: routeData,
+        child: _i15.CommentTextPage(
+          key: args.key,
+          post: args.post,
+        ),
+      );
     },
     CommentComicRoute.name: (routeData) {
       final args = routeData.argsAs<CommentComicRouteArgs>();
       return _i8.MaterialPageX<dynamic>(
-          routeData: routeData,
-          child:
-              _i18.CommentComicPage(key: args.key, comicPost: args.comicPost));
+        routeData: routeData,
+        child: _i16.CommentComicPage(
+          key: args.key,
+          post: args.post,
+        ),
+      );
     },
     ReImaginedRoute.name: (routeData) {
       final args = routeData.argsAs<ReImaginedRouteArgs>();
       return _i8.MaterialPageX<dynamic>(
-          routeData: routeData,
-          child: _i19.ReImaginedPage(
-              key: args.key,
-              textPost: args.textPost,
-              reImaginedBloc: args.reImaginedBloc));
+        routeData: routeData,
+        child: _i17.ReImaginedPage(
+          key: args.key,
+          post: args.post,
+          reImaginedBloc: args.reImaginedBloc,
+        ),
+      );
     },
     EditProfileRoute.name: (routeData) {
       final args = routeData.argsAs<EditProfileRouteArgs>();
       return _i8.MaterialPageX<dynamic>(
-          routeData: routeData,
-          child: _i20.EditProfilePage(
-              key: args.key, profileBloc: args.profileBloc));
+        routeData: routeData,
+        child: _i18.EditProfilePage(
+          key: args.key,
+          profileBloc: args.profileBloc,
+        ),
+      );
     },
     SettingsRoute.name: (routeData) {
       return _i8.MaterialPageX<dynamic>(
-          routeData: routeData, child: const _i21.SettingsPage());
+        routeData: routeData,
+        child: const _i19.SettingsPage(),
+      );
+    },
+    PostRoute.name: (routeData) {
+      return _i8.MaterialPageX<dynamic>(
+        routeData: routeData,
+        child: const _i20.PostPage(),
+      );
+    },
+    TextPostRoute.name: (routeData) {
+      return _i8.MaterialPageX<dynamic>(
+        routeData: routeData,
+        child: const _i21.TextPostPage(),
+      );
+    },
+    ComicPostRoute.name: (routeData) {
+      return _i8.MaterialPageX<dynamic>(
+        routeData: routeData,
+        child: const _i22.ComicPostPage(),
+      );
     },
     NotificationRoute.name: (routeData) {
       return _i8.MaterialPageX<dynamic>(
-          routeData: routeData, child: const _i22.NotificationPage());
+        routeData: routeData,
+        child: const _i23.NotificationPage(),
+      );
     },
     SearchRoute.name: (routeData) {
       return _i8.MaterialPageX<dynamic>(
-          routeData: routeData, child: const _i23.SearchPage());
-    }
+        routeData: routeData,
+        child: const _i24.SearchPage(),
+      );
+    },
   };
 
   @override
   List<_i8.RouteConfig> get routes => [
-        _i8.RouteConfig(SplashRoute.name, path: '/'),
-        _i8.RouteConfig(WalkInRoute.name, path: 'walk-in'),
-        _i8.RouteConfig(RegistrationRoute.name, path: 'registration'),
-        _i8.RouteConfig(UserNameCheckRoute.name, path: 'username-check'),
-        _i8.RouteConfig(VerifyEmailRoute.name, path: 'verify-email'),
-        _i8.RouteConfig(ForgotPasswordRoute.name, path: 'forgot-password'),
-        _i8.RouteConfig(HomeRoute.name, path: 'home', children: [
-          _i8.RouteConfig(FeedsRouter.name,
+        _i8.RouteConfig(
+          SplashRoute.name,
+          path: '/',
+        ),
+        _i8.RouteConfig(
+          WalkInRoute.name,
+          path: 'walk-in',
+        ),
+        _i8.RouteConfig(
+          RegistrationRoute.name,
+          path: 'registration',
+        ),
+        _i8.RouteConfig(
+          UserNameCheckRoute.name,
+          path: 'username-check',
+        ),
+        _i8.RouteConfig(
+          VerifyEmailRoute.name,
+          path: 'verify-email',
+        ),
+        _i8.RouteConfig(
+          ForgotPasswordRoute.name,
+          path: 'forgot-password',
+        ),
+        _i8.RouteConfig(
+          HomeRoute.name,
+          path: 'home',
+          children: [
+            _i8.RouteConfig(
+              FeedsRouter.name,
               path: 'feeds',
               parent: HomeRoute.name,
               children: [
-                _i8.RouteConfig(FeedsRoute.name,
-                    path: '', parent: FeedsRouter.name),
-                _i8.RouteConfig(TextFeedsDetailsRoute.name,
-                    path: ':text-feed', parent: FeedsRouter.name),
-                _i8.RouteConfig(ComicFeedsDetailsRoute.name,
-                    path: ':comic-feed', parent: FeedsRouter.name),
-                _i8.RouteConfig(BooksDetailsRoute.name,
-                    path: ':booksId', parent: FeedsRouter.name),
-                _i8.RouteConfig(ComicDetailsRoute.name,
-                    path: ':comicId', parent: FeedsRouter.name),
-                _i8.RouteConfig(TextPostRoute.name,
-                    path: ':editors', parent: FeedsRouter.name),
-                _i8.RouteConfig(ComicPostRoute.name,
-                    path: ':comic-posts', parent: FeedsRouter.name),
-                _i8.RouteConfig(ProfileRoute.name,
-                    path: 'view-profile', parent: FeedsRouter.name),
-                _i8.RouteConfig(CommentTextRoute.name,
-                    path: 'comment-text', parent: FeedsRouter.name),
-                _i8.RouteConfig(CommentComicRoute.name,
-                    path: 'comment-comic', parent: FeedsRouter.name),
-                _i8.RouteConfig(ReImaginedRoute.name,
-                    path: ':reImagined', parent: FeedsRouter.name)
-              ]),
-          _i8.RouteConfig(ProfileRouter.name,
+                _i8.RouteConfig(
+                  FeedsRoute.name,
+                  path: '',
+                  parent: FeedsRouter.name,
+                ),
+                _i8.RouteConfig(
+                  TextFeedsDetailsRoute.name,
+                  path: ':text-feed',
+                  parent: FeedsRouter.name,
+                ),
+                _i8.RouteConfig(
+                  ComicFeedsDetailsRoute.name,
+                  path: ':comic-feed',
+                  parent: FeedsRouter.name,
+                ),
+                _i8.RouteConfig(
+                  BooksDetailsRoute.name,
+                  path: ':booksId',
+                  parent: FeedsRouter.name,
+                ),
+                _i8.RouteConfig(
+                  ComicDetailsRoute.name,
+                  path: ':comicId',
+                  parent: FeedsRouter.name,
+                ),
+                _i8.RouteConfig(
+                  ProfileRoute.name,
+                  path: 'view-profile',
+                  parent: FeedsRouter.name,
+                ),
+                _i8.RouteConfig(
+                  CommentTextRoute.name,
+                  path: 'comment-text',
+                  parent: FeedsRouter.name,
+                ),
+                _i8.RouteConfig(
+                  CommentComicRoute.name,
+                  path: 'comment-comic',
+                  parent: FeedsRouter.name,
+                ),
+                _i8.RouteConfig(
+                  ReImaginedRoute.name,
+                  path: ':reImagined',
+                  parent: FeedsRouter.name,
+                ),
+              ],
+            ),
+            _i8.RouteConfig(
+              ProfileRouter.name,
               path: 'profile',
               parent: HomeRoute.name,
               children: [
-                _i8.RouteConfig(ProfileRoute.name,
-                    path: 'view-profile', parent: ProfileRouter.name),
-                _i8.RouteConfig(EditProfileRoute.name,
-                    path: ':profileId', parent: ProfileRouter.name),
-                _i8.RouteConfig(SettingsRoute.name,
-                    path: ':settings', parent: ProfileRouter.name),
-                _i8.RouteConfig(TextFeedsDetailsRoute.name,
-                    path: ':text-feed', parent: ProfileRouter.name),
-                _i8.RouteConfig(ComicFeedsDetailsRoute.name,
-                    path: ':comic-feed', parent: ProfileRouter.name),
-                _i8.RouteConfig(BooksDetailsRoute.name,
-                    path: ':booksId', parent: ProfileRouter.name),
-                _i8.RouteConfig(ComicDetailsRoute.name,
-                    path: ':comicId', parent: ProfileRouter.name),
-                _i8.RouteConfig(ReImaginedRoute.name,
-                    path: ':reImagined', parent: ProfileRouter.name)
-              ]),
-          _i8.RouteConfig(NotificationRouter.name,
+                _i8.RouteConfig(
+                  ProfileRoute.name,
+                  path: 'view-profile',
+                  parent: ProfileRouter.name,
+                ),
+                _i8.RouteConfig(
+                  EditProfileRoute.name,
+                  path: ':profileId',
+                  parent: ProfileRouter.name,
+                ),
+                _i8.RouteConfig(
+                  SettingsRoute.name,
+                  path: ':settings',
+                  parent: ProfileRouter.name,
+                ),
+                _i8.RouteConfig(
+                  TextFeedsDetailsRoute.name,
+                  path: ':text-feed',
+                  parent: ProfileRouter.name,
+                ),
+                _i8.RouteConfig(
+                  ComicFeedsDetailsRoute.name,
+                  path: ':comic-feed',
+                  parent: ProfileRouter.name,
+                ),
+                _i8.RouteConfig(
+                  BooksDetailsRoute.name,
+                  path: ':booksId',
+                  parent: ProfileRouter.name,
+                ),
+                _i8.RouteConfig(
+                  ComicDetailsRoute.name,
+                  path: ':comicId',
+                  parent: ProfileRouter.name,
+                ),
+                _i8.RouteConfig(
+                  ReImaginedRoute.name,
+                  path: ':reImagined',
+                  parent: ProfileRouter.name,
+                ),
+              ],
+            ),
+            _i8.RouteConfig(
+              PostRouter.name,
+              path: 'post',
+              parent: HomeRoute.name,
+              children: [
+                _i8.RouteConfig(
+                  PostRoute.name,
+                  path: '',
+                  parent: PostRouter.name,
+                ),
+                _i8.RouteConfig(
+                  TextPostRoute.name,
+                  path: ':editors',
+                  parent: PostRouter.name,
+                ),
+                _i8.RouteConfig(
+                  ComicPostRoute.name,
+                  path: ':comic-posts',
+                  parent: PostRouter.name,
+                ),
+              ],
+            ),
+            _i8.RouteConfig(
+              NotificationRouter.name,
               path: 'notification',
               parent: HomeRoute.name,
               children: [
-                _i8.RouteConfig(NotificationRoute.name,
-                    path: '', parent: NotificationRouter.name),
-                _i8.RouteConfig(ProfileRoute.name,
-                    path: 'view-profile', parent: NotificationRouter.name),
-                _i8.RouteConfig(CommentTextRoute.name,
-                    path: 'comment-text', parent: NotificationRouter.name),
-                _i8.RouteConfig(CommentComicRoute.name,
-                    path: 'comment-comic', parent: NotificationRouter.name)
-              ]),
-          _i8.RouteConfig(SearchRouter.name,
+                _i8.RouteConfig(
+                  NotificationRoute.name,
+                  path: '',
+                  parent: NotificationRouter.name,
+                ),
+                _i8.RouteConfig(
+                  ProfileRoute.name,
+                  path: 'view-profile',
+                  parent: NotificationRouter.name,
+                ),
+                _i8.RouteConfig(
+                  CommentTextRoute.name,
+                  path: 'comment-text',
+                  parent: NotificationRouter.name,
+                ),
+                _i8.RouteConfig(
+                  CommentComicRoute.name,
+                  path: 'comment-comic',
+                  parent: NotificationRouter.name,
+                ),
+              ],
+            ),
+            _i8.RouteConfig(
+              SearchRouter.name,
               path: 'search',
               parent: HomeRoute.name,
               children: [
-                _i8.RouteConfig(SearchRoute.name,
-                    path: '', parent: SearchRouter.name),
-                _i8.RouteConfig(ProfileRoute.name,
-                    path: 'view-profile', parent: SearchRouter.name)
-              ])
-        ])
+                _i8.RouteConfig(
+                  SearchRoute.name,
+                  path: '',
+                  parent: SearchRouter.name,
+                ),
+                _i8.RouteConfig(
+                  ProfileRoute.name,
+                  path: 'view-profile',
+                  parent: SearchRouter.name,
+                ),
+              ],
+            ),
+          ],
+        ),
       ];
 }
 
 /// generated route for
 /// [_i1.SplashPage]
 class SplashRoute extends _i8.PageRouteInfo<void> {
-  const SplashRoute() : super(SplashRoute.name, path: '/');
+  const SplashRoute()
+      : super(
+          SplashRoute.name,
+          path: '/',
+        );
 
   static const String name = 'SplashRoute';
 }
@@ -274,7 +471,11 @@ class SplashRoute extends _i8.PageRouteInfo<void> {
 /// generated route for
 /// [_i2.WalkInPage]
 class WalkInRoute extends _i8.PageRouteInfo<void> {
-  const WalkInRoute() : super(WalkInRoute.name, path: 'walk-in');
+  const WalkInRoute()
+      : super(
+          WalkInRoute.name,
+          path: 'walk-in',
+        );
 
   static const String name = 'WalkInRoute';
 }
@@ -282,18 +483,28 @@ class WalkInRoute extends _i8.PageRouteInfo<void> {
 /// generated route for
 /// [_i3.RegistrationPage]
 class RegistrationRoute extends _i8.PageRouteInfo<RegistrationRouteArgs> {
-  RegistrationRoute({_i24.Key? key, required String username})
-      : super(RegistrationRoute.name,
-            path: 'registration',
-            args: RegistrationRouteArgs(key: key, username: username));
+  RegistrationRoute({
+    _i25.Key? key,
+    required String username,
+  }) : super(
+          RegistrationRoute.name,
+          path: 'registration',
+          args: RegistrationRouteArgs(
+            key: key,
+            username: username,
+          ),
+        );
 
   static const String name = 'RegistrationRoute';
 }
 
 class RegistrationRouteArgs {
-  const RegistrationRouteArgs({this.key, required this.username});
+  const RegistrationRouteArgs({
+    this.key,
+    required this.username,
+  });
 
-  final _i24.Key? key;
+  final _i25.Key? key;
 
   final String username;
 
@@ -307,7 +518,10 @@ class RegistrationRouteArgs {
 /// [_i4.UserNameCheckPage]
 class UserNameCheckRoute extends _i8.PageRouteInfo<void> {
   const UserNameCheckRoute()
-      : super(UserNameCheckRoute.name, path: 'username-check');
+      : super(
+          UserNameCheckRoute.name,
+          path: 'username-check',
+        );
 
   static const String name = 'UserNameCheckRoute';
 }
@@ -315,7 +529,11 @@ class UserNameCheckRoute extends _i8.PageRouteInfo<void> {
 /// generated route for
 /// [_i5.VerifyEmailPage]
 class VerifyEmailRoute extends _i8.PageRouteInfo<void> {
-  const VerifyEmailRoute() : super(VerifyEmailRoute.name, path: 'verify-email');
+  const VerifyEmailRoute()
+      : super(
+          VerifyEmailRoute.name,
+          path: 'verify-email',
+        );
 
   static const String name = 'VerifyEmailRoute';
 }
@@ -324,7 +542,10 @@ class VerifyEmailRoute extends _i8.PageRouteInfo<void> {
 /// [_i6.ForgotPasswordPage]
 class ForgotPasswordRoute extends _i8.PageRouteInfo<void> {
   const ForgotPasswordRoute()
-      : super(ForgotPasswordRoute.name, path: 'forgot-password');
+      : super(
+          ForgotPasswordRoute.name,
+          path: 'forgot-password',
+        );
 
   static const String name = 'ForgotPasswordRoute';
 }
@@ -333,7 +554,11 @@ class ForgotPasswordRoute extends _i8.PageRouteInfo<void> {
 /// [_i7.HomePage]
 class HomeRoute extends _i8.PageRouteInfo<void> {
   const HomeRoute({List<_i8.PageRouteInfo>? children})
-      : super(HomeRoute.name, path: 'home', initialChildren: children);
+      : super(
+          HomeRoute.name,
+          path: 'home',
+          initialChildren: children,
+        );
 
   static const String name = 'HomeRoute';
 }
@@ -342,7 +567,11 @@ class HomeRoute extends _i8.PageRouteInfo<void> {
 /// [_i8.EmptyRouterPage]
 class FeedsRouter extends _i8.PageRouteInfo<void> {
   const FeedsRouter({List<_i8.PageRouteInfo>? children})
-      : super(FeedsRouter.name, path: 'feeds', initialChildren: children);
+      : super(
+          FeedsRouter.name,
+          path: 'feeds',
+          initialChildren: children,
+        );
 
   static const String name = 'FeedsRouter';
 }
@@ -351,17 +580,37 @@ class FeedsRouter extends _i8.PageRouteInfo<void> {
 /// [_i8.EmptyRouterPage]
 class ProfileRouter extends _i8.PageRouteInfo<void> {
   const ProfileRouter({List<_i8.PageRouteInfo>? children})
-      : super(ProfileRouter.name, path: 'profile', initialChildren: children);
+      : super(
+          ProfileRouter.name,
+          path: 'profile',
+          initialChildren: children,
+        );
 
   static const String name = 'ProfileRouter';
 }
 
 /// generated route for
 /// [_i8.EmptyRouterPage]
+class PostRouter extends _i8.PageRouteInfo<void> {
+  const PostRouter({List<_i8.PageRouteInfo>? children})
+      : super(
+          PostRouter.name,
+          path: 'post',
+          initialChildren: children,
+        );
+
+  static const String name = 'PostRouter';
+}
+
+/// generated route for
+/// [_i8.EmptyRouterPage]
 class NotificationRouter extends _i8.PageRouteInfo<void> {
   const NotificationRouter({List<_i8.PageRouteInfo>? children})
-      : super(NotificationRouter.name,
-            path: 'notification', initialChildren: children);
+      : super(
+          NotificationRouter.name,
+          path: 'notification',
+          initialChildren: children,
+        );
 
   static const String name = 'NotificationRouter';
 }
@@ -370,7 +619,11 @@ class NotificationRouter extends _i8.PageRouteInfo<void> {
 /// [_i8.EmptyRouterPage]
 class SearchRouter extends _i8.PageRouteInfo<void> {
   const SearchRouter({List<_i8.PageRouteInfo>? children})
-      : super(SearchRouter.name, path: 'search', initialChildren: children);
+      : super(
+          SearchRouter.name,
+          path: 'search',
+          initialChildren: children,
+        );
 
   static const String name = 'SearchRouter';
 }
@@ -378,7 +631,11 @@ class SearchRouter extends _i8.PageRouteInfo<void> {
 /// generated route for
 /// [_i9.FeedsPage]
 class FeedsRoute extends _i8.PageRouteInfo<void> {
-  const FeedsRoute() : super(FeedsRoute.name, path: '');
+  const FeedsRoute()
+      : super(
+          FeedsRoute.name,
+          path: '',
+        );
 
   static const String name = 'FeedsRoute';
 }
@@ -387,20 +644,30 @@ class FeedsRoute extends _i8.PageRouteInfo<void> {
 /// [_i10.TextFeedsDetailsPage]
 class TextFeedsDetailsRoute
     extends _i8.PageRouteInfo<TextFeedsDetailsRouteArgs> {
-  TextFeedsDetailsRoute({_i24.Key? key, required _i25.TextPost posts})
-      : super(TextFeedsDetailsRoute.name,
-            path: ':text-feed',
-            args: TextFeedsDetailsRouteArgs(key: key, posts: posts));
+  TextFeedsDetailsRoute({
+    _i25.Key? key,
+    required _i26.Post posts,
+  }) : super(
+          TextFeedsDetailsRoute.name,
+          path: ':text-feed',
+          args: TextFeedsDetailsRouteArgs(
+            key: key,
+            posts: posts,
+          ),
+        );
 
   static const String name = 'TextFeedsDetailsRoute';
 }
 
 class TextFeedsDetailsRouteArgs {
-  const TextFeedsDetailsRouteArgs({this.key, required this.posts});
+  const TextFeedsDetailsRouteArgs({
+    this.key,
+    required this.posts,
+  });
 
-  final _i24.Key? key;
+  final _i25.Key? key;
 
-  final _i25.TextPost posts;
+  final _i26.Post posts;
 
   @override
   String toString() {
@@ -412,20 +679,30 @@ class TextFeedsDetailsRouteArgs {
 /// [_i11.ComicFeedsDetailsPage]
 class ComicFeedsDetailsRoute
     extends _i8.PageRouteInfo<ComicFeedsDetailsRouteArgs> {
-  ComicFeedsDetailsRoute({_i24.Key? key, required _i26.ComicPost posts})
-      : super(ComicFeedsDetailsRoute.name,
-            path: ':comic-feed',
-            args: ComicFeedsDetailsRouteArgs(key: key, posts: posts));
+  ComicFeedsDetailsRoute({
+    _i25.Key? key,
+    required _i26.Post posts,
+  }) : super(
+          ComicFeedsDetailsRoute.name,
+          path: ':comic-feed',
+          args: ComicFeedsDetailsRouteArgs(
+            key: key,
+            posts: posts,
+          ),
+        );
 
   static const String name = 'ComicFeedsDetailsRoute';
 }
 
 class ComicFeedsDetailsRouteArgs {
-  const ComicFeedsDetailsRouteArgs({this.key, required this.posts});
+  const ComicFeedsDetailsRouteArgs({
+    this.key,
+    required this.posts,
+  });
 
-  final _i24.Key? key;
+  final _i25.Key? key;
 
-  final _i26.ComicPost posts;
+  final _i26.Post posts;
 
   @override
   String toString() {
@@ -436,32 +713,36 @@ class ComicFeedsDetailsRouteArgs {
 /// generated route for
 /// [_i12.BooksDetailsPage]
 class BooksDetailsRoute extends _i8.PageRouteInfo<BooksDetailsRouteArgs> {
-  BooksDetailsRoute(
-      {_i24.Key? key,
-      _i25.TextPost? posts,
-      String? reImagined,
-      required bool isReImaginedAvailable})
-      : super(BooksDetailsRoute.name,
-            path: ':booksId',
-            args: BooksDetailsRouteArgs(
-                key: key,
-                posts: posts,
-                reImagined: reImagined,
-                isReImaginedAvailable: isReImaginedAvailable));
+  BooksDetailsRoute({
+    _i25.Key? key,
+    _i26.Post? posts,
+    String? reImagined,
+    required bool isReImaginedAvailable,
+  }) : super(
+          BooksDetailsRoute.name,
+          path: ':booksId',
+          args: BooksDetailsRouteArgs(
+            key: key,
+            posts: posts,
+            reImagined: reImagined,
+            isReImaginedAvailable: isReImaginedAvailable,
+          ),
+        );
 
   static const String name = 'BooksDetailsRoute';
 }
 
 class BooksDetailsRouteArgs {
-  const BooksDetailsRouteArgs(
-      {this.key,
-      this.posts,
-      this.reImagined,
-      required this.isReImaginedAvailable});
+  const BooksDetailsRouteArgs({
+    this.key,
+    this.posts,
+    this.reImagined,
+    required this.isReImaginedAvailable,
+  });
 
-  final _i24.Key? key;
+  final _i25.Key? key;
 
-  final _i25.TextPost? posts;
+  final _i26.Post? posts;
 
   final String? reImagined;
 
@@ -476,42 +757,40 @@ class BooksDetailsRouteArgs {
 /// generated route for
 /// [_i13.ComicDetailsPage]
 class ComicDetailsRoute extends _i8.PageRouteInfo<void> {
-  const ComicDetailsRoute() : super(ComicDetailsRoute.name, path: ':comicId');
+  const ComicDetailsRoute()
+      : super(
+          ComicDetailsRoute.name,
+          path: ':comicId',
+        );
 
   static const String name = 'ComicDetailsRoute';
 }
 
 /// generated route for
-/// [_i14.TextPostPage]
-class TextPostRoute extends _i8.PageRouteInfo<void> {
-  const TextPostRoute() : super(TextPostRoute.name, path: ':editors');
-
-  static const String name = 'TextPostRoute';
-}
-
-/// generated route for
-/// [_i15.ComicPostPage]
-class ComicPostRoute extends _i8.PageRouteInfo<void> {
-  const ComicPostRoute() : super(ComicPostRoute.name, path: ':comic-posts');
-
-  static const String name = 'ComicPostRoute';
-}
-
-/// generated route for
-/// [_i16.ProfilePage]
+/// [_i14.ProfilePage]
 class ProfileRoute extends _i8.PageRouteInfo<ProfileRouteArgs> {
-  ProfileRoute({_i24.Key? key, required String userId})
-      : super(ProfileRoute.name,
-            path: 'view-profile',
-            args: ProfileRouteArgs(key: key, userId: userId));
+  ProfileRoute({
+    _i25.Key? key,
+    required String userId,
+  }) : super(
+          ProfileRoute.name,
+          path: 'view-profile',
+          args: ProfileRouteArgs(
+            key: key,
+            userId: userId,
+          ),
+        );
 
   static const String name = 'ProfileRoute';
 }
 
 class ProfileRouteArgs {
-  const ProfileRouteArgs({this.key, required this.userId});
+  const ProfileRouteArgs({
+    this.key,
+    required this.userId,
+  });
 
-  final _i24.Key? key;
+  final _i25.Key? key;
 
   final String userId;
 
@@ -522,99 +801,137 @@ class ProfileRouteArgs {
 }
 
 /// generated route for
-/// [_i17.CommentTextPage]
+/// [_i15.CommentTextPage]
 class CommentTextRoute extends _i8.PageRouteInfo<CommentTextRouteArgs> {
-  CommentTextRoute({_i24.Key? key, required _i25.TextPost textPost})
-      : super(CommentTextRoute.name,
-            path: 'comment-text',
-            args: CommentTextRouteArgs(key: key, textPost: textPost));
+  CommentTextRoute({
+    _i25.Key? key,
+    required _i26.Post post,
+  }) : super(
+          CommentTextRoute.name,
+          path: 'comment-text',
+          args: CommentTextRouteArgs(
+            key: key,
+            post: post,
+          ),
+        );
 
   static const String name = 'CommentTextRoute';
 }
 
 class CommentTextRouteArgs {
-  const CommentTextRouteArgs({this.key, required this.textPost});
+  const CommentTextRouteArgs({
+    this.key,
+    required this.post,
+  });
 
-  final _i24.Key? key;
+  final _i25.Key? key;
 
-  final _i25.TextPost textPost;
+  final _i26.Post post;
 
   @override
   String toString() {
-    return 'CommentTextRouteArgs{key: $key, textPost: $textPost}';
+    return 'CommentTextRouteArgs{key: $key, post: $post}';
   }
 }
 
 /// generated route for
-/// [_i18.CommentComicPage]
+/// [_i16.CommentComicPage]
 class CommentComicRoute extends _i8.PageRouteInfo<CommentComicRouteArgs> {
-  CommentComicRoute({_i24.Key? key, required _i26.ComicPost comicPost})
-      : super(CommentComicRoute.name,
-            path: 'comment-comic',
-            args: CommentComicRouteArgs(key: key, comicPost: comicPost));
+  CommentComicRoute({
+    _i25.Key? key,
+    required _i26.Post post,
+  }) : super(
+          CommentComicRoute.name,
+          path: 'comment-comic',
+          args: CommentComicRouteArgs(
+            key: key,
+            post: post,
+          ),
+        );
 
   static const String name = 'CommentComicRoute';
 }
 
 class CommentComicRouteArgs {
-  const CommentComicRouteArgs({this.key, required this.comicPost});
+  const CommentComicRouteArgs({
+    this.key,
+    required this.post,
+  });
 
-  final _i24.Key? key;
+  final _i25.Key? key;
 
-  final _i26.ComicPost comicPost;
+  final _i26.Post post;
 
   @override
   String toString() {
-    return 'CommentComicRouteArgs{key: $key, comicPost: $comicPost}';
+    return 'CommentComicRouteArgs{key: $key, post: $post}';
   }
 }
 
 /// generated route for
-/// [_i19.ReImaginedPage]
+/// [_i17.ReImaginedPage]
 class ReImaginedRoute extends _i8.PageRouteInfo<ReImaginedRouteArgs> {
-  ReImaginedRoute(
-      {_i24.Key? key,
-      required _i25.TextPost textPost,
-      required _i27.ReImaginedBloc reImaginedBloc})
-      : super(ReImaginedRoute.name,
-            path: ':reImagined',
-            args: ReImaginedRouteArgs(
-                key: key, textPost: textPost, reImaginedBloc: reImaginedBloc));
+  ReImaginedRoute({
+    _i25.Key? key,
+    required _i26.Post post,
+    required _i27.ReImaginedBloc reImaginedBloc,
+  }) : super(
+          ReImaginedRoute.name,
+          path: ':reImagined',
+          args: ReImaginedRouteArgs(
+            key: key,
+            post: post,
+            reImaginedBloc: reImaginedBloc,
+          ),
+        );
 
   static const String name = 'ReImaginedRoute';
 }
 
 class ReImaginedRouteArgs {
-  const ReImaginedRouteArgs(
-      {this.key, required this.textPost, required this.reImaginedBloc});
+  const ReImaginedRouteArgs({
+    this.key,
+    required this.post,
+    required this.reImaginedBloc,
+  });
 
-  final _i24.Key? key;
+  final _i25.Key? key;
 
-  final _i25.TextPost textPost;
+  final _i26.Post post;
 
   final _i27.ReImaginedBloc reImaginedBloc;
 
   @override
   String toString() {
-    return 'ReImaginedRouteArgs{key: $key, textPost: $textPost, reImaginedBloc: $reImaginedBloc}';
+    return 'ReImaginedRouteArgs{key: $key, post: $post, reImaginedBloc: $reImaginedBloc}';
   }
 }
 
 /// generated route for
-/// [_i20.EditProfilePage]
+/// [_i18.EditProfilePage]
 class EditProfileRoute extends _i8.PageRouteInfo<EditProfileRouteArgs> {
-  EditProfileRoute({_i24.Key? key, required _i28.ProfileBloc profileBloc})
-      : super(EditProfileRoute.name,
-            path: ':profileId',
-            args: EditProfileRouteArgs(key: key, profileBloc: profileBloc));
+  EditProfileRoute({
+    _i25.Key? key,
+    required _i28.ProfileBloc profileBloc,
+  }) : super(
+          EditProfileRoute.name,
+          path: ':profileId',
+          args: EditProfileRouteArgs(
+            key: key,
+            profileBloc: profileBloc,
+          ),
+        );
 
   static const String name = 'EditProfileRoute';
 }
 
 class EditProfileRouteArgs {
-  const EditProfileRouteArgs({this.key, required this.profileBloc});
+  const EditProfileRouteArgs({
+    this.key,
+    required this.profileBloc,
+  });
 
-  final _i24.Key? key;
+  final _i25.Key? key;
 
   final _i28.ProfileBloc profileBloc;
 
@@ -625,25 +942,73 @@ class EditProfileRouteArgs {
 }
 
 /// generated route for
-/// [_i21.SettingsPage]
+/// [_i19.SettingsPage]
 class SettingsRoute extends _i8.PageRouteInfo<void> {
-  const SettingsRoute() : super(SettingsRoute.name, path: ':settings');
+  const SettingsRoute()
+      : super(
+          SettingsRoute.name,
+          path: ':settings',
+        );
 
   static const String name = 'SettingsRoute';
 }
 
 /// generated route for
-/// [_i22.NotificationPage]
+/// [_i20.PostPage]
+class PostRoute extends _i8.PageRouteInfo<void> {
+  const PostRoute()
+      : super(
+          PostRoute.name,
+          path: '',
+        );
+
+  static const String name = 'PostRoute';
+}
+
+/// generated route for
+/// [_i21.TextPostPage]
+class TextPostRoute extends _i8.PageRouteInfo<void> {
+  const TextPostRoute()
+      : super(
+          TextPostRoute.name,
+          path: ':editors',
+        );
+
+  static const String name = 'TextPostRoute';
+}
+
+/// generated route for
+/// [_i22.ComicPostPage]
+class ComicPostRoute extends _i8.PageRouteInfo<void> {
+  const ComicPostRoute()
+      : super(
+          ComicPostRoute.name,
+          path: ':comic-posts',
+        );
+
+  static const String name = 'ComicPostRoute';
+}
+
+/// generated route for
+/// [_i23.NotificationPage]
 class NotificationRoute extends _i8.PageRouteInfo<void> {
-  const NotificationRoute() : super(NotificationRoute.name, path: '');
+  const NotificationRoute()
+      : super(
+          NotificationRoute.name,
+          path: '',
+        );
 
   static const String name = 'NotificationRoute';
 }
 
 /// generated route for
-/// [_i23.SearchPage]
+/// [_i24.SearchPage]
 class SearchRoute extends _i8.PageRouteInfo<void> {
-  const SearchRoute() : super(SearchRoute.name, path: '');
+  const SearchRoute()
+      : super(
+          SearchRoute.name,
+          path: '',
+        );
 
   static const String name = 'SearchRoute';
 }

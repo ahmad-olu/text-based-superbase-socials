@@ -3,8 +3,7 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:geat/core/enum/enum.dart';
 import 'package:geat/core/helper/firabse_user_refrence_helper.dart';
 import 'package:geat/core/helper/firebase_refrence_helper_for_notification.dart';
-import 'package:geat/post/domain/comic_post_model.dart';
-import 'package:geat/post/domain/text_post_model.dart';
+import 'package:geat/post/domain/post_model.dart';
 import 'package:geat/profile/domain/user_model.dart';
 part 'category_model.freezed.dart';
 part 'category_model.g.dart';
@@ -16,13 +15,9 @@ class PostCategory with _$PostCategory {
     String? id,
     required String category,
     @JsonKey(
-      toJson: fireStoreTextPostToJson,
+      toJson: fireStorePostToJson,
     )
-        dynamic textPost,
-    @JsonKey(
-      toJson: fireStoreComicPostToJson,
-    )
-        dynamic comicPost,
+        dynamic post,
     required PostType postType,
     @JsonKey(
       toJson: fireStoreUserToJson,
@@ -37,15 +32,12 @@ class PostCategory with _$PostCategory {
     final data = doc.data()! as Map<String, dynamic>;
     final fromUserRef = data['author'] as DocumentReference;
     final fromUserDoc = await fromUserRef.get();
-    final fromTextPostRef = data['textPost'] as DocumentReference?;
-    final fromTextPostDoc = await fromTextPostRef?.get();
-    final fromComicPostRef = data['comicPost'] as DocumentReference?;
-    final fromComicPostDoc = await fromComicPostRef?.get();
+    final fromPostRef = data['post'] as DocumentReference?;
+    final fromPostDoc = await fromPostRef?.get();
     return PostCategory.fromJson(data).copyWith(
       id: doc.id,
       author: User.fromFireStore(fromUserDoc),
-      textPost: await TextPost.fromFireStore(fromTextPostDoc),
-      comicPost: await ComicPost.fromFireStore(fromComicPostDoc),
+      post: await Post.fromFireStore(fromPostDoc),
     );
   }
 }

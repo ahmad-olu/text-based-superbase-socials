@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:flutter_markdown/flutter_markdown.dart';
-import 'package:geat/post/domain/text_post_model.dart';
+import 'package:geat/post/domain/post_model.dart';
 
 class BooksDetailsPage extends StatelessWidget {
   const BooksDetailsPage({
@@ -10,7 +10,7 @@ class BooksDetailsPage extends StatelessWidget {
     this.reImagined,
     required this.isReImaginedAvailable,
   });
-  final TextPost? posts;
+  final Post? posts;
   final String? reImagined;
   final bool isReImaginedAvailable;
 
@@ -31,7 +31,7 @@ class BookDetailsView extends HookWidget {
     this.reImagined,
     required this.isReImaginedAvailable,
   });
-  final TextPost? posts;
+  final Post? posts;
   final String? reImagined;
   final bool isReImaginedAvailable;
 

@@ -10,8 +10,7 @@ _$_SavedPost _$$_SavedPostFromJson(Map<String, dynamic> json) => _$_SavedPost(
       id: json['id'] as String?,
       savedOwner: json['savedOwner'] as String,
       postType: $enumDecode(_$PostTypeEnumMap, json['postType']),
-      textPost: json['textPost'],
-      comicPost: json['comicPost'],
+      post: json['post'],
       dateCreated: fireStoreTimestampFromJson(json['dateCreated']),
     );
 
@@ -20,8 +19,7 @@ Map<String, dynamic> _$$_SavedPostToJson(_$_SavedPost instance) =>
       'id': instance.id,
       'savedOwner': instance.savedOwner,
       'postType': _$PostTypeEnumMap[instance.postType]!,
-      'textPost': fireStoreTextPostToJson(instance.textPost),
-      'comicPost': fireStoreComicPostToJson(instance.comicPost),
+      'post': fireStorePostToJson(instance.post),
       'dateCreated': fireStoreTimestampToJson(instance.dateCreated),
     };
 

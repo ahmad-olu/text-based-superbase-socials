@@ -18,7 +18,7 @@ final _privateConstructorUsedError = UnsupportedError(
 mixin _$ReImaginedEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(TextPost post) fetchTextReImagined,
+    required TResult Function(Post post) fetchReImagined,
     required TResult Function(List<ReImagined?> reImagined) updateReImagined,
     required TResult Function(String content) postReImagined,
     required TResult Function() postReset,
@@ -26,7 +26,7 @@ mixin _$ReImaginedEvent {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(TextPost post)? fetchTextReImagined,
+    TResult Function(Post post)? fetchReImagined,
     TResult Function(List<ReImagined?> reImagined)? updateReImagined,
     TResult Function(String content)? postReImagined,
     TResult Function()? postReset,
@@ -34,7 +34,7 @@ mixin _$ReImaginedEvent {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(TextPost post)? fetchTextReImagined,
+    TResult Function(Post post)? fetchReImagined,
     TResult Function(List<ReImagined?> reImagined)? updateReImagined,
     TResult Function(String content)? postReImagined,
     TResult Function()? postReset,
@@ -43,7 +43,7 @@ mixin _$ReImaginedEvent {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_FetchTextReImagined value) fetchTextReImagined,
+    required TResult Function(_FetchReImagined value) fetchReImagined,
     required TResult Function(_UpdateReImagined value) updateReImagined,
     required TResult Function(_PostReImagined value) postReImagined,
     required TResult Function(_PostReset value) postReset,
@@ -51,7 +51,7 @@ mixin _$ReImaginedEvent {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_FetchTextReImagined value)? fetchTextReImagined,
+    TResult Function(_FetchReImagined value)? fetchReImagined,
     TResult Function(_UpdateReImagined value)? updateReImagined,
     TResult Function(_PostReImagined value)? postReImagined,
     TResult Function(_PostReset value)? postReset,
@@ -59,7 +59,7 @@ mixin _$ReImaginedEvent {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_FetchTextReImagined value)? fetchTextReImagined,
+    TResult Function(_FetchReImagined value)? fetchReImagined,
     TResult Function(_UpdateReImagined value)? updateReImagined,
     TResult Function(_PostReImagined value)? postReImagined,
     TResult Function(_PostReset value)? postReset,
@@ -86,41 +86,41 @@ class _$ReImaginedEventCopyWithImpl<$Res>
 }
 
 /// @nodoc
-abstract class _$$_FetchTextReImaginedCopyWith<$Res> {
-  factory _$$_FetchTextReImaginedCopyWith(_$_FetchTextReImagined value,
-          $Res Function(_$_FetchTextReImagined) then) =
-      __$$_FetchTextReImaginedCopyWithImpl<$Res>;
-  $Res call({TextPost post});
+abstract class _$$_FetchReImaginedCopyWith<$Res> {
+  factory _$$_FetchReImaginedCopyWith(
+          _$_FetchReImagined value, $Res Function(_$_FetchReImagined) then) =
+      __$$_FetchReImaginedCopyWithImpl<$Res>;
+  $Res call({Post post});
 
-  $TextPostCopyWith<$Res> get post;
+  $PostCopyWith<$Res> get post;
 }
 
 /// @nodoc
-class __$$_FetchTextReImaginedCopyWithImpl<$Res>
+class __$$_FetchReImaginedCopyWithImpl<$Res>
     extends _$ReImaginedEventCopyWithImpl<$Res>
-    implements _$$_FetchTextReImaginedCopyWith<$Res> {
-  __$$_FetchTextReImaginedCopyWithImpl(_$_FetchTextReImagined _value,
-      $Res Function(_$_FetchTextReImagined) _then)
-      : super(_value, (v) => _then(v as _$_FetchTextReImagined));
+    implements _$$_FetchReImaginedCopyWith<$Res> {
+  __$$_FetchReImaginedCopyWithImpl(
+      _$_FetchReImagined _value, $Res Function(_$_FetchReImagined) _then)
+      : super(_value, (v) => _then(v as _$_FetchReImagined));
 
   @override
-  _$_FetchTextReImagined get _value => super._value as _$_FetchTextReImagined;
+  _$_FetchReImagined get _value => super._value as _$_FetchReImagined;
 
   @override
   $Res call({
     Object? post = freezed,
   }) {
-    return _then(_$_FetchTextReImagined(
+    return _then(_$_FetchReImagined(
       post: post == freezed
           ? _value.post
           : post // ignore: cast_nullable_to_non_nullable
-              as TextPost,
+              as Post,
     ));
   }
 
   @override
-  $TextPostCopyWith<$Res> get post {
-    return $TextPostCopyWith<$Res>(_value.post, (value) {
+  $PostCopyWith<$Res> get post {
+    return $PostCopyWith<$Res>(_value.post, (value) {
       return _then(_value.copyWith(post: value));
     });
   }
@@ -128,22 +128,22 @@ class __$$_FetchTextReImaginedCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_FetchTextReImagined implements _FetchTextReImagined {
-  const _$_FetchTextReImagined({required this.post});
+class _$_FetchReImagined implements _FetchReImagined {
+  const _$_FetchReImagined({required this.post});
 
   @override
-  final TextPost post;
+  final Post post;
 
   @override
   String toString() {
-    return 'ReImaginedEvent.fetchTextReImagined(post: $post)';
+    return 'ReImaginedEvent.fetchReImagined(post: $post)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_FetchTextReImagined &&
+            other is _$_FetchReImagined &&
             const DeepCollectionEquality().equals(other.post, post));
   }
 
@@ -153,43 +153,42 @@ class _$_FetchTextReImagined implements _FetchTextReImagined {
 
   @JsonKey(ignore: true)
   @override
-  _$$_FetchTextReImaginedCopyWith<_$_FetchTextReImagined> get copyWith =>
-      __$$_FetchTextReImaginedCopyWithImpl<_$_FetchTextReImagined>(
-          this, _$identity);
+  _$$_FetchReImaginedCopyWith<_$_FetchReImagined> get copyWith =>
+      __$$_FetchReImaginedCopyWithImpl<_$_FetchReImagined>(this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(TextPost post) fetchTextReImagined,
+    required TResult Function(Post post) fetchReImagined,
     required TResult Function(List<ReImagined?> reImagined) updateReImagined,
     required TResult Function(String content) postReImagined,
     required TResult Function() postReset,
   }) {
-    return fetchTextReImagined(post);
+    return fetchReImagined(post);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(TextPost post)? fetchTextReImagined,
+    TResult Function(Post post)? fetchReImagined,
     TResult Function(List<ReImagined?> reImagined)? updateReImagined,
     TResult Function(String content)? postReImagined,
     TResult Function()? postReset,
   }) {
-    return fetchTextReImagined?.call(post);
+    return fetchReImagined?.call(post);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(TextPost post)? fetchTextReImagined,
+    TResult Function(Post post)? fetchReImagined,
     TResult Function(List<ReImagined?> reImagined)? updateReImagined,
     TResult Function(String content)? postReImagined,
     TResult Function()? postReset,
     required TResult orElse(),
   }) {
-    if (fetchTextReImagined != null) {
-      return fetchTextReImagined(post);
+    if (fetchReImagined != null) {
+      return fetchReImagined(post);
     }
     return orElse();
   }
@@ -197,48 +196,48 @@ class _$_FetchTextReImagined implements _FetchTextReImagined {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_FetchTextReImagined value) fetchTextReImagined,
+    required TResult Function(_FetchReImagined value) fetchReImagined,
     required TResult Function(_UpdateReImagined value) updateReImagined,
     required TResult Function(_PostReImagined value) postReImagined,
     required TResult Function(_PostReset value) postReset,
   }) {
-    return fetchTextReImagined(this);
+    return fetchReImagined(this);
   }
 
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_FetchTextReImagined value)? fetchTextReImagined,
+    TResult Function(_FetchReImagined value)? fetchReImagined,
     TResult Function(_UpdateReImagined value)? updateReImagined,
     TResult Function(_PostReImagined value)? postReImagined,
     TResult Function(_PostReset value)? postReset,
   }) {
-    return fetchTextReImagined?.call(this);
+    return fetchReImagined?.call(this);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_FetchTextReImagined value)? fetchTextReImagined,
+    TResult Function(_FetchReImagined value)? fetchReImagined,
     TResult Function(_UpdateReImagined value)? updateReImagined,
     TResult Function(_PostReImagined value)? postReImagined,
     TResult Function(_PostReset value)? postReset,
     required TResult orElse(),
   }) {
-    if (fetchTextReImagined != null) {
-      return fetchTextReImagined(this);
+    if (fetchReImagined != null) {
+      return fetchReImagined(this);
     }
     return orElse();
   }
 }
 
-abstract class _FetchTextReImagined implements ReImaginedEvent {
-  const factory _FetchTextReImagined({required final TextPost post}) =
-      _$_FetchTextReImagined;
+abstract class _FetchReImagined implements ReImaginedEvent {
+  const factory _FetchReImagined({required final Post post}) =
+      _$_FetchReImagined;
 
-  TextPost get post;
+  Post get post;
   @JsonKey(ignore: true)
-  _$$_FetchTextReImaginedCopyWith<_$_FetchTextReImagined> get copyWith =>
+  _$$_FetchReImaginedCopyWith<_$_FetchReImagined> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -313,7 +312,7 @@ class _$_UpdateReImagined implements _UpdateReImagined {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(TextPost post) fetchTextReImagined,
+    required TResult Function(Post post) fetchReImagined,
     required TResult Function(List<ReImagined?> reImagined) updateReImagined,
     required TResult Function(String content) postReImagined,
     required TResult Function() postReset,
@@ -324,7 +323,7 @@ class _$_UpdateReImagined implements _UpdateReImagined {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(TextPost post)? fetchTextReImagined,
+    TResult Function(Post post)? fetchReImagined,
     TResult Function(List<ReImagined?> reImagined)? updateReImagined,
     TResult Function(String content)? postReImagined,
     TResult Function()? postReset,
@@ -335,7 +334,7 @@ class _$_UpdateReImagined implements _UpdateReImagined {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(TextPost post)? fetchTextReImagined,
+    TResult Function(Post post)? fetchReImagined,
     TResult Function(List<ReImagined?> reImagined)? updateReImagined,
     TResult Function(String content)? postReImagined,
     TResult Function()? postReset,
@@ -350,7 +349,7 @@ class _$_UpdateReImagined implements _UpdateReImagined {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_FetchTextReImagined value) fetchTextReImagined,
+    required TResult Function(_FetchReImagined value) fetchReImagined,
     required TResult Function(_UpdateReImagined value) updateReImagined,
     required TResult Function(_PostReImagined value) postReImagined,
     required TResult Function(_PostReset value) postReset,
@@ -361,7 +360,7 @@ class _$_UpdateReImagined implements _UpdateReImagined {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_FetchTextReImagined value)? fetchTextReImagined,
+    TResult Function(_FetchReImagined value)? fetchReImagined,
     TResult Function(_UpdateReImagined value)? updateReImagined,
     TResult Function(_PostReImagined value)? postReImagined,
     TResult Function(_PostReset value)? postReset,
@@ -372,7 +371,7 @@ class _$_UpdateReImagined implements _UpdateReImagined {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_FetchTextReImagined value)? fetchTextReImagined,
+    TResult Function(_FetchReImagined value)? fetchReImagined,
     TResult Function(_UpdateReImagined value)? updateReImagined,
     TResult Function(_PostReImagined value)? postReImagined,
     TResult Function(_PostReset value)? postReset,
@@ -460,7 +459,7 @@ class _$_PostReImagined implements _PostReImagined {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(TextPost post) fetchTextReImagined,
+    required TResult Function(Post post) fetchReImagined,
     required TResult Function(List<ReImagined?> reImagined) updateReImagined,
     required TResult Function(String content) postReImagined,
     required TResult Function() postReset,
@@ -471,7 +470,7 @@ class _$_PostReImagined implements _PostReImagined {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(TextPost post)? fetchTextReImagined,
+    TResult Function(Post post)? fetchReImagined,
     TResult Function(List<ReImagined?> reImagined)? updateReImagined,
     TResult Function(String content)? postReImagined,
     TResult Function()? postReset,
@@ -482,7 +481,7 @@ class _$_PostReImagined implements _PostReImagined {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(TextPost post)? fetchTextReImagined,
+    TResult Function(Post post)? fetchReImagined,
     TResult Function(List<ReImagined?> reImagined)? updateReImagined,
     TResult Function(String content)? postReImagined,
     TResult Function()? postReset,
@@ -497,7 +496,7 @@ class _$_PostReImagined implements _PostReImagined {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_FetchTextReImagined value) fetchTextReImagined,
+    required TResult Function(_FetchReImagined value) fetchReImagined,
     required TResult Function(_UpdateReImagined value) updateReImagined,
     required TResult Function(_PostReImagined value) postReImagined,
     required TResult Function(_PostReset value) postReset,
@@ -508,7 +507,7 @@ class _$_PostReImagined implements _PostReImagined {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_FetchTextReImagined value)? fetchTextReImagined,
+    TResult Function(_FetchReImagined value)? fetchReImagined,
     TResult Function(_UpdateReImagined value)? updateReImagined,
     TResult Function(_PostReImagined value)? postReImagined,
     TResult Function(_PostReset value)? postReset,
@@ -519,7 +518,7 @@ class _$_PostReImagined implements _PostReImagined {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_FetchTextReImagined value)? fetchTextReImagined,
+    TResult Function(_FetchReImagined value)? fetchReImagined,
     TResult Function(_UpdateReImagined value)? updateReImagined,
     TResult Function(_PostReImagined value)? postReImagined,
     TResult Function(_PostReset value)? postReset,
@@ -583,7 +582,7 @@ class _$_PostReset implements _PostReset {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(TextPost post) fetchTextReImagined,
+    required TResult Function(Post post) fetchReImagined,
     required TResult Function(List<ReImagined?> reImagined) updateReImagined,
     required TResult Function(String content) postReImagined,
     required TResult Function() postReset,
@@ -594,7 +593,7 @@ class _$_PostReset implements _PostReset {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(TextPost post)? fetchTextReImagined,
+    TResult Function(Post post)? fetchReImagined,
     TResult Function(List<ReImagined?> reImagined)? updateReImagined,
     TResult Function(String content)? postReImagined,
     TResult Function()? postReset,
@@ -605,7 +604,7 @@ class _$_PostReset implements _PostReset {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(TextPost post)? fetchTextReImagined,
+    TResult Function(Post post)? fetchReImagined,
     TResult Function(List<ReImagined?> reImagined)? updateReImagined,
     TResult Function(String content)? postReImagined,
     TResult Function()? postReset,
@@ -620,7 +619,7 @@ class _$_PostReset implements _PostReset {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_FetchTextReImagined value) fetchTextReImagined,
+    required TResult Function(_FetchReImagined value) fetchReImagined,
     required TResult Function(_UpdateReImagined value) updateReImagined,
     required TResult Function(_PostReImagined value) postReImagined,
     required TResult Function(_PostReset value) postReset,
@@ -631,7 +630,7 @@ class _$_PostReset implements _PostReset {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_FetchTextReImagined value)? fetchTextReImagined,
+    TResult Function(_FetchReImagined value)? fetchReImagined,
     TResult Function(_UpdateReImagined value)? updateReImagined,
     TResult Function(_PostReImagined value)? postReImagined,
     TResult Function(_PostReset value)? postReset,
@@ -642,7 +641,7 @@ class _$_PostReset implements _PostReset {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_FetchTextReImagined value)? fetchTextReImagined,
+    TResult Function(_FetchReImagined value)? fetchReImagined,
     TResult Function(_UpdateReImagined value)? updateReImagined,
     TResult Function(_PostReImagined value)? postReImagined,
     TResult Function(_PostReset value)? postReset,
@@ -661,7 +660,7 @@ abstract class _PostReset implements ReImaginedEvent {
 
 /// @nodoc
 mixin _$ReImaginedState {
-  TextPost? get textPost => throw _privateConstructorUsedError;
+  Post? get post => throw _privateConstructorUsedError;
   List<ReImagined?> get reImagined => throw _privateConstructorUsedError;
   ReImaginedStatus get status => throw _privateConstructorUsedError;
   Exception? get failure => throw _privateConstructorUsedError;
@@ -677,12 +676,12 @@ abstract class $ReImaginedStateCopyWith<$Res> {
           ReImaginedState value, $Res Function(ReImaginedState) then) =
       _$ReImaginedStateCopyWithImpl<$Res>;
   $Res call(
-      {TextPost? textPost,
+      {Post? post,
       List<ReImagined?> reImagined,
       ReImaginedStatus status,
       Exception? failure});
 
-  $TextPostCopyWith<$Res>? get textPost;
+  $PostCopyWith<$Res>? get post;
 }
 
 /// @nodoc
@@ -696,16 +695,16 @@ class _$ReImaginedStateCopyWithImpl<$Res>
 
   @override
   $Res call({
-    Object? textPost = freezed,
+    Object? post = freezed,
     Object? reImagined = freezed,
     Object? status = freezed,
     Object? failure = freezed,
   }) {
     return _then(_value.copyWith(
-      textPost: textPost == freezed
-          ? _value.textPost
-          : textPost // ignore: cast_nullable_to_non_nullable
-              as TextPost?,
+      post: post == freezed
+          ? _value.post
+          : post // ignore: cast_nullable_to_non_nullable
+              as Post?,
       reImagined: reImagined == freezed
           ? _value.reImagined
           : reImagined // ignore: cast_nullable_to_non_nullable
@@ -722,13 +721,13 @@ class _$ReImaginedStateCopyWithImpl<$Res>
   }
 
   @override
-  $TextPostCopyWith<$Res>? get textPost {
-    if (_value.textPost == null) {
+  $PostCopyWith<$Res>? get post {
+    if (_value.post == null) {
       return null;
     }
 
-    return $TextPostCopyWith<$Res>(_value.textPost!, (value) {
-      return _then(_value.copyWith(textPost: value));
+    return $PostCopyWith<$Res>(_value.post!, (value) {
+      return _then(_value.copyWith(post: value));
     });
   }
 }
@@ -741,13 +740,13 @@ abstract class _$$_ReImaginedStateCopyWith<$Res>
       __$$_ReImaginedStateCopyWithImpl<$Res>;
   @override
   $Res call(
-      {TextPost? textPost,
+      {Post? post,
       List<ReImagined?> reImagined,
       ReImaginedStatus status,
       Exception? failure});
 
   @override
-  $TextPostCopyWith<$Res>? get textPost;
+  $PostCopyWith<$Res>? get post;
 }
 
 /// @nodoc
@@ -763,16 +762,16 @@ class __$$_ReImaginedStateCopyWithImpl<$Res>
 
   @override
   $Res call({
-    Object? textPost = freezed,
+    Object? post = freezed,
     Object? reImagined = freezed,
     Object? status = freezed,
     Object? failure = freezed,
   }) {
     return _then(_$_ReImaginedState(
-      textPost: textPost == freezed
-          ? _value.textPost
-          : textPost // ignore: cast_nullable_to_non_nullable
-              as TextPost?,
+      post: post == freezed
+          ? _value.post
+          : post // ignore: cast_nullable_to_non_nullable
+              as Post?,
       reImagined: reImagined == freezed
           ? _value._reImagined
           : reImagined // ignore: cast_nullable_to_non_nullable
@@ -793,14 +792,14 @@ class __$$_ReImaginedStateCopyWithImpl<$Res>
 
 class _$_ReImaginedState implements _ReImaginedState {
   const _$_ReImaginedState(
-      {required this.textPost,
+      {required this.post,
       required final List<ReImagined?> reImagined,
       required this.status,
       required this.failure})
       : _reImagined = reImagined;
 
   @override
-  final TextPost? textPost;
+  final Post? post;
   final List<ReImagined?> _reImagined;
   @override
   List<ReImagined?> get reImagined {
@@ -815,7 +814,7 @@ class _$_ReImaginedState implements _ReImaginedState {
 
   @override
   String toString() {
-    return 'ReImaginedState(textPost: $textPost, reImagined: $reImagined, status: $status, failure: $failure)';
+    return 'ReImaginedState(post: $post, reImagined: $reImagined, status: $status, failure: $failure)';
   }
 
   @override
@@ -823,7 +822,7 @@ class _$_ReImaginedState implements _ReImaginedState {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_ReImaginedState &&
-            const DeepCollectionEquality().equals(other.textPost, textPost) &&
+            const DeepCollectionEquality().equals(other.post, post) &&
             const DeepCollectionEquality()
                 .equals(other._reImagined, _reImagined) &&
             const DeepCollectionEquality().equals(other.status, status) &&
@@ -833,7 +832,7 @@ class _$_ReImaginedState implements _ReImaginedState {
   @override
   int get hashCode => Object.hash(
       runtimeType,
-      const DeepCollectionEquality().hash(textPost),
+      const DeepCollectionEquality().hash(post),
       const DeepCollectionEquality().hash(_reImagined),
       const DeepCollectionEquality().hash(status),
       const DeepCollectionEquality().hash(failure));
@@ -846,13 +845,13 @@ class _$_ReImaginedState implements _ReImaginedState {
 
 abstract class _ReImaginedState implements ReImaginedState {
   const factory _ReImaginedState(
-      {required final TextPost? textPost,
+      {required final Post? post,
       required final List<ReImagined?> reImagined,
       required final ReImaginedStatus status,
       required final Exception? failure}) = _$_ReImaginedState;
 
   @override
-  TextPost? get textPost;
+  Post? get post;
   @override
   List<ReImagined?> get reImagined;
   @override

@@ -1,21 +1,11 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:geat/core/constants/paths.dart';
-import 'package:geat/post/domain/comic_post_model.dart';
-import 'package:geat/post/domain/text_post_model.dart';
+import 'package:geat/post/domain/post_model.dart';
 import 'package:geat/reImagined/domain/reImagied_model.dart';
 
-DocumentReference? fireStoreTextPostToJson(TextPost? textPost) {
-  if (textPost == null) return null;
-  return FirebaseFirestore.instance
-      .collection(Paths.textPosts)
-      .doc(textPost.id);
-}
-
-DocumentReference? fireStoreComicPostToJson(ComicPost? comicPost) {
-  if (comicPost == null) return null;
-  return FirebaseFirestore.instance
-      .collection(Paths.comicPosts)
-      .doc(comicPost.id);
+DocumentReference? fireStorePostToJson(Post? post) {
+  if (post == null) return null;
+  return FirebaseFirestore.instance.collection(Paths.posts).doc(post.id);
 }
 
 DocumentReference? fireStoreReImaginedToJson(ReImagined? reImagined) {

@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:formz/formz.dart';
 import 'package:geat/auth/application/registration_cubit/registration_cubit.dart';
-import 'package:geat/auth/application/username_check_bloc/username_check_bloc.dart';
 import 'package:geat/auth/domain/auth_failure.dart';
 import 'package:geat/auth/infrastructure/firebase_auth_facade.dart';
 import 'package:geat/auth/presentaion/widgets/email_text_form_field.dart';

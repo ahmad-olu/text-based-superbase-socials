@@ -2,9 +2,7 @@ import 'dart:async';
 
 import 'package:bloc/bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:geat/auth/application/auth_bloc/auth_bloc.dart';
-import 'package:geat/post/domain/comic_post_model.dart';
-import 'package:geat/post/domain/text_post_model.dart';
+import 'package:geat/post/domain/post_model.dart';
 import 'package:geat/post/infrastructure/post_repository.dart';
 
 part 'all_feed_event.dart';
@@ -13,26 +11,18 @@ part 'all_feed_bloc.freezed.dart';
 
 class AllFeedBloc extends Bloc<AllFeedEvent, AllFeedState> {
   final PostRepository _postRepository;
-  StreamSubscription<List<Future<TextPost?>>>? _textPostsSubscription;
-  StreamSubscription<List<Future<ComicPost?>>>? _comicPostsSubscription;
+  StreamSubscription<List<Future<Post?>>>? _postsSubscription;
   AllFeedBloc(this._postRepository) : super(AllFeedState.initial()) {
     on<AllFeedEvent>((event, emit) async {
       await event.map(
         fetchAllPost: (e) async {
           try {
             emit(state.copyWith(status: AllFeedStatus.loading));
-            _textPostsSubscription?.cancel();
-            _textPostsSubscription =
-                _postRepository.getAllTextPost().listen((posts) async {
+            _postsSubscription?.cancel();
+            _postsSubscription =
+                _postRepository.getAllPost().listen((posts) async {
               final allPosts = await Future.wait(posts);
-              add(AllFeedEvent.updateAllTextPost(allPosts));
-            });
-
-            _comicPostsSubscription?.cancel();
-            _comicPostsSubscription =
-                _postRepository.getAllComicPost().listen((posts) async {
-              final allPosts = await Future.wait(posts);
-              add(AllFeedEvent.updateAllComicPost(allPosts));
+              add(AllFeedEvent.updateAllPost(allPosts));
             });
             emit(
               state.copyWith(
@@ -48,19 +38,15 @@ class AllFeedBloc extends Bloc<AllFeedEvent, AllFeedState> {
             );
           }
         },
-        updateAllTextPost: (e) async {
-          emit(state.copyWith(textPost: e.textPost));
-        },
-        updateAllComicPost: (e) async {
-          emit(state.copyWith(picturePost: e.comicPost));
+        updateAllPost: (e) async {
+          emit(state.copyWith(post: e.post));
         },
       );
     });
   }
   @override
   Future<void> close() {
-    _textPostsSubscription?.cancel();
-    _comicPostsSubscription?.cancel();
+    _postsSubscription?.cancel();
     return super.close();
   }
 }

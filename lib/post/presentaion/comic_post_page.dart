@@ -31,6 +31,45 @@ class ComicPostView extends StatelessWidget {
   Widget build(BuildContext context) {
     final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
     final theme = Theme.of(context);
+    Widget savePost() {
+      return Padding(
+        padding: const EdgeInsets.only(right: 16.0, bottom: 16.0),
+        child: ElevatedButton(
+          onPressed: () {},
+          child: const Text('Upload Post'),
+        ),
+      );
+    }
+
+    Widget pickExtraContents() {
+      return Padding(
+        padding: const EdgeInsets.only(right: 16.0, bottom: 16.0),
+        child: IconButton(
+          onPressed: () {
+            showModalBottomSheet(
+              context: context,
+              shape: const RoundedRectangleBorder(
+                borderRadius: BorderRadius.vertical(
+                  top: Radius.circular(20),
+                ),
+              ),
+              builder: (context) {
+                return Center(
+                  child: ElevatedButton(
+                    onPressed: () {
+                      Navigator.pop(context);
+                    },
+                    child: const Text('Close'),
+                  ),
+                );
+              },
+            );
+          },
+          icon: const Icon(Icons.extension_sharp),
+        ),
+      );
+    }
+
     return GestureDetector(
       onTap: () => FocusScope.of(context).unfocus(),
       child: Scaffold(
@@ -38,6 +77,10 @@ class ComicPostView extends StatelessWidget {
           title: const Text(
             'Create Comics or Image gallery',
           ),
+          actions: [
+            savePost(),
+            pickExtraContents(),
+          ],
           backgroundColor: theme.scaffoldBackgroundColor.withOpacity(0.5),
         ),
         body: BlocConsumer<ComicPostCubit, ComicPostState>(

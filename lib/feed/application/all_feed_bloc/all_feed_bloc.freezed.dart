@@ -19,44 +19,38 @@ mixin _$AllFeedEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() fetchAllPost,
-    required TResult Function(List<TextPost?> textPost) updateAllTextPost,
-    required TResult Function(List<ComicPost?> comicPost) updateAllComicPost,
+    required TResult Function(List<Post?> post) updateAllPost,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? fetchAllPost,
-    TResult Function(List<TextPost?> textPost)? updateAllTextPost,
-    TResult Function(List<ComicPost?> comicPost)? updateAllComicPost,
+    TResult Function(List<Post?> post)? updateAllPost,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? fetchAllPost,
-    TResult Function(List<TextPost?> textPost)? updateAllTextPost,
-    TResult Function(List<ComicPost?> comicPost)? updateAllComicPost,
+    TResult Function(List<Post?> post)? updateAllPost,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_FetchAllPost value) fetchAllPost,
-    required TResult Function(_UpdateAllTextPost value) updateAllTextPost,
-    required TResult Function(UpdateAllComicPost value) updateAllComicPost,
+    required TResult Function(_UpdateAllPost value) updateAllPost,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(_FetchAllPost value)? fetchAllPost,
-    TResult Function(_UpdateAllTextPost value)? updateAllTextPost,
-    TResult Function(UpdateAllComicPost value)? updateAllComicPost,
+    TResult Function(_UpdateAllPost value)? updateAllPost,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_FetchAllPost value)? fetchAllPost,
-    TResult Function(_UpdateAllTextPost value)? updateAllTextPost,
-    TResult Function(UpdateAllComicPost value)? updateAllComicPost,
+    TResult Function(_UpdateAllPost value)? updateAllPost,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -120,8 +114,7 @@ class _$_FetchAllPost implements _FetchAllPost {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() fetchAllPost,
-    required TResult Function(List<TextPost?> textPost) updateAllTextPost,
-    required TResult Function(List<ComicPost?> comicPost) updateAllComicPost,
+    required TResult Function(List<Post?> post) updateAllPost,
   }) {
     return fetchAllPost();
   }
@@ -130,8 +123,7 @@ class _$_FetchAllPost implements _FetchAllPost {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? fetchAllPost,
-    TResult Function(List<TextPost?> textPost)? updateAllTextPost,
-    TResult Function(List<ComicPost?> comicPost)? updateAllComicPost,
+    TResult Function(List<Post?> post)? updateAllPost,
   }) {
     return fetchAllPost?.call();
   }
@@ -140,8 +132,7 @@ class _$_FetchAllPost implements _FetchAllPost {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? fetchAllPost,
-    TResult Function(List<TextPost?> textPost)? updateAllTextPost,
-    TResult Function(List<ComicPost?> comicPost)? updateAllComicPost,
+    TResult Function(List<Post?> post)? updateAllPost,
     required TResult orElse(),
   }) {
     if (fetchAllPost != null) {
@@ -154,8 +145,7 @@ class _$_FetchAllPost implements _FetchAllPost {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_FetchAllPost value) fetchAllPost,
-    required TResult Function(_UpdateAllTextPost value) updateAllTextPost,
-    required TResult Function(UpdateAllComicPost value) updateAllComicPost,
+    required TResult Function(_UpdateAllPost value) updateAllPost,
   }) {
     return fetchAllPost(this);
   }
@@ -164,8 +154,7 @@ class _$_FetchAllPost implements _FetchAllPost {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(_FetchAllPost value)? fetchAllPost,
-    TResult Function(_UpdateAllTextPost value)? updateAllTextPost,
-    TResult Function(UpdateAllComicPost value)? updateAllComicPost,
+    TResult Function(_UpdateAllPost value)? updateAllPost,
   }) {
     return fetchAllPost?.call(this);
   }
@@ -174,8 +163,7 @@ class _$_FetchAllPost implements _FetchAllPost {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_FetchAllPost value)? fetchAllPost,
-    TResult Function(_UpdateAllTextPost value)? updateAllTextPost,
-    TResult Function(UpdateAllComicPost value)? updateAllComicPost,
+    TResult Function(_UpdateAllPost value)? updateAllPost,
     required TResult orElse(),
   }) {
     if (fetchAllPost != null) {
@@ -190,103 +178,98 @@ abstract class _FetchAllPost implements AllFeedEvent {
 }
 
 /// @nodoc
-abstract class _$$_UpdateAllTextPostCopyWith<$Res> {
-  factory _$$_UpdateAllTextPostCopyWith(_$_UpdateAllTextPost value,
-          $Res Function(_$_UpdateAllTextPost) then) =
-      __$$_UpdateAllTextPostCopyWithImpl<$Res>;
-  $Res call({List<TextPost?> textPost});
+abstract class _$$_UpdateAllPostCopyWith<$Res> {
+  factory _$$_UpdateAllPostCopyWith(
+          _$_UpdateAllPost value, $Res Function(_$_UpdateAllPost) then) =
+      __$$_UpdateAllPostCopyWithImpl<$Res>;
+  $Res call({List<Post?> post});
 }
 
 /// @nodoc
-class __$$_UpdateAllTextPostCopyWithImpl<$Res>
+class __$$_UpdateAllPostCopyWithImpl<$Res>
     extends _$AllFeedEventCopyWithImpl<$Res>
-    implements _$$_UpdateAllTextPostCopyWith<$Res> {
-  __$$_UpdateAllTextPostCopyWithImpl(
-      _$_UpdateAllTextPost _value, $Res Function(_$_UpdateAllTextPost) _then)
-      : super(_value, (v) => _then(v as _$_UpdateAllTextPost));
+    implements _$$_UpdateAllPostCopyWith<$Res> {
+  __$$_UpdateAllPostCopyWithImpl(
+      _$_UpdateAllPost _value, $Res Function(_$_UpdateAllPost) _then)
+      : super(_value, (v) => _then(v as _$_UpdateAllPost));
 
   @override
-  _$_UpdateAllTextPost get _value => super._value as _$_UpdateAllTextPost;
+  _$_UpdateAllPost get _value => super._value as _$_UpdateAllPost;
 
   @override
   $Res call({
-    Object? textPost = freezed,
+    Object? post = freezed,
   }) {
-    return _then(_$_UpdateAllTextPost(
-      textPost == freezed
-          ? _value._textPost
-          : textPost // ignore: cast_nullable_to_non_nullable
-              as List<TextPost?>,
+    return _then(_$_UpdateAllPost(
+      post == freezed
+          ? _value._post
+          : post // ignore: cast_nullable_to_non_nullable
+              as List<Post?>,
     ));
   }
 }
 
 /// @nodoc
 
-class _$_UpdateAllTextPost implements _UpdateAllTextPost {
-  const _$_UpdateAllTextPost(final List<TextPost?> textPost)
-      : _textPost = textPost;
+class _$_UpdateAllPost implements _UpdateAllPost {
+  const _$_UpdateAllPost(final List<Post?> post) : _post = post;
 
-  final List<TextPost?> _textPost;
+  final List<Post?> _post;
   @override
-  List<TextPost?> get textPost {
+  List<Post?> get post {
     // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(_textPost);
+    return EqualUnmodifiableListView(_post);
   }
 
   @override
   String toString() {
-    return 'AllFeedEvent.updateAllTextPost(textPost: $textPost)';
+    return 'AllFeedEvent.updateAllPost(post: $post)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_UpdateAllTextPost &&
-            const DeepCollectionEquality().equals(other._textPost, _textPost));
+            other is _$_UpdateAllPost &&
+            const DeepCollectionEquality().equals(other._post, _post));
   }
 
   @override
   int get hashCode =>
-      Object.hash(runtimeType, const DeepCollectionEquality().hash(_textPost));
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(_post));
 
   @JsonKey(ignore: true)
   @override
-  _$$_UpdateAllTextPostCopyWith<_$_UpdateAllTextPost> get copyWith =>
-      __$$_UpdateAllTextPostCopyWithImpl<_$_UpdateAllTextPost>(
-          this, _$identity);
+  _$$_UpdateAllPostCopyWith<_$_UpdateAllPost> get copyWith =>
+      __$$_UpdateAllPostCopyWithImpl<_$_UpdateAllPost>(this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() fetchAllPost,
-    required TResult Function(List<TextPost?> textPost) updateAllTextPost,
-    required TResult Function(List<ComicPost?> comicPost) updateAllComicPost,
+    required TResult Function(List<Post?> post) updateAllPost,
   }) {
-    return updateAllTextPost(textPost);
+    return updateAllPost(post);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? fetchAllPost,
-    TResult Function(List<TextPost?> textPost)? updateAllTextPost,
-    TResult Function(List<ComicPost?> comicPost)? updateAllComicPost,
+    TResult Function(List<Post?> post)? updateAllPost,
   }) {
-    return updateAllTextPost?.call(textPost);
+    return updateAllPost?.call(post);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? fetchAllPost,
-    TResult Function(List<TextPost?> textPost)? updateAllTextPost,
-    TResult Function(List<ComicPost?> comicPost)? updateAllComicPost,
+    TResult Function(List<Post?> post)? updateAllPost,
     required TResult orElse(),
   }) {
-    if (updateAllTextPost != null) {
-      return updateAllTextPost(textPost);
+    if (updateAllPost != null) {
+      return updateAllPost(post);
     }
     return orElse();
   }
@@ -295,199 +278,46 @@ class _$_UpdateAllTextPost implements _UpdateAllTextPost {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_FetchAllPost value) fetchAllPost,
-    required TResult Function(_UpdateAllTextPost value) updateAllTextPost,
-    required TResult Function(UpdateAllComicPost value) updateAllComicPost,
+    required TResult Function(_UpdateAllPost value) updateAllPost,
   }) {
-    return updateAllTextPost(this);
+    return updateAllPost(this);
   }
 
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(_FetchAllPost value)? fetchAllPost,
-    TResult Function(_UpdateAllTextPost value)? updateAllTextPost,
-    TResult Function(UpdateAllComicPost value)? updateAllComicPost,
+    TResult Function(_UpdateAllPost value)? updateAllPost,
   }) {
-    return updateAllTextPost?.call(this);
+    return updateAllPost?.call(this);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_FetchAllPost value)? fetchAllPost,
-    TResult Function(_UpdateAllTextPost value)? updateAllTextPost,
-    TResult Function(UpdateAllComicPost value)? updateAllComicPost,
+    TResult Function(_UpdateAllPost value)? updateAllPost,
     required TResult orElse(),
   }) {
-    if (updateAllTextPost != null) {
-      return updateAllTextPost(this);
+    if (updateAllPost != null) {
+      return updateAllPost(this);
     }
     return orElse();
   }
 }
 
-abstract class _UpdateAllTextPost implements AllFeedEvent {
-  const factory _UpdateAllTextPost(final List<TextPost?> textPost) =
-      _$_UpdateAllTextPost;
+abstract class _UpdateAllPost implements AllFeedEvent {
+  const factory _UpdateAllPost(final List<Post?> post) = _$_UpdateAllPost;
 
-  List<TextPost?> get textPost;
+  List<Post?> get post;
   @JsonKey(ignore: true)
-  _$$_UpdateAllTextPostCopyWith<_$_UpdateAllTextPost> get copyWith =>
-      throw _privateConstructorUsedError;
-}
-
-/// @nodoc
-abstract class _$$UpdateAllComicPostCopyWith<$Res> {
-  factory _$$UpdateAllComicPostCopyWith(_$UpdateAllComicPost value,
-          $Res Function(_$UpdateAllComicPost) then) =
-      __$$UpdateAllComicPostCopyWithImpl<$Res>;
-  $Res call({List<ComicPost?> comicPost});
-}
-
-/// @nodoc
-class __$$UpdateAllComicPostCopyWithImpl<$Res>
-    extends _$AllFeedEventCopyWithImpl<$Res>
-    implements _$$UpdateAllComicPostCopyWith<$Res> {
-  __$$UpdateAllComicPostCopyWithImpl(
-      _$UpdateAllComicPost _value, $Res Function(_$UpdateAllComicPost) _then)
-      : super(_value, (v) => _then(v as _$UpdateAllComicPost));
-
-  @override
-  _$UpdateAllComicPost get _value => super._value as _$UpdateAllComicPost;
-
-  @override
-  $Res call({
-    Object? comicPost = freezed,
-  }) {
-    return _then(_$UpdateAllComicPost(
-      comicPost == freezed
-          ? _value._comicPost
-          : comicPost // ignore: cast_nullable_to_non_nullable
-              as List<ComicPost?>,
-    ));
-  }
-}
-
-/// @nodoc
-
-class _$UpdateAllComicPost implements UpdateAllComicPost {
-  const _$UpdateAllComicPost(final List<ComicPost?> comicPost)
-      : _comicPost = comicPost;
-
-  final List<ComicPost?> _comicPost;
-  @override
-  List<ComicPost?> get comicPost {
-    // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(_comicPost);
-  }
-
-  @override
-  String toString() {
-    return 'AllFeedEvent.updateAllComicPost(comicPost: $comicPost)';
-  }
-
-  @override
-  bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$UpdateAllComicPost &&
-            const DeepCollectionEquality()
-                .equals(other._comicPost, _comicPost));
-  }
-
-  @override
-  int get hashCode =>
-      Object.hash(runtimeType, const DeepCollectionEquality().hash(_comicPost));
-
-  @JsonKey(ignore: true)
-  @override
-  _$$UpdateAllComicPostCopyWith<_$UpdateAllComicPost> get copyWith =>
-      __$$UpdateAllComicPostCopyWithImpl<_$UpdateAllComicPost>(
-          this, _$identity);
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() fetchAllPost,
-    required TResult Function(List<TextPost?> textPost) updateAllTextPost,
-    required TResult Function(List<ComicPost?> comicPost) updateAllComicPost,
-  }) {
-    return updateAllComicPost(comicPost);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? fetchAllPost,
-    TResult Function(List<TextPost?> textPost)? updateAllTextPost,
-    TResult Function(List<ComicPost?> comicPost)? updateAllComicPost,
-  }) {
-    return updateAllComicPost?.call(comicPost);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? fetchAllPost,
-    TResult Function(List<TextPost?> textPost)? updateAllTextPost,
-    TResult Function(List<ComicPost?> comicPost)? updateAllComicPost,
-    required TResult orElse(),
-  }) {
-    if (updateAllComicPost != null) {
-      return updateAllComicPost(comicPost);
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_FetchAllPost value) fetchAllPost,
-    required TResult Function(_UpdateAllTextPost value) updateAllTextPost,
-    required TResult Function(UpdateAllComicPost value) updateAllComicPost,
-  }) {
-    return updateAllComicPost(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_FetchAllPost value)? fetchAllPost,
-    TResult Function(_UpdateAllTextPost value)? updateAllTextPost,
-    TResult Function(UpdateAllComicPost value)? updateAllComicPost,
-  }) {
-    return updateAllComicPost?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(_FetchAllPost value)? fetchAllPost,
-    TResult Function(_UpdateAllTextPost value)? updateAllTextPost,
-    TResult Function(UpdateAllComicPost value)? updateAllComicPost,
-    required TResult orElse(),
-  }) {
-    if (updateAllComicPost != null) {
-      return updateAllComicPost(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class UpdateAllComicPost implements AllFeedEvent {
-  const factory UpdateAllComicPost(final List<ComicPost?> comicPost) =
-      _$UpdateAllComicPost;
-
-  List<ComicPost?> get comicPost;
-  @JsonKey(ignore: true)
-  _$$UpdateAllComicPostCopyWith<_$UpdateAllComicPost> get copyWith =>
+  _$$_UpdateAllPostCopyWith<_$_UpdateAllPost> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 mixin _$AllFeedState {
-  List<TextPost?> get textPost => throw _privateConstructorUsedError;
-  List<ComicPost?> get picturePost => throw _privateConstructorUsedError;
+  List<Post?> get post => throw _privateConstructorUsedError;
   AllFeedStatus get status => throw _privateConstructorUsedError;
   Exception? get failure => throw _privateConstructorUsedError;
 
@@ -501,11 +331,7 @@ abstract class $AllFeedStateCopyWith<$Res> {
   factory $AllFeedStateCopyWith(
           AllFeedState value, $Res Function(AllFeedState) then) =
       _$AllFeedStateCopyWithImpl<$Res>;
-  $Res call(
-      {List<TextPost?> textPost,
-      List<ComicPost?> picturePost,
-      AllFeedStatus status,
-      Exception? failure});
+  $Res call({List<Post?> post, AllFeedStatus status, Exception? failure});
 }
 
 /// @nodoc
@@ -518,20 +344,15 @@ class _$AllFeedStateCopyWithImpl<$Res> implements $AllFeedStateCopyWith<$Res> {
 
   @override
   $Res call({
-    Object? textPost = freezed,
-    Object? picturePost = freezed,
+    Object? post = freezed,
     Object? status = freezed,
     Object? failure = freezed,
   }) {
     return _then(_value.copyWith(
-      textPost: textPost == freezed
-          ? _value.textPost
-          : textPost // ignore: cast_nullable_to_non_nullable
-              as List<TextPost?>,
-      picturePost: picturePost == freezed
-          ? _value.picturePost
-          : picturePost // ignore: cast_nullable_to_non_nullable
-              as List<ComicPost?>,
+      post: post == freezed
+          ? _value.post
+          : post // ignore: cast_nullable_to_non_nullable
+              as List<Post?>,
       status: status == freezed
           ? _value.status
           : status // ignore: cast_nullable_to_non_nullable
@@ -551,11 +372,7 @@ abstract class _$$_AllFeedStateCopyWith<$Res>
           _$_AllFeedState value, $Res Function(_$_AllFeedState) then) =
       __$$_AllFeedStateCopyWithImpl<$Res>;
   @override
-  $Res call(
-      {List<TextPost?> textPost,
-      List<ComicPost?> picturePost,
-      AllFeedStatus status,
-      Exception? failure});
+  $Res call({List<Post?> post, AllFeedStatus status, Exception? failure});
 }
 
 /// @nodoc
@@ -571,20 +388,15 @@ class __$$_AllFeedStateCopyWithImpl<$Res>
 
   @override
   $Res call({
-    Object? textPost = freezed,
-    Object? picturePost = freezed,
+    Object? post = freezed,
     Object? status = freezed,
     Object? failure = freezed,
   }) {
     return _then(_$_AllFeedState(
-      textPost: textPost == freezed
-          ? _value._textPost
-          : textPost // ignore: cast_nullable_to_non_nullable
-              as List<TextPost?>,
-      picturePost: picturePost == freezed
-          ? _value._picturePost
-          : picturePost // ignore: cast_nullable_to_non_nullable
-              as List<ComicPost?>,
+      post: post == freezed
+          ? _value._post
+          : post // ignore: cast_nullable_to_non_nullable
+              as List<Post?>,
       status: status == freezed
           ? _value.status
           : status // ignore: cast_nullable_to_non_nullable
@@ -601,25 +413,16 @@ class __$$_AllFeedStateCopyWithImpl<$Res>
 
 class _$_AllFeedState implements _AllFeedState {
   const _$_AllFeedState(
-      {required final List<TextPost?> textPost,
-      required final List<ComicPost?> picturePost,
+      {required final List<Post?> post,
       required this.status,
       required this.failure})
-      : _textPost = textPost,
-        _picturePost = picturePost;
+      : _post = post;
 
-  final List<TextPost?> _textPost;
+  final List<Post?> _post;
   @override
-  List<TextPost?> get textPost {
+  List<Post?> get post {
     // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(_textPost);
-  }
-
-  final List<ComicPost?> _picturePost;
-  @override
-  List<ComicPost?> get picturePost {
-    // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(_picturePost);
+    return EqualUnmodifiableListView(_post);
   }
 
   @override
@@ -629,7 +432,7 @@ class _$_AllFeedState implements _AllFeedState {
 
   @override
   String toString() {
-    return 'AllFeedState(textPost: $textPost, picturePost: $picturePost, status: $status, failure: $failure)';
+    return 'AllFeedState(post: $post, status: $status, failure: $failure)';
   }
 
   @override
@@ -637,9 +440,7 @@ class _$_AllFeedState implements _AllFeedState {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_AllFeedState &&
-            const DeepCollectionEquality().equals(other._textPost, _textPost) &&
-            const DeepCollectionEquality()
-                .equals(other._picturePost, _picturePost) &&
+            const DeepCollectionEquality().equals(other._post, _post) &&
             const DeepCollectionEquality().equals(other.status, status) &&
             const DeepCollectionEquality().equals(other.failure, failure));
   }
@@ -647,8 +448,7 @@ class _$_AllFeedState implements _AllFeedState {
   @override
   int get hashCode => Object.hash(
       runtimeType,
-      const DeepCollectionEquality().hash(_textPost),
-      const DeepCollectionEquality().hash(_picturePost),
+      const DeepCollectionEquality().hash(_post),
       const DeepCollectionEquality().hash(status),
       const DeepCollectionEquality().hash(failure));
 
@@ -660,15 +460,12 @@ class _$_AllFeedState implements _AllFeedState {
 
 abstract class _AllFeedState implements AllFeedState {
   const factory _AllFeedState(
-      {required final List<TextPost?> textPost,
-      required final List<ComicPost?> picturePost,
+      {required final List<Post?> post,
       required final AllFeedStatus status,
       required final Exception? failure}) = _$_AllFeedState;
 
   @override
-  List<TextPost?> get textPost;
-  @override
-  List<ComicPost?> get picturePost;
+  List<Post?> get post;
   @override
   AllFeedStatus get status;
   @override

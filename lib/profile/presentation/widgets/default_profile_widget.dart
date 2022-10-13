@@ -40,13 +40,12 @@ class DefaultProfileWidget extends HookWidget {
             ),
         ],
       ),
-      floatingActionButton: state.picturePost.length < 6 ||
-              state.textPost.length < 6
+      floatingActionButton: state.post.length < 6
           ? null
           : Padding(
               padding: const EdgeInsets.all(8.0),
               child: FloatingActionButton(
-                onPressed: state.picturePost.length + state.textPost.length == 0
+                onPressed: state.post.isEmpty
                     ? null
                     : () {
                         scrollController.jumpTo(0);
@@ -131,9 +130,9 @@ class DefaultProfileWidget extends HookWidget {
               tabController: tabController,
               tabTitle: state.isCurrentUser == true
                   ? tabTitle
-                  : tabTitle.sublist(0, 2),
+                  : tabTitle.sublist(0, 1),
             ),
-            if (state.textPost.isNotEmpty || state.picturePost.isNotEmpty)
+            if (state.post.isNotEmpty)
               ProfilePostList(
                 tabController: tabController,
                 scrollController: scrollController,
@@ -202,16 +201,13 @@ class ProfilePageDetailCard extends StatelessWidget {
 }
 
 final tabTitle = <Widget>[
-  const Tab(text: 'Book'),
-  const Tab(text: 'Comic'),
+  const Tab(text: 'Post'),
   const Tab(text: 'Saved'),
   // const Tab(text: 'Rewrite'),
   // const Tab(text: 'Pinned'),
 ];
 final tabTitleX = <Widget>[
-  const Tab(text: 'Book'),
-  const Tab(text: 'Comic'),
-
+  const Tab(text: 'Post'),
   // const Tab(text: 'Rewrite'),
   // const Tab(text: 'Pinned'),
 ];

@@ -2,11 +2,11 @@ import 'dart:developer';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
-import 'package:geat/post/domain/comic_post_model.dart';
+import 'package:geat/post/domain/post_model.dart';
 
 class ComicFeedsDetailsPage extends StatelessWidget {
   const ComicFeedsDetailsPage({super.key, required this.posts});
-  final ComicPost posts;
+  final Post posts;
 
   @override
   Widget build(BuildContext context) {
@@ -16,7 +16,7 @@ class ComicFeedsDetailsPage extends StatelessWidget {
 
 class ComicFeedsDetailsView extends HookWidget {
   const ComicFeedsDetailsView({super.key, required this.posts});
-  final ComicPost posts;
+  final Post posts;
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
@@ -50,7 +50,7 @@ class ComicFeedsDetailsView extends HookWidget {
       body: PageView.builder(
         controller: pageController,
         scrollDirection: Axis.vertical,
-        itemCount: posts.imageUrls.length,
+        itemCount: posts.imageUrls!.length,
         onPageChanged: (value) {
           log('print ${value + 1}');
         },
@@ -58,7 +58,7 @@ class ComicFeedsDetailsView extends HookWidget {
           return Container(
             decoration: BoxDecoration(
               image: DecorationImage(
-                image: NetworkImage(posts.imageUrls[index]),
+                image: NetworkImage(posts.imageUrls![index]),
                 fit: BoxFit.cover,
                 colorFilter: ColorFilter.mode(
                   Colors.black.withOpacity(0.8),
@@ -69,7 +69,7 @@ class ComicFeedsDetailsView extends HookWidget {
             child: Padding(
               padding: const EdgeInsets.all(8.0),
               child: Image.network(
-                posts.imageUrls[index],
+                posts.imageUrls![index],
               ),
             ),
           );

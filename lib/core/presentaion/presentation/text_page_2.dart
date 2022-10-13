@@ -14,7 +14,7 @@ class MyTestAppTwo extends StatelessWidget {
             padding: const EdgeInsets.all(8.0),
             child: SingleChildScrollView(
               child: Column(
-                children: [
+                children: const [
                   Button(),
                   Button(),
                   Button(),

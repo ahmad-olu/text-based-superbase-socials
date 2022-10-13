@@ -28,6 +28,7 @@ class HomeView extends StatelessWidget {
         routes: [
           const FeedsRouter(),
           const SearchRouter(),
+          const PostRouter(),
           const NotificationRouter(),
           ProfileRouter(
             children: [
@@ -57,6 +58,12 @@ class HomeView extends StatelessWidget {
               DotNavigationBarItem(
                 icon: const Icon(
                   Icons.search_sharp,
+                  size: 30,
+                ),
+              ),
+              DotNavigationBarItem(
+                icon: const Icon(
+                  Icons.add,
                   size: 30,
                 ),
               ),

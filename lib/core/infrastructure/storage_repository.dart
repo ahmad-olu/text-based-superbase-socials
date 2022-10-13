@@ -55,13 +55,18 @@ class StorageRepository implements IStorageRepository {
   }
 
   @override
-  Future<String> uploadTextPostImage({required File? image}) async {
+  Future<List<String>> uploadTextPostImage({required File? image}) async {
+    final List<String> imageUrl = [];
     final imageId = const Uuid().v4();
-    final downloadUrl = await _uploadImage(
-      image: image!,
-      ref: 'images/textPost/post_$imageId.jpg',
-    );
-    return downloadUrl;
+    if (image != null) {
+      final downloadUrl = await _uploadImage(
+        image: image,
+        ref: 'images/post/post_$imageId.jpg',
+      );
+      imageUrl.add(downloadUrl);
+    }
+
+    return imageUrl;
   }
 
   @override
@@ -75,7 +80,7 @@ class StorageRepository implements IStorageRepository {
         final imageId = const Uuid().v4();
         final downloadUrl = await _uploadImage(
           image: image!,
-          ref: 'images/ComicPost/post_$imageId.jpg',
+          ref: 'images/post/post_$imageId.jpg',
         );
         eachImageUrl.add(downloadUrl);
       }

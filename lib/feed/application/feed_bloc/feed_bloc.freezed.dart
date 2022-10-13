@@ -18,51 +18,39 @@ final _privateConstructorUsedError = UnsupportedError(
 mixin _$FeedEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() fetchTextPosts,
-    required TResult Function() fetchPicturePosts,
-    required TResult Function() paginateTextPosts,
-    required TResult Function() paginatePicturePosts,
+    required TResult Function() fetchPosts,
+    required TResult Function() paginatePosts,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? fetchTextPosts,
-    TResult Function()? fetchPicturePosts,
-    TResult Function()? paginateTextPosts,
-    TResult Function()? paginatePicturePosts,
+    TResult Function()? fetchPosts,
+    TResult Function()? paginatePosts,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? fetchTextPosts,
-    TResult Function()? fetchPicturePosts,
-    TResult Function()? paginateTextPosts,
-    TResult Function()? paginatePicturePosts,
+    TResult Function()? fetchPosts,
+    TResult Function()? paginatePosts,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_FetchTextPosts value) fetchTextPosts,
-    required TResult Function(_FetchPicturePosts value) fetchPicturePosts,
-    required TResult Function(_PaginateTextPosts value) paginateTextPosts,
-    required TResult Function(_PaginatePicturePosts value) paginatePicturePosts,
+    required TResult Function(_FetchPosts value) fetchPosts,
+    required TResult Function(_PaginatePosts value) paginatePosts,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_FetchTextPosts value)? fetchTextPosts,
-    TResult Function(_FetchPicturePosts value)? fetchPicturePosts,
-    TResult Function(_PaginateTextPosts value)? paginateTextPosts,
-    TResult Function(_PaginatePicturePosts value)? paginatePicturePosts,
+    TResult Function(_FetchPosts value)? fetchPosts,
+    TResult Function(_PaginatePosts value)? paginatePosts,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_FetchTextPosts value)? fetchTextPosts,
-    TResult Function(_FetchPicturePosts value)? fetchPicturePosts,
-    TResult Function(_PaginateTextPosts value)? paginateTextPosts,
-    TResult Function(_PaginatePicturePosts value)? paginatePicturePosts,
+    TResult Function(_FetchPosts value)? fetchPosts,
+    TResult Function(_PaginatePosts value)? paginatePosts,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -84,38 +72,37 @@ class _$FeedEventCopyWithImpl<$Res> implements $FeedEventCopyWith<$Res> {
 }
 
 /// @nodoc
-abstract class _$$_FetchTextPostsCopyWith<$Res> {
-  factory _$$_FetchTextPostsCopyWith(
-          _$_FetchTextPosts value, $Res Function(_$_FetchTextPosts) then) =
-      __$$_FetchTextPostsCopyWithImpl<$Res>;
+abstract class _$$_FetchPostsCopyWith<$Res> {
+  factory _$$_FetchPostsCopyWith(
+          _$_FetchPosts value, $Res Function(_$_FetchPosts) then) =
+      __$$_FetchPostsCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$_FetchTextPostsCopyWithImpl<$Res>
-    extends _$FeedEventCopyWithImpl<$Res>
-    implements _$$_FetchTextPostsCopyWith<$Res> {
-  __$$_FetchTextPostsCopyWithImpl(
-      _$_FetchTextPosts _value, $Res Function(_$_FetchTextPosts) _then)
-      : super(_value, (v) => _then(v as _$_FetchTextPosts));
+class __$$_FetchPostsCopyWithImpl<$Res> extends _$FeedEventCopyWithImpl<$Res>
+    implements _$$_FetchPostsCopyWith<$Res> {
+  __$$_FetchPostsCopyWithImpl(
+      _$_FetchPosts _value, $Res Function(_$_FetchPosts) _then)
+      : super(_value, (v) => _then(v as _$_FetchPosts));
 
   @override
-  _$_FetchTextPosts get _value => super._value as _$_FetchTextPosts;
+  _$_FetchPosts get _value => super._value as _$_FetchPosts;
 }
 
 /// @nodoc
 
-class _$_FetchTextPosts implements _FetchTextPosts {
-  const _$_FetchTextPosts();
+class _$_FetchPosts implements _FetchPosts {
+  const _$_FetchPosts();
 
   @override
   String toString() {
-    return 'FeedEvent.fetchTextPosts()';
+    return 'FeedEvent.fetchPosts()';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_FetchTextPosts);
+        (other.runtimeType == runtimeType && other is _$_FetchPosts);
   }
 
   @override
@@ -124,36 +111,30 @@ class _$_FetchTextPosts implements _FetchTextPosts {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() fetchTextPosts,
-    required TResult Function() fetchPicturePosts,
-    required TResult Function() paginateTextPosts,
-    required TResult Function() paginatePicturePosts,
+    required TResult Function() fetchPosts,
+    required TResult Function() paginatePosts,
   }) {
-    return fetchTextPosts();
+    return fetchPosts();
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? fetchTextPosts,
-    TResult Function()? fetchPicturePosts,
-    TResult Function()? paginateTextPosts,
-    TResult Function()? paginatePicturePosts,
+    TResult Function()? fetchPosts,
+    TResult Function()? paginatePosts,
   }) {
-    return fetchTextPosts?.call();
+    return fetchPosts?.call();
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? fetchTextPosts,
-    TResult Function()? fetchPicturePosts,
-    TResult Function()? paginateTextPosts,
-    TResult Function()? paginatePicturePosts,
+    TResult Function()? fetchPosts,
+    TResult Function()? paginatePosts,
     required TResult orElse(),
   }) {
-    if (fetchTextPosts != null) {
-      return fetchTextPosts();
+    if (fetchPosts != null) {
+      return fetchPosts();
     }
     return orElse();
   }
@@ -161,78 +142,71 @@ class _$_FetchTextPosts implements _FetchTextPosts {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_FetchTextPosts value) fetchTextPosts,
-    required TResult Function(_FetchPicturePosts value) fetchPicturePosts,
-    required TResult Function(_PaginateTextPosts value) paginateTextPosts,
-    required TResult Function(_PaginatePicturePosts value) paginatePicturePosts,
+    required TResult Function(_FetchPosts value) fetchPosts,
+    required TResult Function(_PaginatePosts value) paginatePosts,
   }) {
-    return fetchTextPosts(this);
+    return fetchPosts(this);
   }
 
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_FetchTextPosts value)? fetchTextPosts,
-    TResult Function(_FetchPicturePosts value)? fetchPicturePosts,
-    TResult Function(_PaginateTextPosts value)? paginateTextPosts,
-    TResult Function(_PaginatePicturePosts value)? paginatePicturePosts,
+    TResult Function(_FetchPosts value)? fetchPosts,
+    TResult Function(_PaginatePosts value)? paginatePosts,
   }) {
-    return fetchTextPosts?.call(this);
+    return fetchPosts?.call(this);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_FetchTextPosts value)? fetchTextPosts,
-    TResult Function(_FetchPicturePosts value)? fetchPicturePosts,
-    TResult Function(_PaginateTextPosts value)? paginateTextPosts,
-    TResult Function(_PaginatePicturePosts value)? paginatePicturePosts,
+    TResult Function(_FetchPosts value)? fetchPosts,
+    TResult Function(_PaginatePosts value)? paginatePosts,
     required TResult orElse(),
   }) {
-    if (fetchTextPosts != null) {
-      return fetchTextPosts(this);
+    if (fetchPosts != null) {
+      return fetchPosts(this);
     }
     return orElse();
   }
 }
 
-abstract class _FetchTextPosts implements FeedEvent {
-  const factory _FetchTextPosts() = _$_FetchTextPosts;
+abstract class _FetchPosts implements FeedEvent {
+  const factory _FetchPosts() = _$_FetchPosts;
 }
 
 /// @nodoc
-abstract class _$$_FetchPicturePostsCopyWith<$Res> {
-  factory _$$_FetchPicturePostsCopyWith(_$_FetchPicturePosts value,
-          $Res Function(_$_FetchPicturePosts) then) =
-      __$$_FetchPicturePostsCopyWithImpl<$Res>;
+abstract class _$$_PaginatePostsCopyWith<$Res> {
+  factory _$$_PaginatePostsCopyWith(
+          _$_PaginatePosts value, $Res Function(_$_PaginatePosts) then) =
+      __$$_PaginatePostsCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$_FetchPicturePostsCopyWithImpl<$Res>
-    extends _$FeedEventCopyWithImpl<$Res>
-    implements _$$_FetchPicturePostsCopyWith<$Res> {
-  __$$_FetchPicturePostsCopyWithImpl(
-      _$_FetchPicturePosts _value, $Res Function(_$_FetchPicturePosts) _then)
-      : super(_value, (v) => _then(v as _$_FetchPicturePosts));
+class __$$_PaginatePostsCopyWithImpl<$Res> extends _$FeedEventCopyWithImpl<$Res>
+    implements _$$_PaginatePostsCopyWith<$Res> {
+  __$$_PaginatePostsCopyWithImpl(
+      _$_PaginatePosts _value, $Res Function(_$_PaginatePosts) _then)
+      : super(_value, (v) => _then(v as _$_PaginatePosts));
 
   @override
-  _$_FetchPicturePosts get _value => super._value as _$_FetchPicturePosts;
+  _$_PaginatePosts get _value => super._value as _$_PaginatePosts;
 }
 
 /// @nodoc
 
-class _$_FetchPicturePosts implements _FetchPicturePosts {
-  const _$_FetchPicturePosts();
+class _$_PaginatePosts implements _PaginatePosts {
+  const _$_PaginatePosts();
 
   @override
   String toString() {
-    return 'FeedEvent.fetchPicturePosts()';
+    return 'FeedEvent.paginatePosts()';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_FetchPicturePosts);
+        (other.runtimeType == runtimeType && other is _$_PaginatePosts);
   }
 
   @override
@@ -241,36 +215,30 @@ class _$_FetchPicturePosts implements _FetchPicturePosts {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() fetchTextPosts,
-    required TResult Function() fetchPicturePosts,
-    required TResult Function() paginateTextPosts,
-    required TResult Function() paginatePicturePosts,
+    required TResult Function() fetchPosts,
+    required TResult Function() paginatePosts,
   }) {
-    return fetchPicturePosts();
+    return paginatePosts();
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? fetchTextPosts,
-    TResult Function()? fetchPicturePosts,
-    TResult Function()? paginateTextPosts,
-    TResult Function()? paginatePicturePosts,
+    TResult Function()? fetchPosts,
+    TResult Function()? paginatePosts,
   }) {
-    return fetchPicturePosts?.call();
+    return paginatePosts?.call();
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? fetchTextPosts,
-    TResult Function()? fetchPicturePosts,
-    TResult Function()? paginateTextPosts,
-    TResult Function()? paginatePicturePosts,
+    TResult Function()? fetchPosts,
+    TResult Function()? paginatePosts,
     required TResult orElse(),
   }) {
-    if (fetchPicturePosts != null) {
-      return fetchPicturePosts();
+    if (paginatePosts != null) {
+      return paginatePosts();
     }
     return orElse();
   }
@@ -278,283 +246,42 @@ class _$_FetchPicturePosts implements _FetchPicturePosts {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_FetchTextPosts value) fetchTextPosts,
-    required TResult Function(_FetchPicturePosts value) fetchPicturePosts,
-    required TResult Function(_PaginateTextPosts value) paginateTextPosts,
-    required TResult Function(_PaginatePicturePosts value) paginatePicturePosts,
+    required TResult Function(_FetchPosts value) fetchPosts,
+    required TResult Function(_PaginatePosts value) paginatePosts,
   }) {
-    return fetchPicturePosts(this);
+    return paginatePosts(this);
   }
 
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_FetchTextPosts value)? fetchTextPosts,
-    TResult Function(_FetchPicturePosts value)? fetchPicturePosts,
-    TResult Function(_PaginateTextPosts value)? paginateTextPosts,
-    TResult Function(_PaginatePicturePosts value)? paginatePicturePosts,
+    TResult Function(_FetchPosts value)? fetchPosts,
+    TResult Function(_PaginatePosts value)? paginatePosts,
   }) {
-    return fetchPicturePosts?.call(this);
+    return paginatePosts?.call(this);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_FetchTextPosts value)? fetchTextPosts,
-    TResult Function(_FetchPicturePosts value)? fetchPicturePosts,
-    TResult Function(_PaginateTextPosts value)? paginateTextPosts,
-    TResult Function(_PaginatePicturePosts value)? paginatePicturePosts,
+    TResult Function(_FetchPosts value)? fetchPosts,
+    TResult Function(_PaginatePosts value)? paginatePosts,
     required TResult orElse(),
   }) {
-    if (fetchPicturePosts != null) {
-      return fetchPicturePosts(this);
+    if (paginatePosts != null) {
+      return paginatePosts(this);
     }
     return orElse();
   }
 }
 
-abstract class _FetchPicturePosts implements FeedEvent {
-  const factory _FetchPicturePosts() = _$_FetchPicturePosts;
-}
-
-/// @nodoc
-abstract class _$$_PaginateTextPostsCopyWith<$Res> {
-  factory _$$_PaginateTextPostsCopyWith(_$_PaginateTextPosts value,
-          $Res Function(_$_PaginateTextPosts) then) =
-      __$$_PaginateTextPostsCopyWithImpl<$Res>;
-}
-
-/// @nodoc
-class __$$_PaginateTextPostsCopyWithImpl<$Res>
-    extends _$FeedEventCopyWithImpl<$Res>
-    implements _$$_PaginateTextPostsCopyWith<$Res> {
-  __$$_PaginateTextPostsCopyWithImpl(
-      _$_PaginateTextPosts _value, $Res Function(_$_PaginateTextPosts) _then)
-      : super(_value, (v) => _then(v as _$_PaginateTextPosts));
-
-  @override
-  _$_PaginateTextPosts get _value => super._value as _$_PaginateTextPosts;
-}
-
-/// @nodoc
-
-class _$_PaginateTextPosts implements _PaginateTextPosts {
-  const _$_PaginateTextPosts();
-
-  @override
-  String toString() {
-    return 'FeedEvent.paginateTextPosts()';
-  }
-
-  @override
-  bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_PaginateTextPosts);
-  }
-
-  @override
-  int get hashCode => runtimeType.hashCode;
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() fetchTextPosts,
-    required TResult Function() fetchPicturePosts,
-    required TResult Function() paginateTextPosts,
-    required TResult Function() paginatePicturePosts,
-  }) {
-    return paginateTextPosts();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? fetchTextPosts,
-    TResult Function()? fetchPicturePosts,
-    TResult Function()? paginateTextPosts,
-    TResult Function()? paginatePicturePosts,
-  }) {
-    return paginateTextPosts?.call();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? fetchTextPosts,
-    TResult Function()? fetchPicturePosts,
-    TResult Function()? paginateTextPosts,
-    TResult Function()? paginatePicturePosts,
-    required TResult orElse(),
-  }) {
-    if (paginateTextPosts != null) {
-      return paginateTextPosts();
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_FetchTextPosts value) fetchTextPosts,
-    required TResult Function(_FetchPicturePosts value) fetchPicturePosts,
-    required TResult Function(_PaginateTextPosts value) paginateTextPosts,
-    required TResult Function(_PaginatePicturePosts value) paginatePicturePosts,
-  }) {
-    return paginateTextPosts(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_FetchTextPosts value)? fetchTextPosts,
-    TResult Function(_FetchPicturePosts value)? fetchPicturePosts,
-    TResult Function(_PaginateTextPosts value)? paginateTextPosts,
-    TResult Function(_PaginatePicturePosts value)? paginatePicturePosts,
-  }) {
-    return paginateTextPosts?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(_FetchTextPosts value)? fetchTextPosts,
-    TResult Function(_FetchPicturePosts value)? fetchPicturePosts,
-    TResult Function(_PaginateTextPosts value)? paginateTextPosts,
-    TResult Function(_PaginatePicturePosts value)? paginatePicturePosts,
-    required TResult orElse(),
-  }) {
-    if (paginateTextPosts != null) {
-      return paginateTextPosts(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class _PaginateTextPosts implements FeedEvent {
-  const factory _PaginateTextPosts() = _$_PaginateTextPosts;
-}
-
-/// @nodoc
-abstract class _$$_PaginatePicturePostsCopyWith<$Res> {
-  factory _$$_PaginatePicturePostsCopyWith(_$_PaginatePicturePosts value,
-          $Res Function(_$_PaginatePicturePosts) then) =
-      __$$_PaginatePicturePostsCopyWithImpl<$Res>;
-}
-
-/// @nodoc
-class __$$_PaginatePicturePostsCopyWithImpl<$Res>
-    extends _$FeedEventCopyWithImpl<$Res>
-    implements _$$_PaginatePicturePostsCopyWith<$Res> {
-  __$$_PaginatePicturePostsCopyWithImpl(_$_PaginatePicturePosts _value,
-      $Res Function(_$_PaginatePicturePosts) _then)
-      : super(_value, (v) => _then(v as _$_PaginatePicturePosts));
-
-  @override
-  _$_PaginatePicturePosts get _value => super._value as _$_PaginatePicturePosts;
-}
-
-/// @nodoc
-
-class _$_PaginatePicturePosts implements _PaginatePicturePosts {
-  const _$_PaginatePicturePosts();
-
-  @override
-  String toString() {
-    return 'FeedEvent.paginatePicturePosts()';
-  }
-
-  @override
-  bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_PaginatePicturePosts);
-  }
-
-  @override
-  int get hashCode => runtimeType.hashCode;
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() fetchTextPosts,
-    required TResult Function() fetchPicturePosts,
-    required TResult Function() paginateTextPosts,
-    required TResult Function() paginatePicturePosts,
-  }) {
-    return paginatePicturePosts();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? fetchTextPosts,
-    TResult Function()? fetchPicturePosts,
-    TResult Function()? paginateTextPosts,
-    TResult Function()? paginatePicturePosts,
-  }) {
-    return paginatePicturePosts?.call();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? fetchTextPosts,
-    TResult Function()? fetchPicturePosts,
-    TResult Function()? paginateTextPosts,
-    TResult Function()? paginatePicturePosts,
-    required TResult orElse(),
-  }) {
-    if (paginatePicturePosts != null) {
-      return paginatePicturePosts();
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_FetchTextPosts value) fetchTextPosts,
-    required TResult Function(_FetchPicturePosts value) fetchPicturePosts,
-    required TResult Function(_PaginateTextPosts value) paginateTextPosts,
-    required TResult Function(_PaginatePicturePosts value) paginatePicturePosts,
-  }) {
-    return paginatePicturePosts(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_FetchTextPosts value)? fetchTextPosts,
-    TResult Function(_FetchPicturePosts value)? fetchPicturePosts,
-    TResult Function(_PaginateTextPosts value)? paginateTextPosts,
-    TResult Function(_PaginatePicturePosts value)? paginatePicturePosts,
-  }) {
-    return paginatePicturePosts?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(_FetchTextPosts value)? fetchTextPosts,
-    TResult Function(_FetchPicturePosts value)? fetchPicturePosts,
-    TResult Function(_PaginateTextPosts value)? paginateTextPosts,
-    TResult Function(_PaginatePicturePosts value)? paginatePicturePosts,
-    required TResult orElse(),
-  }) {
-    if (paginatePicturePosts != null) {
-      return paginatePicturePosts(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class _PaginatePicturePosts implements FeedEvent {
-  const factory _PaginatePicturePosts() = _$_PaginatePicturePosts;
+abstract class _PaginatePosts implements FeedEvent {
+  const factory _PaginatePosts() = _$_PaginatePosts;
 }
 
 /// @nodoc
 mixin _$FeedState {
-  List<TextPost?> get textPost => throw _privateConstructorUsedError;
-  List<ComicPost?> get picturePost => throw _privateConstructorUsedError;
+  List<Post?> get post => throw _privateConstructorUsedError;
   FeedStatus get status => throw _privateConstructorUsedError;
   Exception? get failure => throw _privateConstructorUsedError;
 
@@ -567,11 +294,7 @@ mixin _$FeedState {
 abstract class $FeedStateCopyWith<$Res> {
   factory $FeedStateCopyWith(FeedState value, $Res Function(FeedState) then) =
       _$FeedStateCopyWithImpl<$Res>;
-  $Res call(
-      {List<TextPost?> textPost,
-      List<ComicPost?> picturePost,
-      FeedStatus status,
-      Exception? failure});
+  $Res call({List<Post?> post, FeedStatus status, Exception? failure});
 }
 
 /// @nodoc
@@ -584,20 +307,15 @@ class _$FeedStateCopyWithImpl<$Res> implements $FeedStateCopyWith<$Res> {
 
   @override
   $Res call({
-    Object? textPost = freezed,
-    Object? picturePost = freezed,
+    Object? post = freezed,
     Object? status = freezed,
     Object? failure = freezed,
   }) {
     return _then(_value.copyWith(
-      textPost: textPost == freezed
-          ? _value.textPost
-          : textPost // ignore: cast_nullable_to_non_nullable
-              as List<TextPost?>,
-      picturePost: picturePost == freezed
-          ? _value.picturePost
-          : picturePost // ignore: cast_nullable_to_non_nullable
-              as List<ComicPost?>,
+      post: post == freezed
+          ? _value.post
+          : post // ignore: cast_nullable_to_non_nullable
+              as List<Post?>,
       status: status == freezed
           ? _value.status
           : status // ignore: cast_nullable_to_non_nullable
@@ -616,11 +334,7 @@ abstract class _$$_FeedStateCopyWith<$Res> implements $FeedStateCopyWith<$Res> {
           _$_FeedState value, $Res Function(_$_FeedState) then) =
       __$$_FeedStateCopyWithImpl<$Res>;
   @override
-  $Res call(
-      {List<TextPost?> textPost,
-      List<ComicPost?> picturePost,
-      FeedStatus status,
-      Exception? failure});
+  $Res call({List<Post?> post, FeedStatus status, Exception? failure});
 }
 
 /// @nodoc
@@ -635,20 +349,15 @@ class __$$_FeedStateCopyWithImpl<$Res> extends _$FeedStateCopyWithImpl<$Res>
 
   @override
   $Res call({
-    Object? textPost = freezed,
-    Object? picturePost = freezed,
+    Object? post = freezed,
     Object? status = freezed,
     Object? failure = freezed,
   }) {
     return _then(_$_FeedState(
-      textPost: textPost == freezed
-          ? _value._textPost
-          : textPost // ignore: cast_nullable_to_non_nullable
-              as List<TextPost?>,
-      picturePost: picturePost == freezed
-          ? _value._picturePost
-          : picturePost // ignore: cast_nullable_to_non_nullable
-              as List<ComicPost?>,
+      post: post == freezed
+          ? _value._post
+          : post // ignore: cast_nullable_to_non_nullable
+              as List<Post?>,
       status: status == freezed
           ? _value.status
           : status // ignore: cast_nullable_to_non_nullable
@@ -665,25 +374,16 @@ class __$$_FeedStateCopyWithImpl<$Res> extends _$FeedStateCopyWithImpl<$Res>
 
 class _$_FeedState implements _FeedState {
   const _$_FeedState(
-      {required final List<TextPost?> textPost,
-      required final List<ComicPost?> picturePost,
+      {required final List<Post?> post,
       required this.status,
       required this.failure})
-      : _textPost = textPost,
-        _picturePost = picturePost;
+      : _post = post;
 
-  final List<TextPost?> _textPost;
+  final List<Post?> _post;
   @override
-  List<TextPost?> get textPost {
+  List<Post?> get post {
     // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(_textPost);
-  }
-
-  final List<ComicPost?> _picturePost;
-  @override
-  List<ComicPost?> get picturePost {
-    // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(_picturePost);
+    return EqualUnmodifiableListView(_post);
   }
 
   @override
@@ -693,7 +393,7 @@ class _$_FeedState implements _FeedState {
 
   @override
   String toString() {
-    return 'FeedState(textPost: $textPost, picturePost: $picturePost, status: $status, failure: $failure)';
+    return 'FeedState(post: $post, status: $status, failure: $failure)';
   }
 
   @override
@@ -701,9 +401,7 @@ class _$_FeedState implements _FeedState {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_FeedState &&
-            const DeepCollectionEquality().equals(other._textPost, _textPost) &&
-            const DeepCollectionEquality()
-                .equals(other._picturePost, _picturePost) &&
+            const DeepCollectionEquality().equals(other._post, _post) &&
             const DeepCollectionEquality().equals(other.status, status) &&
             const DeepCollectionEquality().equals(other.failure, failure));
   }
@@ -711,8 +409,7 @@ class _$_FeedState implements _FeedState {
   @override
   int get hashCode => Object.hash(
       runtimeType,
-      const DeepCollectionEquality().hash(_textPost),
-      const DeepCollectionEquality().hash(_picturePost),
+      const DeepCollectionEquality().hash(_post),
       const DeepCollectionEquality().hash(status),
       const DeepCollectionEquality().hash(failure));
 
@@ -724,15 +421,12 @@ class _$_FeedState implements _FeedState {
 
 abstract class _FeedState implements FeedState {
   const factory _FeedState(
-      {required final List<TextPost?> textPost,
-      required final List<ComicPost?> picturePost,
+      {required final List<Post?> post,
       required final FeedStatus status,
       required final Exception? failure}) = _$_FeedState;
 
   @override
-  List<TextPost?> get textPost;
-  @override
-  List<ComicPost?> get picturePost;
+  List<Post?> get post;
   @override
   FeedStatus get status;
   @override

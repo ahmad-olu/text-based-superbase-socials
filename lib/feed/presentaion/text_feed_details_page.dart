@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:geat/auth/application/auth_bloc/auth_bloc.dart';
 import 'package:geat/core/routes/app_router.gr.dart';
-import 'package:geat/post/domain/text_post_model.dart';
+import 'package:geat/post/domain/post_model.dart';
 import 'package:geat/post/infrastructure/post_repository.dart';
 import 'package:geat/profile/domain/user_model.dart';
 import 'package:geat/profile/presentation/widgets/user_profile_image.dart';
@@ -12,7 +12,7 @@ import 'package:intl/intl.dart';
 
 class TextFeedsDetailsPage extends StatelessWidget {
   const TextFeedsDetailsPage({super.key, required this.posts});
-  final TextPost posts;
+  final Post posts;
 
   @override
   Widget build(BuildContext context) {
@@ -20,7 +20,7 @@ class TextFeedsDetailsPage extends StatelessWidget {
       create: (context) => ReImaginedBloc(
         context.read<PostRepository>(),
         context.read<AuthBloc>(),
-      )..add(ReImaginedEvent.fetchTextReImagined(post: posts)),
+      )..add(ReImaginedEvent.fetchReImagined(post: posts)),
       child: TextFeedsDetailsView(posts: posts),
     );
   }
@@ -28,7 +28,7 @@ class TextFeedsDetailsPage extends StatelessWidget {
 
 class TextFeedsDetailsView extends StatelessWidget {
   const TextFeedsDetailsView({super.key, required this.posts});
-  final TextPost posts;
+  final Post posts;
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
@@ -47,7 +47,7 @@ class TextFeedsDetailsView extends StatelessWidget {
                 child: GestureDetector(
                   onTap: () => context.router.push(
                     ReImaginedRoute(
-                      textPost: posts,
+                      post: posts,
                       reImaginedBloc: context.read<ReImaginedBloc>(),
                     ),
                   ),

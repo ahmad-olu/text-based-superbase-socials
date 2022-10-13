@@ -2,8 +2,8 @@ part of 're_imagined_bloc.dart';
 
 @freezed
 class ReImaginedEvent with _$ReImaginedEvent {
-  const factory ReImaginedEvent.fetchTextReImagined({required TextPost post}) =
-      _FetchTextReImagined;
+  const factory ReImaginedEvent.fetchReImagined({required Post post}) =
+      _FetchReImagined;
   const factory ReImaginedEvent.updateReImagined({
     required List<ReImagined?> reImagined,
   }) = _UpdateReImagined;
