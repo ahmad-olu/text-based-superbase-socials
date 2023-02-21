@@ -6,3 +6,5 @@
 // https://opensource.org/licenses/MIT.
 
 export 'view/app.dart';
+export 'view/responsive_widget.dart';
+export 'widget/widget.dart';
